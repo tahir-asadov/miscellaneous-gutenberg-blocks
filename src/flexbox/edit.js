@@ -8,6 +8,7 @@ import {
 	ResizableBox,
 	PanelBody,
 	PanelRow,
+	RangeControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
@@ -75,9 +76,11 @@ import {
  */
 import "./editor.scss";
 import { useEffect, useState, useRef } from "react";
-import { InspectorLabel } from "../libs/global";
+// import { InspectorLabel } from "../libs/global";
 
 import { useDispatch } from "@wordpress/data";
+import { InspectorLabel } from "../libs/components/inspector-label";
+import { generateTemplate, numberRange } from "../libs/global";
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -86,70 +89,6 @@ import { useDispatch } from "@wordpress/data";
  *
  * @return {Element} Element to render.
  */
-const MyCustomAppender = ({ clientId }) => {
-	return <InnerBlocks.ButtonBlockAppender rootClientId={clientId} />;
-};
-
-// const Label = ({ title, onChange, defaultValue }) => {
-// 	const [currentVariant, setVariant] = useState(defaultValue ?? "desktop");
-// 	const currentIcon =
-// 		currentVariant == "desktop"
-// 			? desktop
-// 			: currentVariant == "tablet"
-// 			? tablet
-// 			: mobile;
-// 	const variants = ["Desktop", "Tablet", "Mobile"];
-// 	return (
-// 		<div className="flexbox-inspector-label">
-// 			<label className="components-base-control__label">{title}</label>
-// 			<div className="layout-buttons-container">
-// 				<button className="layout-button">{currentIcon}</button>
-// 				<div className="layout-buttons">
-// 					<div className="layout-button-variants">
-// 						{variants.map((variant) => {
-// 							const name = variant.toLowerCase();
-
-// 							const icon =
-// 								name == "desktop"
-// 									? desktop
-// 									: name == "tablet"
-// 									? tablet
-// 									: mobile;
-// 							return (
-// 								<button
-// 									className="layout-button"
-// 									data-selected={name == currentVariant}
-// 									title={variant}
-// 									onClick={() => {
-// 										if (onChange) {
-// 											onChange(name);
-// 											setVariant(name);
-// 										}
-// 									}}
-// 								>
-// 									{icon}
-// 								</button>
-// 							);
-// 						})}
-// 					</div>
-// 				</div>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-function generateTemplate(number) {
-	const innerBlocksAttributes = {
-		width: 100 / number,
-		tablet_width: 50,
-		mobile_width: 100,
-	};
-	const templates = [];
-	for (let index = 0; index < number; index++) {
-		templates.push(["flexbox/flexchild", innerBlocksAttributes]);
-	}
-	return templates;
-}
 
 export default function Edit(props) {
 	const [layout, setLayout] = useState("desktop");
@@ -174,34 +113,6 @@ export default function Edit(props) {
 		<AlignHorizontalSpaceAround width={17} />
 	);
 
-	// const parentRef = useRef();
-	// const measureWidth = () => {
-	// 	console.log("measureWidth");
-
-	// 	if (parentRef.current) {
-	// 		console.log(
-	// 			"parentRef.current.offsetWidth",
-	// 			parentRef.current.offsetWidth,
-	// 		);
-
-	// 		// This gives you the client width of the block's outer container
-	// 		setParentWidth(parentRef.current.offsetWidth);
-	// 	} else {
-	// 		console.log("asdno");
-	// 	}
-	// };
-	// useEffect(() => {
-	// 	// Measure initial width
-	// 	// measureWidth();
-
-	// 	// Re-measure on window resize
-	// 	// window.addEventListener("resize", measureWidth);
-
-	// 	// Clean up event listener
-	// 	return () => {
-	// 		window.removeEventListener("resize", measureWidth);
-	// 	};
-	// }, []);
 	const blockProps = useBlockProps();
 	const {
 		attributes: {
@@ -230,11 +141,12 @@ export default function Edit(props) {
 	const innerBlocksProps =
 		column != 0
 			? useInnerBlocksProps(blockProps, {
-					allowedBlocks: ["flexbox/flexchild"],
+					allowedBlocks: ["miscellaneous-gutenberg-blocks/box"],
 					template: generateTemplate(column),
 					templateLock: false,
 			  })
 			: useInnerBlocksProps(blockProps);
+
 	return (
 		<>
 			<InspectorControls>
@@ -630,53 +542,25 @@ export default function Edit(props) {
 					</ToggleGroupControl>
 				</PanelBody>
 			</InspectorControls>
+			{/* {...useBlockProps()} */}
 			{column == 0 ? (
-				<div class="">
-					Columns
-					<div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 1 });
-							}}
-						>
-							1
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 2 });
-							}}
-						>
-							2
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 3 });
-							}}
-						>
-							3
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 4 });
-							}}
-						>
-							4
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 5 });
-							}}
-						>
-							5
-						</div>
+				<div class="wp-block-miscellaneous-gutenberg-blocks-flexbox">
+					<div class="pick-column-count">
+						{numberRange(1, 12).map((index) => {
+							return (
+								<div
+									onClick={() => {
+										setAttributes({ column: index });
+									}}
+								>
+									{index}
+								</div>
+							);
+						})}
 					</div>
 				</div>
 			) : null}
-			<div
-				className="flexbox-flexbox"
-				{...innerBlocksProps}
-				// ref={parentRef}
-			></div>
+			<div {...innerBlocksProps}></div>
 		</>
 	);
 }

@@ -37,7 +37,7 @@ import {
 import "./editor.scss";
 import { useSelect, select, subscribe, useDispatch } from "@wordpress/data";
 import { useState } from "react";
-import { InspectorLabel } from "../libs/global";
+import { InspectorLabel } from "../libs/components/inspector-label";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -85,7 +85,7 @@ export default function Edit(props) {
 	);
 	const shouldRenderAppender = innerBlocks.length === 0;
 
-	const MyCustomAppender = ({ clientId }) => {
+	const MGBAppender = ({ clientId }) => {
 		return shouldRenderAppender ? (
 			<div class="flex-child-appender">
 				<InnerBlocks.ButtonBlockAppender rootClientId={clientId} />
@@ -314,43 +314,8 @@ export default function Edit(props) {
 					}%`,
 				}}
 			>
-				<div className="flexbox-flexchild-wrapper">
-					{/* <ResizableBox
-						size={{
-							width: width,
-						}}
-						enable={{
-							top: false,
-							right: true,
-							bottom: false,
-							left: false,
-							topRight: false,
-							bottomRight: false,
-							bottomLeft: false,
-							topLeft: false,
-						}}
-						onResizeStop={(event, direction, elt, delta) => {
-							if (layout == "tablet") {
-								setAttributes({
-									tablet_width: tablet_width + delta.width,
-								});
-							} else if (layout == "mobile") {
-								setAttributes({
-									mobile_width: mobile_width + delta.width,
-								});
-							} else {
-								setAttributes({
-									width: width + delta.width,
-								});
-							}
-							toggleSelection(true);
-						}}
-						onResizeStart={() => {
-							toggleSelection(false);
-						}}
-					>
-					</ResizableBox> */}
-					<InnerBlocks renderAppender={MyCustomAppender} />
+				<div className="flexbox-box-wrapper">
+					<InnerBlocks renderAppender={MGBAppender} />
 				</div>
 			</div>
 		</>

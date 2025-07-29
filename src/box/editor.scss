@@ -4,23 +4,22 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-flexbox-flexchild {
-	background: rgba(255, 255, 255, 0.8);
-}
-
-.icon_svg__flexchild-block-icon {
+.icon_svg__miscellaneous-gutenberg-blocks-box-icon {
 	fill: none !important;
-	stroke: #3f39f2 !important;
 	stroke: #f00d8d !important;
 }
-.flexbox-flexchild-wrapper {
-	padding: 10px;
-	.block-editor-inner-blocks {
-		width: 100%;
-	}
-	.flex-child-appender {
-		* {
+.wp-block-miscellaneous-gutenberg-blocks-box {
+	background: rgba(255, 255, 255, 0.8);
+
+	.flexbox-box-wrapper {
+		padding: 10px;
+		.block-editor-inner-blocks {
 			width: 100%;
+		}
+		.flex-child-appender {
+			* {
+				width: 100%;
+			}
 		}
 	}
 }

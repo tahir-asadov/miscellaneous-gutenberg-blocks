@@ -74,7 +74,7 @@ return array(
 				'default' => false
 			)
 		),
-		'textdomain' => 'flexchild',
+		'textdomain' => 'box',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',

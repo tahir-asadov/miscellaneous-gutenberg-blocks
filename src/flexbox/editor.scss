@@ -4,67 +4,32 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.icon_svg__flexbox-block-icon {
+.icon_svg__miscellaneous-gutenberg-blocks-flexbox-icon {
 	fill: none !important;
-	stroke: #3f39f2 !important;
 	stroke: #f00d8d !important;
 }
 
-.wp-block-flexbox-flexbox {
+.wp-block-miscellaneous-gutenberg-blocks-flexbox {
 	display: flex;
 	padding: 10px;
 	flex-wrap: wrap;
 	background: #eee;
-}
-.flexbox-inspector-label {
-	display: flex;
-	align-items: center;
-	gap: 5px;
-	label {
-		font-size: 11px;
-		font-weight: 500;
-		line-height: 1.4;
-		text-transform: uppercase;
-		display: block;
-		padding: 0px;
-	}
-	.layout-button {
-		position: relative;
-		width: 20px;
-		height: 20px;
-		border-radius: 20px;
-		border: solid 1px #333;
+	.pick-column-count {
+		width: 100%;
 		display: flex;
-		justify-content: center;
-		align-items: flex-end;
-		font-size: 10px;
-		line-height: 1;
-		padding: 2px;
-		background: white;
-		cursor: pointer;
-		&[data-selected="true"] {
-			background-color: #635dfb;
-			fill: white;
-			border-color: #3f39f2;
+		gap: 20px;
+		justify-content: space-between;
+		> * {
+			background: white;
+			display: flex;
+			flex-grow: 1;
+			justify-content: center;
+			align-items: center;
+			height: 50px;
+			font-size: 20px;
+			font-weight: 500;
+			font-family: sans-serif;
+			cursor: pointer;
 		}
-	}
-	.layout-buttons-container {
-		display: flex;
-		gap: 5px;
-		.layout-buttons {
-			width: 0;
-			opacity: 0;
-			overflow: hidden;
-			transition: all 0.3s ease-in-out;
-			.layout-button-variants {
-				display: flex;
-				gap: 3px;
-				width: 66px;
-			}
-		}
-	}
-	.layout-buttons-container:hover .layout-buttons {
-		opacity: 1;
-		width: 100px;
 	}
 }

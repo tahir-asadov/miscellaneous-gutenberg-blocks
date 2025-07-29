@@ -370,7 +370,7 @@ const hasA11yProp = (props) => {
   \****************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/box","version":"0.1.0","title":"Box","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" class=\\"size-6\\"><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\\" /></svg>","description":"Box for flexbox or grid container","example":{},"supports":{"interactivity":true,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundImage":true,"backgroundSize":true},"shadow":true,"align":true,"alignWide":true,"spacing":{"margin":true,"padding":true}},"attributes":{"width":{"type":"number","default":100},"tablet_width":{"type":"number","default":100},"mobile_width":{"type":"number","default":100},"grow":{"type":"boolean","default":false},"tablet_grow":{"type":"boolean","default":false},"mobile_grow":{"type":"boolean","default":false},"shrink":{"type":"boolean","default":false},"tablet_shrink":{"type":"boolean","default":false},"mobile_shrink":{"type":"boolean","default":false}},"textdomain":"flexchild","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/box","version":"0.1.0","title":"Box","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" class=\\"size-6\\"><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\\" /></svg>","description":"Box for flexbox or grid container","example":{},"supports":{"interactivity":true,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundImage":true,"backgroundSize":true},"shadow":true,"align":true,"alignWide":true,"spacing":{"margin":true,"padding":true}},"attributes":{"width":{"type":"number","default":100},"tablet_width":{"type":"number","default":100},"mobile_width":{"type":"number","default":100},"grow":{"type":"boolean","default":false},"tablet_grow":{"type":"boolean","default":false},"mobile_grow":{"type":"boolean","default":false},"shrink":{"type":"boolean","default":false},"tablet_shrink":{"type":"boolean","default":false},"mobile_shrink":{"type":"boolean","default":false}},"textdomain":"box","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -397,7 +397,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _libs_global__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../libs/global */ "./src/libs/global.js");
+/* harmony import */ var _libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../libs/components/inspector-label */ "./src/libs/components/inspector-label.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
 /**
@@ -473,7 +473,7 @@ function Edit(props) {
   } = props;
   const innerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select("core/block-editor").getBlocks(clientId), [clientId]);
   const shouldRenderAppender = innerBlocks.length === 0;
-  const MyCustomAppender = ({
+  const MGBAppender = ({
     clientId
   }) => {
     return shouldRenderAppender ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -487,7 +487,7 @@ function Edit(props) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
         title: "Settings",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_global__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
           title: "Width",
           defaultValue: layout,
           onChange: value => {
@@ -524,7 +524,7 @@ function Edit(props) {
           }),
           min: 1,
           max: 100
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_global__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
           title: "Grow",
           defaultValue: layout,
           onChange: value => {
@@ -582,7 +582,7 @@ function Edit(props) {
             value: false,
             label: "Off"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_global__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
           title: "Shrink",
           defaultValue: layout,
           onChange: value => {
@@ -648,9 +648,9 @@ function Edit(props) {
         width: `${viewport == "Desktop" ? width : viewport == "Tablet" ? tablet_width : mobile_width}%`
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        className: "flexbox-flexchild-wrapper",
+        className: "flexbox-box-wrapper",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
-          renderAppender: MyCustomAppender
+          renderAppender: MGBAppender
         })
       })
     })]
@@ -693,7 +693,7 @@ var SvgIcon = function SvgIcon(props) {
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.5,
-    className: "icon_svg__flexchild-block-icon",
+    className: "icon_svg__miscellaneous-gutenberg-blocks-box-icon",
     viewBox: "0 0 24 24"
   }, props), _path || (_path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
     strokeLinecap: "round",
@@ -702,7 +702,7 @@ var SvgIcon = function SvgIcon(props) {
   })));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiAgY2xhc3M9ImZsZXhjaGlsZC1ibG9jay1pY29uIj48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Im0yMSA3LjUtOS01LjI1TDMgNy41bTE4IDAtOSA1LjI1bTktNS4yNXY5bC05IDUuMjVNMyA3LjVsOSA1LjI1TTMgNy41djlsOSA1LjI1bTAtOXY5IiAvPjwvc3ZnPgo=");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiAgY2xhc3M9Im1pc2NlbGxhbmVvdXMtZ3V0ZW5iZXJnLWJsb2Nrcy1ib3gtaWNvbiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMjEgNy41LTktNS4yNUwzIDcuNW0xOCAwLTkgNS4yNW05LTUuMjV2OWwtOSA1LjI1TTMgNy41bDkgNS4yNU0zIDcuNXY5bDkgNS4yNW0wLTl2OSIgLz48L3N2Zz4K");
 
 /***/ }),
 
@@ -818,10 +818,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/libs/global.js":
-/*!****************************!*\
-  !*** ./src/libs/global.js ***!
-  \****************************/
+/***/ "./src/libs/components/flexbox-inspector-label.scss":
+/*!**********************************************************!*\
+  !*** ./src/libs/components/flexbox-inspector-label.scss ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./src/libs/components/inspector-label.jsx":
+/*!*************************************************!*\
+  !*** ./src/libs/components/inspector-label.jsx ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -830,13 +842,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/desktop.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/tablet.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/mobile.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/desktop.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/tablet.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/mobile.js");
+/* harmony import */ var _flexbox_inspector_label_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./flexbox-inspector-label.scss */ "./src/libs/components/flexbox-inspector-label.scss");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
 
  // For the plus icon
+
 
 const InspectorLabel = ({
   title,
@@ -844,26 +858,26 @@ const InspectorLabel = ({
   defaultValue
 }) => {
   const [currentVariant, setVariant] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue !== null && defaultValue !== void 0 ? defaultValue : "desktop");
-  const currentIcon = defaultValue == "desktop" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["default"] : defaultValue == "tablet" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"];
+  const currentIcon = defaultValue == "desktop" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"] : defaultValue == "tablet" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"];
   const variants = ["Desktop", "Tablet", "Mobile"];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "flexbox-inspector-label",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
       className: "components-base-control__label",
       children: title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "layout-buttons-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
         className: "layout-button",
         children: currentIcon
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
         className: "layout-buttons",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "layout-button-variants",
           children: variants.map(variant => {
             const name = variant.toLowerCase();
-            const icon = name == "desktop" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["default"] : name == "tablet" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"];
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            const icon = name == "desktop" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"] : name == "tablet" ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"];
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               className: "layout-button",
               "data-selected": name == currentVariant,
               title: variant,
