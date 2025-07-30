@@ -1,0 +1,44 @@
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/media-and-text/style.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text {
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+}
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text > * {
+  min-width: 0;
+  width: 50%;
+  border: solid 1px #ccc;
+}
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text > *.wp-block-miscellaneous-gutenberg-blocks-media-and-text--left {
+  position: relative;
+}
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text > *.wp-block-miscellaneous-gutenberg-blocks-media-and-text--left img {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text > *.wp-block-miscellaneous-gutenberg-blocks-media-and-text--left.has-image button {
+  margin: 10px;
+}
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text > *.wp-block-miscellaneous-gutenberg-blocks-media-and-text--left.has-no-image {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text > *.wp-block-miscellaneous-gutenberg-blocks-media-and-text--right {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text.is-reversed {
+  flex-direction: row-reverse;
+}

@@ -1,0 +1,43 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-miscellaneous-gutenberg-blocks-media-and-text {
+	padding: 10px;
+	display: flex;
+	gap: 15px;
+	> * {
+		min-width: 0;
+		width: 50%;
+		border: solid 1px #ccc;
+		&.wp-block-miscellaneous-gutenberg-blocks-media-and-text--left {
+			img {
+				display: block;
+				margin: 0;
+				width: 100%;
+			}
+			position: relative;
+			&.has-image {
+				button {
+					margin: 10px;
+				}
+			}
+			&.has-no-image {
+				padding: 20px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+		&.wp-block-miscellaneous-gutenberg-blocks-media-and-text--right {
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+		}
+	}
+	&.is-reversed {
+		flex-direction: row-reverse;
+	}
+}

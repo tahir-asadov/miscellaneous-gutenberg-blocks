@@ -1,40 +1,3 @@
-/*!************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/flexbox/editor.scss ***!
-  \************************************************************************************************************************************************************************************************************************************************/
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
-.icon_svg__miscellaneous-gutenberg-blocks-flexbox-icon {
-  fill: none !important;
-  stroke: #f00d8d !important;
-}
-
-.wp-block-miscellaneous-gutenberg-blocks-flexbox {
-  display: flex;
-  padding: 10px;
-  background: #000;
-  flex-wrap: wrap;
-  background: #eee;
-}
-.wp-block-miscellaneous-gutenberg-blocks-flexbox .pick-column-count {
-  width: 100%;
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-}
-.wp-block-miscellaneous-gutenberg-blocks-flexbox .pick-column-count > * {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  font-size: 20px;
-  font-weight: 500;
-  font-family: sans-serif;
-  cursor: pointer;
-}
 /*!*************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/libs/components/flexbox-inspector-label.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************/
@@ -89,4 +52,24 @@
 .flexbox-inspector-label .layout-buttons-container:hover .layout-buttons {
   opacity: 1;
   width: 100px;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/media-and-text/editor.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.icon_svg__miscellaneous-gutenberg-blocks-media-and-text-icon {
+  fill: none !important;
+  stroke: #f00d8d !important;
+}
+
+.block-editor-list-view-block__contents-cell[aria-selected=true] .icon_svg__miscellaneous-gutenberg-blocks-media-and-text-icon {
+  stroke: #fff !important;
+}
+
+.svg-no-fill {
+  fill: none !important;
 }

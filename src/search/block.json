@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "miscellaneous-gutenberg-blocks/search",
+	"version": "0.1.0",
+	"title": "Search",
+	"category": "miscellaneous-gutenberg-blocks",
+	"icon": "search",
+	"description": "Search using post category.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": true
+		},
+		"background": {
+			"backgroundSize": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		}
+	},
+	"attributes": {
+		"disable_css": {
+			"type": "boolean",
+			"default": false
+		},
+		"show_category": {
+			"type": "boolean",
+			"default": false
+		},
+		"show_search_icon": {
+			"type": "boolean",
+			"default": true
+		},
+		"button_inside": {
+			"type": "boolean",
+			"default": true
+		},
+		"search_placeholder": {
+			"type": "string",
+			"default": ""
+		},
+		"button_text": {
+			"type": "string",
+			"default": ""
+		},
+		"category_text": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "miscellaneous-gutenberg-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

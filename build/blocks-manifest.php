@@ -74,7 +74,7 @@ return array(
 				'default' => false
 			)
 		),
-		'textdomain' => 'box',
+		'textdomain' => 'miscellaneous-gutenberg-blocks',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
@@ -161,10 +161,183 @@ return array(
 				'default' => 'flex-start'
 			)
 		),
-		'textdomain' => 'flexbox',
+		'textdomain' => 'miscellaneous-gutenberg-blocks',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
+	'media-and-text' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'miscellaneous-gutenberg-blocks/media-and-text',
+		'version' => '0.1.0',
+		'title' => 'Media & Text',
+		'category' => 'miscellaneous-gutenberg-blocks',
+		'description' => '',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'textAlign' => true
+			),
+			'background' => array(
+				'backgroundSize' => true
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true,
+				'blockGap' => true
+			)
+		),
+		'attributes' => array(
+			'imageId' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageName' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'reversed' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'tablet_reversed' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'mobile_reversed' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'gap' => array(
+				'type' => 'number',
+				'default' => 15
+			),
+			'tablet_gap' => array(
+				'type' => 'number',
+				'default' => 15
+			),
+			'mobile_gap' => array(
+				'type' => 'number',
+				'default' => 15
+			),
+			'disable_css' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'show_category' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'show_search_icon' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'button_inside' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'search_placeholder' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'button_text' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'category_text' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		),
+		'textdomain' => 'miscellaneous-gutenberg-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
+	'search' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'miscellaneous-gutenberg-blocks/search',
+		'version' => '0.1.0',
+		'title' => 'Search',
+		'category' => 'miscellaneous-gutenberg-blocks',
+		'icon' => 'search',
+		'description' => 'Search using post category.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'textAlign' => true
+			),
+			'background' => array(
+				'backgroundSize' => true
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true,
+				'blockGap' => true
+			)
+		),
+		'attributes' => array(
+			'disable_css' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'show_category' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'show_search_icon' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'button_inside' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'search_placeholder' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'button_text' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'category_text' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		),
+		'textdomain' => 'miscellaneous-gutenberg-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php',
 		'viewScript' => 'file:./view.js'
 	)
 );

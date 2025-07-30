@@ -12,6 +12,7 @@
 .wp-block-miscellaneous-gutenberg-blocks-flexbox {
 	display: flex;
 	padding: 10px;
+	background: #000;
 	flex-wrap: wrap;
 	background: #eee;
 	.pick-column-count {
@@ -20,7 +21,6 @@
 		gap: 20px;
 		justify-content: space-between;
 		> * {
-			background: white;
 			display: flex;
 			flex-grow: 1;
 			justify-content: center;

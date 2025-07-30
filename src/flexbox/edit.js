@@ -90,6 +90,14 @@ import { generateTemplate, numberRange } from "../libs/global";
  * @return {Element} Element to render.
  */
 
+// Column icons
+import oneColumn from "./../../svgs/one-column.svg";
+import twoColumn from "./../../svgs/two-column.svg";
+import threeColumn from "./../../svgs/three-column.svg";
+import fourColumn from "./../../svgs/four-column.svg";
+import fiveColumn from "./../../svgs/five-column.svg";
+import sixColumn from "./../../svgs/six-column.svg";
+
 export default function Edit(props) {
 	const [layout, setLayout] = useState("desktop");
 	const [parentWidth, setParentWidth] = useState(0);
@@ -542,25 +550,62 @@ export default function Edit(props) {
 					</ToggleGroupControl>
 				</PanelBody>
 			</InspectorControls>
-			{/* {...useBlockProps()} */}
 			{column == 0 ? (
-				<div class="wp-block-miscellaneous-gutenberg-blocks-flexbox">
+				<div {...blockProps}>
 					<div class="pick-column-count">
-						{numberRange(1, 12).map((index) => {
-							return (
-								<div
-									onClick={() => {
-										setAttributes({ column: index });
-									}}
-								>
-									{index}
-								</div>
-							);
-						})}
+						<div
+							onClick={() => {
+								setAttributes({ column: 1 });
+							}}
+							title="One column"
+						>
+							<img src={oneColumn} fillColor={"#ccc"} height={48} />
+						</div>
+						<div
+							onClick={() => {
+								setAttributes({ column: 2 });
+							}}
+							title="Two column"
+						>
+							<img src={twoColumn} height={48} />
+						</div>
+						<div
+							onClick={() => {
+								setAttributes({ column: 3 });
+							}}
+							title="Three column"
+						>
+							<img src={threeColumn} height={48} />
+						</div>
+						<div
+							onClick={() => {
+								setAttributes({ column: 4 });
+							}}
+							title="Four column"
+						>
+							<img src={fourColumn} height={48} />
+						</div>
+						<div
+							onClick={() => {
+								setAttributes({ column: 5 });
+							}}
+							title="Five column"
+						>
+							<img src={fiveColumn} height={48} />
+						</div>
+						<div
+							onClick={() => {
+								setAttributes({ column: 6 });
+							}}
+							title="Six column"
+						>
+							<img src={sixColumn} height={48} />
+						</div>
 					</div>
 				</div>
-			) : null}
-			<div {...innerBlocksProps}></div>
+			) : (
+				<div {...innerBlocksProps}></div>
+			)}
 		</>
 	);
 }
