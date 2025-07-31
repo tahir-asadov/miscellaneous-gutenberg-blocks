@@ -15,7 +15,6 @@
   display: flex;
   padding: 10px;
   background: #000;
-  flex-wrap: wrap;
   background: #eee;
 }
 .wp-block-miscellaneous-gutenberg-blocks-flexbox .pick-column-count {

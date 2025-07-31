@@ -676,7 +676,7 @@ const hasA11yProp = (props) => {
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/flexbox","version":"0.1.0","title":"Flexbox Container","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" ><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z\\" /></svg>","description":"Flexbox container","example":{},"supports":{"html":false},"attributes":{"column":{"type":"number","default":0},"wrap":{"type":"boolean","default":false},"tablet_wrap":{"type":"boolean","default":false},"mobile_wrap":{"type":"boolean","default":false},"horizontal":{"type":"boolean","default":true},"tablet_horizontal":{"type":"boolean","default":true},"mobile_horizontal":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"tablet_reverse":{"type":"boolean","default":false},"mobile_reverse":{"type":"boolean","default":false},"justify_content":{"type":"string","default":"flex-start"},"tablet_justify_content":{"type":"string","default":"flex-start"},"mobile_justify_content":{"type":"string","default":"flex-start"},"align_items":{"type":"string","default":"flex-start"},"tablet_align_items":{"type":"string","default":"flex-start"},"mobile_align_items":{"type":"string","default":"flex-start"}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/flexbox","version":"0.1.0","title":"Flexbox Container","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" ><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z\\" /></svg>","description":"Flexbox container","example":{},"supports":{"html":false},"attributes":{"column":{"type":"number","default":0},"wrap":{"type":"boolean","default":false},"tablet_wrap":{"type":"boolean","default":false},"mobile_wrap":{"type":"boolean","default":false},"horizontal":{"type":"boolean","default":true},"tablet_horizontal":{"type":"boolean","default":true},"mobile_horizontal":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"tablet_reverse":{"type":"boolean","default":false},"mobile_reverse":{"type":"boolean","default":false},"justify_content":{"type":"string","default":"flex-start"},"tablet_justify_content":{"type":"string","default":"flex-start"},"mobile_justify_content":{"type":"string","default":"flex-start"},"align_items":{"type":"string","default":"flex-start"},"tablet_align_items":{"type":"string","default":"flex-start"},"mobile_align_items":{"type":"string","default":"flex-start"}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ }),
 
@@ -782,6 +782,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Edit(props) {
+  const {
+    attributes: {
+      width,
+      column,
+      wrap,
+      tablet_wrap,
+      mobile_wrap,
+      horizontal,
+      tablet_horizontal,
+      mobile_horizontal,
+      reverse,
+      tablet_reverse,
+      mobile_reverse,
+      justify_content,
+      tablet_justify_content,
+      mobile_justify_content,
+      align_items,
+      tablet_align_items,
+      mobile_align_items
+    },
+    setAttributes,
+    toggleSelection
+  } = props;
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)("desktop");
   const [parentWidth, setParentWidth] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(0);
   const {
@@ -820,30 +843,49 @@ function Edit(props) {
   const AlignHorizontalSpaceAroundIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_25__["default"], {
     width: 17
   });
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  const {
-    attributes: {
-      width,
-      column,
-      wrap,
-      tablet_wrap,
-      mobile_wrap,
-      horizontal,
-      tablet_horizontal,
-      mobile_horizontal,
-      reverse,
-      tablet_reverse,
-      mobile_reverse,
-      justify_content,
-      tablet_justify_content,
-      mobile_justify_content,
-      align_items,
-      tablet_align_items,
-      mobile_align_items
-    },
-    setAttributes,
-    toggleSelection
-  } = props;
+  const classNames = [];
+  if (wrap) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--wrap");
+  }
+  if (tablet_wrap) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-wrap");
+  }
+  if (mobile_wrap) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-wrap");
+  }
+  if (horizontal) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--horizontal");
+  } else {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--vertical");
+  }
+  if (tablet_horizontal) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-horizontal");
+  } else {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-vertical");
+  }
+  if (mobile_horizontal) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-horizontal");
+  } else {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-vertical");
+  }
+  if (reverse) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--reverse");
+  }
+  if (tablet_reverse) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-reverse");
+  }
+  if (mobile_reverse) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-reverse");
+  }
+  classNames.push(`miscellaneous-gutenberg-blocks-flexbox--justify-${justify_content}`);
+  classNames.push(`miscellaneous-gutenberg-blocks-flexbox--justify-tablet-${tablet_justify_content}`);
+  classNames.push(`miscellaneous-gutenberg-blocks-flexbox--justify-mobile-${mobile_justify_content}`);
+  classNames.push(`miscellaneous-gutenberg-blocks-flexbox--align-${align_items}`);
+  classNames.push(`miscellaneous-gutenberg-blocks-flexbox--align-tablet-${tablet_align_items}`);
+  classNames.push(`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobile_align_items}`);
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+    className: classNames.join(" ")
+  });
   const innerBlocksProps = column != 0 ? (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps, {
     allowedBlocks: ["miscellaneous-gutenberg-blocks/box"],
     template: (0,_libs_global__WEBPACK_IMPORTED_MODULE_7__.generateTemplate)(column),
@@ -1056,11 +1098,11 @@ function Edit(props) {
             label: "Center"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceBetweenIcon,
-            value: "between",
+            value: "space-between",
             label: "Space Between"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceAroundIcon,
-            value: "stretch",
+            value: "space-around",
             label: "Space Around"
           })]
         }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
@@ -1085,11 +1127,11 @@ function Edit(props) {
             label: "Center"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceBetweenIcon,
-            value: "between",
+            value: "space-between",
             label: "Space Between"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceAroundIcon,
-            value: "stretch",
+            value: "space-around",
             label: "Space Around"
           })]
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
@@ -1114,11 +1156,11 @@ function Edit(props) {
             label: "Center"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceBetweenIcon,
-            value: "between",
+            value: "space-between",
             label: "Space Between"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceAroundIcon,
-            value: "stretch",
+            value: "space-around",
             label: "Space Around"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
@@ -1128,13 +1170,79 @@ function Edit(props) {
             setLayout(value);
             __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
           }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
           value: align_items,
           isBlock: true,
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
           onChange: value => setAttributes({
             align_items: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsStartIcon,
+            value: "flex-start",
+            label: "Flex start"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsEndIcon,
+            value: "flex-end",
+            label: "Flex end"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsCenterIcon,
+            value: "center",
+            label: "Center"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsBaselineIcon,
+            value: "baseline",
+            label: "Baseline"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsStretchIcon,
+            value: "stretch",
+            label: "Stretch"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsNoneIcon,
+            value: "none",
+            label: "None"
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: tablet_align_items,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            tablet_align_items: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsStartIcon,
+            value: "flex-start",
+            label: "Flex start"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsEndIcon,
+            value: "flex-end",
+            label: "Flex end"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsCenterIcon,
+            value: "center",
+            label: "Center"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsBaselineIcon,
+            value: "baseline",
+            label: "Baseline"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsStretchIcon,
+            value: "stretch",
+            label: "Stretch"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+            icon: alignItemsNoneIcon,
+            value: "none",
+            label: "None"
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: mobile_align_items,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            mobile_align_items: value
           }),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsStartIcon,

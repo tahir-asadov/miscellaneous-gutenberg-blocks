@@ -99,29 +99,6 @@ import fiveColumn from "./../../svgs/five-column.svg";
 import sixColumn from "./../../svgs/six-column.svg";
 
 export default function Edit(props) {
-	const [layout, setLayout] = useState("desktop");
-	const [parentWidth, setParentWidth] = useState(0);
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
-
-	const alignItemsStartIcon = <AlignVerticalJustifyStart width={17} />;
-	const alignItemsEndIcon = <AlignVerticalJustifyEnd width={17} />;
-	const alignItemsCenterIcon = <AlignVerticalJustifyCenter width={17} />;
-	const alignItemsBaselineIcon = <AlignVerticalDistributeCenter width={17} />;
-	const alignItemsStretchIcon = <AlignVerticalSpaceBetween width={17} />;
-	const alignItemsNoneIcon = <Ban width={17} />;
-	const AlignStartVerticalIcon = <AlignStartVertical width={17} />;
-	const AlignEndVerticalIcon = <AlignEndVertical width={17} />;
-	const AlignHorizontalJustifyCenterIcon = (
-		<AlignHorizontalJustifyCenter width={17} />
-	);
-	const AlignHorizontalSpaceBetweenIcon = (
-		<AlignHorizontalSpaceBetween width={17} />
-	);
-	const AlignHorizontalSpaceAroundIcon = (
-		<AlignHorizontalSpaceAround width={17} />
-	);
-
-	const blockProps = useBlockProps();
 	const {
 		attributes: {
 			width,
@@ -145,6 +122,95 @@ export default function Edit(props) {
 		setAttributes,
 		toggleSelection,
 	} = props;
+	const [layout, setLayout] = useState("desktop");
+	const [parentWidth, setParentWidth] = useState(0);
+	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+
+	const alignItemsStartIcon = <AlignVerticalJustifyStart width={17} />;
+	const alignItemsEndIcon = <AlignVerticalJustifyEnd width={17} />;
+	const alignItemsCenterIcon = <AlignVerticalJustifyCenter width={17} />;
+	const alignItemsBaselineIcon = <AlignVerticalDistributeCenter width={17} />;
+	const alignItemsStretchIcon = <AlignVerticalSpaceBetween width={17} />;
+	const alignItemsNoneIcon = <Ban width={17} />;
+	const AlignStartVerticalIcon = <AlignStartVertical width={17} />;
+	const AlignEndVerticalIcon = <AlignEndVertical width={17} />;
+	const AlignHorizontalJustifyCenterIcon = (
+		<AlignHorizontalJustifyCenter width={17} />
+	);
+	const AlignHorizontalSpaceBetweenIcon = (
+		<AlignHorizontalSpaceBetween width={17} />
+	);
+	const AlignHorizontalSpaceAroundIcon = (
+		<AlignHorizontalSpaceAround width={17} />
+	);
+
+	const classNames = [];
+
+	if (wrap) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--wrap");
+	}
+
+	if (tablet_wrap) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-wrap");
+	}
+
+	if (mobile_wrap) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-wrap");
+	}
+
+	if (horizontal) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--horizontal");
+	} else {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--vertical");
+	}
+
+	if (tablet_horizontal) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--tablet-horizontal",
+		);
+	} else {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-vertical");
+	}
+
+	if (mobile_horizontal) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--mobile-horizontal",
+		);
+	} else {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-vertical");
+	}
+
+	if (reverse) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--reverse");
+	}
+	if (tablet_reverse) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-reverse");
+	}
+	if (mobile_reverse) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-reverse");
+	}
+	classNames.push(
+		`miscellaneous-gutenberg-blocks-flexbox--justify-${justify_content}`,
+	);
+	classNames.push(
+		`miscellaneous-gutenberg-blocks-flexbox--justify-tablet-${tablet_justify_content}`,
+	);
+	classNames.push(
+		`miscellaneous-gutenberg-blocks-flexbox--justify-mobile-${mobile_justify_content}`,
+	);
+	classNames.push(
+		`miscellaneous-gutenberg-blocks-flexbox--align-${align_items}`,
+	);
+	classNames.push(
+		`miscellaneous-gutenberg-blocks-flexbox--align-tablet-${tablet_align_items}`,
+	);
+	classNames.push(
+		`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobile_align_items}`,
+	);
+
+	const blockProps = useBlockProps({
+		className: classNames.join(" "),
+	});
 
 	const innerBlocksProps =
 		column != 0
@@ -414,12 +480,12 @@ export default function Edit(props) {
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceBetweenIcon}
-								value="between"
+								value="space-between"
 								label="Space Between"
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceAroundIcon}
-								value="stretch"
+								value="space-around"
 								label="Space Around"
 							/>
 						</ToggleGroupControl>
@@ -450,12 +516,12 @@ export default function Edit(props) {
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceBetweenIcon}
-								value="between"
+								value="space-between"
 								label="Space Between"
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceAroundIcon}
-								value="stretch"
+								value="space-around"
 								label="Space Around"
 							/>
 						</ToggleGroupControl>
@@ -486,12 +552,12 @@ export default function Edit(props) {
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceBetweenIcon}
-								value="between"
+								value="space-between"
 								label="Space Between"
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceAroundIcon}
-								value="stretch"
+								value="space-around"
 								label="Space Around"
 							/>
 						</ToggleGroupControl>
@@ -510,44 +576,125 @@ export default function Edit(props) {
 							);
 						}}
 					/>
-					<ToggleGroupControl
-						value={align_items}
-						isBlock={true}
-						__nextHasNoMarginBottom
-						__next40pxDefaultSize
-						onChange={(value) => setAttributes({ align_items: value })}
-					>
-						<ToggleGroupControlOptionIcon
-							icon={alignItemsStartIcon}
-							value="flex-start"
-							label="Flex start"
-						/>
-						<ToggleGroupControlOptionIcon
-							icon={alignItemsEndIcon}
-							value="flex-end"
-							label="Flex end"
-						/>
-						<ToggleGroupControlOptionIcon
-							icon={alignItemsCenterIcon}
-							value="center"
-							label="Center"
-						/>
-						<ToggleGroupControlOptionIcon
-							icon={alignItemsBaselineIcon}
-							value="baseline"
-							label="Baseline"
-						/>
-						<ToggleGroupControlOptionIcon
-							icon={alignItemsStretchIcon}
-							value="stretch"
-							label="Stretch"
-						/>
-						<ToggleGroupControlOptionIcon
-							icon={alignItemsNoneIcon}
-							value="none"
-							label="None"
-						/>
-					</ToggleGroupControl>
+
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={align_items}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ align_items: value })}
+						>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsStartIcon}
+								value="flex-start"
+								label="Flex start"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsEndIcon}
+								value="flex-end"
+								label="Flex end"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsCenterIcon}
+								value="center"
+								label="Center"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsBaselineIcon}
+								value="baseline"
+								label="Baseline"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsStretchIcon}
+								value="stretch"
+								label="Stretch"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value="none"
+								label="None"
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tablet_align_items}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tablet_align_items: value })}
+						>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsStartIcon}
+								value="flex-start"
+								label="Flex start"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsEndIcon}
+								value="flex-end"
+								label="Flex end"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsCenterIcon}
+								value="center"
+								label="Center"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsBaselineIcon}
+								value="baseline"
+								label="Baseline"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsStretchIcon}
+								value="stretch"
+								label="Stretch"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value="none"
+								label="None"
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobile_align_items}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobile_align_items: value })}
+						>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsStartIcon}
+								value="flex-start"
+								label="Flex start"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsEndIcon}
+								value="flex-end"
+								label="Flex end"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsCenterIcon}
+								value="center"
+								label="Center"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsBaselineIcon}
+								value="baseline"
+								label="Baseline"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsStretchIcon}
+								value="stretch"
+								label="Stretch"
+							/>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value="none"
+								label="None"
+							/>
+						</ToggleGroupControl>
+					)}
 				</PanelBody>
 			</InspectorControls>
 			{column == 0 ? (

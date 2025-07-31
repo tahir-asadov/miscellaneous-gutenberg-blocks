@@ -471,28 +471,28 @@ function Edit(props) {
     classNames.push("miscellaneous-gutenberg-blocks-box--grow");
   }
   if (tablet_grow) {
-    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-grow");
+    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-grow");
   }
   if (mobile_grow) {
-    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-grow");
+    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-grow");
   }
   if (shrink) {
     classNames.push("miscellaneous-gutenberg-blocks-box--shrink");
   }
   if (tablet_shrink) {
-    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-shrink");
+    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-shrink");
   }
   if (mobile_shrink) {
-    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-shrink");
+    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-shrink");
   }
   if (hidden) {
     classNames.push("miscellaneous-gutenberg-blocks-box--hidden");
   }
   if (tablet_hidden) {
-    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-hidden");
+    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-hidden");
   }
   if (mobile_hidden) {
-    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-hidden");
+    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-hidden");
   }
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: classNames.join(" ")
