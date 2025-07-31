@@ -370,7 +370,7 @@ const hasA11yProp = (props) => {
   \****************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/box","version":"0.1.0","title":"Box","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" class=\\"size-6\\"><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\\" /></svg>","description":"Box for flexbox or grid container","example":{},"supports":{"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundImage":true,"backgroundSize":true},"shadow":true,"align":true,"alignWide":true,"spacing":{"margin":true,"padding":true}},"attributes":{"width":{"type":"number","default":100},"tablet_width":{"type":"number","default":100},"mobile_width":{"type":"number","default":100},"grow":{"type":"boolean","default":false},"tablet_grow":{"type":"boolean","default":false},"mobile_grow":{"type":"boolean","default":false},"shrink":{"type":"boolean","default":false},"tablet_shrink":{"type":"boolean","default":false},"mobile_shrink":{"type":"boolean","default":false},"hidden":{"type":"boolean","default":false},"tablet_hidden":{"type":"boolean","default":false},"mobile_hidden":{"type":"boolean","default":false}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/box","version":"0.1.0","title":"Box","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" class=\\"size-6\\"><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\\" /></svg>","description":"Box for flexbox or grid container","example":{},"supports":{"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundImage":true,"backgroundSize":true},"shadow":true,"align":true,"alignWide":true,"spacing":{"margin":true,"padding":true}},"attributes":{"display":{"type":"string","default":"block"},"width":{"type":"number","default":100},"tablet_width":{"type":"number","default":100},"mobile_width":{"type":"number","default":100},"grow":{"type":"boolean","default":false},"tablet_grow":{"type":"boolean","default":false},"mobile_grow":{"type":"boolean","default":false},"shrink":{"type":"boolean","default":false},"tablet_shrink":{"type":"boolean","default":false},"mobile_shrink":{"type":"boolean","default":false},"hidden":{"type":"boolean","default":false},"tablet_hidden":{"type":"boolean","default":false},"mobile_hidden":{"type":"boolean","default":false}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","style":"file:./style-index.css"}');
 
 /***/ }),
 
@@ -442,6 +442,7 @@ __webpack_require__.r(__webpack_exports__);
 function Edit(props) {
   const {
     attributes: {
+      display,
       width,
       tablet_width,
       mobile_width,
@@ -467,6 +468,7 @@ function Edit(props) {
     __experimentalSetPreviewDeviceType
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)("core/edit-post");
   const classNames = [];
+  classNames.push(`miscellaneous-gutenberg-blocks-box--display-${display}`);
   if (grow) {
     classNames.push("miscellaneous-gutenberg-blocks-box--grow");
   }
@@ -518,7 +520,25 @@ function Edit(props) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
         title: "Settings",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          label: "Display",
+          value: display,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            display: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: "block",
+            label: "Block"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: "flex",
+            label: "Flex"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
           title: "Width",
           defaultValue: layout,
           onChange: value => {

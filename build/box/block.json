@@ -31,6 +31,10 @@
     }
   },
   "attributes": {
+    "display": {
+      "type": "string",
+      "default": "block"
+    },
     "width": {
       "type": "number",
       "default": 100

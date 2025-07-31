@@ -50,6 +50,7 @@ import { InspectorLabel } from "../libs/components/inspector-label";
 export default function Edit(props) {
 	const {
 		attributes: {
+			display,
 			width,
 			tablet_width,
 			mobile_width,
@@ -74,6 +75,7 @@ export default function Edit(props) {
 	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
 	const classNames = [];
 
+	classNames.push(`miscellaneous-gutenberg-blocks-box--display-${display}`);
 	if (grow) {
 		classNames.push("miscellaneous-gutenberg-blocks-box--grow");
 	}
@@ -129,6 +131,25 @@ export default function Edit(props) {
 		<>
 			<InspectorControls>
 				<PanelBody title="Settings">
+					<ToggleGroupControl
+						label="Display"
+						value={display}
+						isBlock={true}
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
+						onChange={(value) => setAttributes({ display: value })}
+					>
+						<ToggleGroupControlOption
+							isAdaptiveWidth={true}
+							value="block"
+							label="Block"
+						/>
+						<ToggleGroupControlOption
+							isAdaptiveWidth={true}
+							value="flex"
+							label="Flex"
+						/>
+					</ToggleGroupControl>
 					<InspectorLabel
 						title="Width"
 						defaultValue={layout}

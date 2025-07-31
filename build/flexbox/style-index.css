@@ -10,6 +10,7 @@
 .wp-block-miscellaneous-gutenberg-blocks-flexbox {
   display: flex;
   width: 100%;
+  box-sizing: border-box;
 }
 @media only screen and (min-width: 993px) {
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--wrap {

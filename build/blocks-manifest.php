@@ -36,6 +36,10 @@ return array(
 			)
 		),
 		'attributes' => array(
+			'display' => array(
+				'type' => 'string',
+				'default' => 'block'
+			),
 			'width' => array(
 				'type' => 'number',
 				'default' => 100

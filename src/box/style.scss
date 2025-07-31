@@ -7,6 +7,13 @@
 
 .wp-block-miscellaneous-gutenberg-blocks-box {
 	background: rgba(255, 255, 255, 0.8);
+	box-sizing: border-box;
+	&.miscellaneous-gutenberg-blocks-box--display-block {
+		display: block;
+	}
+	&.miscellaneous-gutenberg-blocks-box--display-flex {
+		display: flex;
+	}
 	@media only screen and (min-width: 993px) {
 		&.miscellaneous-gutenberg-blocks-box--grow {
 			flex-grow: 1;
@@ -41,7 +48,7 @@
 		}
 	}
 	.miscellaneous-gutenberg-blocks-box--wrapper {
-		padding: 10px;
+		width: 100%;
 		.block-editor-inner-blocks {
 			width: 100%;
 		}

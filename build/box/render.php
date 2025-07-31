@@ -1,6 +1,10 @@
 <?php
 
+$display = !empty($attributes['display']) ? $attributes['display'] : '';
+
 $classes = [];
+
+$classes[] = 'miscellaneous-gutenberg-blocks-box--display-' . $display;
 if (!empty($attributes['grow']) && $attributes['grow'] == 1) {
   $classes[] = 'miscellaneous-gutenberg-blocks-box--grow';
 }
