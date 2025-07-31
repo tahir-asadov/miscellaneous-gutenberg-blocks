@@ -7,3 +7,48 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-miscellaneous-gutenberg-blocks-box {
+  background: rgba(255, 255, 255, 0.8);
+}
+@media only screen and (min-width: 993px) {
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--grow {
+    flex-grow: 1;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--shrink {
+    flex-shrink: 1;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--hidden {
+    display: none;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--tablet-grow {
+    flex-grow: 1;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--tablet-shrink {
+    flex-shrink: 1;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--tablet-hidden {
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--mobile-grow {
+    flex-grow: 1;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--mobile-shrink {
+    flex-shrink: 1;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-box.miscellaneous-gutenberg-blocks-box--mobile-hidden {
+    display: none;
+  }
+}
+.wp-block-miscellaneous-gutenberg-blocks-box .miscellaneous-gutenberg-blocks-box--wrapper {
+  padding: 10px;
+}
+.wp-block-miscellaneous-gutenberg-blocks-box .miscellaneous-gutenberg-blocks-box--wrapper .block-editor-inner-blocks {
+  width: 100%;
+}
+.wp-block-miscellaneous-gutenberg-blocks-box .miscellaneous-gutenberg-blocks-box--wrapper .miscellaneous-gutenberg-blocks-box--appender * {
+  width: 100%;
+}

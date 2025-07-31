@@ -14,7 +14,6 @@ return array(
 			
 		),
 		'supports' => array(
-			'interactivity' => true,
 			'color' => array(
 				'background' => true,
 				'text' => true
@@ -72,13 +71,25 @@ return array(
 			'mobile_shrink' => array(
 				'type' => 'boolean',
 				'default' => false
+			),
+			'hidden' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'tablet_hidden' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'mobile_hidden' => array(
+				'type' => 'boolean',
+				'default' => false
 			)
 		),
 		'textdomain' => 'miscellaneous-gutenberg-blocks',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
-		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css'
 	),
 	'flexbox' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',

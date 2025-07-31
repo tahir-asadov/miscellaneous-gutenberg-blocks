@@ -21,7 +21,6 @@ if ($reversed) {
 $additional_attributes['class'] = join(' ', $classes);
 $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
 // $categories = get_categories();
-print_r(get_block_wrapper_attributes($additional_attributes));
 ?>
 <div <?php echo get_block_wrapper_attributes($additional_attributes); ?>>
   <div class="wp-block-miscellaneous-gutenberg-blocks-media-and-text--left">
@@ -32,17 +31,27 @@ print_r(get_block_wrapper_attributes($additional_attributes));
   <div class="wp-block-miscellaneous-gutenberg-blocks-media-and-text--right"><?php echo $content; ?></div>
 </div>
 <style>
-  #<?php echo $additional_attributes['id']; ?> {
-    <?php echo "gap: {$gap}px;" ?>
+  @media only screen and (min-width:
+    <?php echo MISC_GB_BLOCKS_MIN_DESKTOP_BREAKING_POINT; ?>
+  ) {
+    #<?php echo $additional_attributes['id']; ?> {
+      <?php echo "gap: {$gap}px;" ?>
+    }
   }
 
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (min-width:
+    <?php echo MISC_GB_BLOCKS_MIN_TABLET_BREAKING_POINT; ?>
+  ) and (max-width:
+    <?php echo MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT; ?>
+  ) {
     #<?php echo $additional_attributes['id']; ?> {
       <?php echo "gap: {$tablet_gap}px;" ?>
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width:
+    <?php echo MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT; ?>
+  ) {
     #<?php echo $additional_attributes['id']; ?> {
       <?php echo "gap: {$mobile_gap}px;" ?>
     }

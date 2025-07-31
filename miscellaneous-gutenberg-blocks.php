@@ -16,6 +16,30 @@
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
+
+$plugin_data = get_plugin_data(__FILE__);
+
+
+if (!defined('MISC_GB_BLOCKS_VERSION')) {
+	define('MISC_GB_BLOCKS_VERSION', !empty($plugin_data['Version']) ? $plugin_data['Version'] : '1.0.0');
+}
+
+if (!defined('MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT')) {
+	define('MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT', '600px');
+}
+if (!defined('MISC_GB_BLOCKS_MIN_TABLET_BREAKING_POINT')) {
+	define('MISC_GB_BLOCKS_MIN_TABLET_BREAKING_POINT', '601px');
+}
+if (!defined('MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT')) {
+	define('MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT', '992px');
+}
+
+if (!defined('MISC_GB_BLOCKS_MIN_DESKTOP_BREAKING_POINT')) {
+	define('MISC_GB_BLOCKS_MIN_DESKTOP_BREAKING_POINT', '993px');
+}
+
+
+
 /**
  * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
  * Behind the scenes, it also registers all assets so they can be enqueued
@@ -80,3 +104,21 @@ if (!function_exists('register_miscellaneous_gutenberg_blocks_category')) {
 	}
 	add_filter('block_categories_all', 'register_miscellaneous_gutenberg_blocks_category', 10, 2);
 }
+
+// function miscellaneous_gutenberg_blocks_enqueue_styles()
+// {
+// 	wp_enqueue_style(
+// 		'misc-gb-blocks-variables',
+// 		plugins_url('assets/css/misc-gb-blocks-variables.css', __FILE__),
+// 		array(),
+// 		'1.0'
+// 	);
+// 	add_editor_style(plugins_url('assets/css/misc-gb-blocks-variables.css', __FILE__));
+// }
+// add_action('wp_enqueue_scripts', 'miscellaneous_gutenberg_blocks_enqueue_styles');
+
+// function miscellaneous_gutenberg_blocks_add_editor_styles()
+// {
+// 	add_editor_style(plugins_url('assets/css/misc-gb-blocks-variables.css', __FILE__));
+// }
+// add_action('admin_init', 'miscellaneous_gutenberg_blocks_add_editor_styles');

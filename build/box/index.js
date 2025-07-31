@@ -370,7 +370,7 @@ const hasA11yProp = (props) => {
   \****************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/box","version":"0.1.0","title":"Box","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" class=\\"size-6\\"><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\\" /></svg>","description":"Box for flexbox or grid container","example":{},"supports":{"interactivity":true,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundImage":true,"backgroundSize":true},"shadow":true,"align":true,"alignWide":true,"spacing":{"margin":true,"padding":true}},"attributes":{"width":{"type":"number","default":100},"tablet_width":{"type":"number","default":100},"mobile_width":{"type":"number","default":100},"grow":{"type":"boolean","default":false},"tablet_grow":{"type":"boolean","default":false},"mobile_grow":{"type":"boolean","default":false},"shrink":{"type":"boolean","default":false},"tablet_shrink":{"type":"boolean","default":false},"mobile_shrink":{"type":"boolean","default":false}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/box","version":"0.1.0","title":"Box","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" class=\\"size-6\\"><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9\\" /></svg>","description":"Box for flexbox or grid container","example":{},"supports":{"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundImage":true,"backgroundSize":true},"shadow":true,"align":true,"alignWide":true,"spacing":{"margin":true,"padding":true}},"attributes":{"width":{"type":"number","default":100},"tablet_width":{"type":"number","default":100},"mobile_width":{"type":"number","default":100},"grow":{"type":"boolean","default":false},"tablet_grow":{"type":"boolean","default":false},"mobile_grow":{"type":"boolean","default":false},"shrink":{"type":"boolean","default":false},"tablet_shrink":{"type":"boolean","default":false},"mobile_shrink":{"type":"boolean","default":false},"hidden":{"type":"boolean","default":false},"tablet_hidden":{"type":"boolean","default":false},"mobile_hidden":{"type":"boolean","default":false}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","style":"file:./style-index.css"}');
 
 /***/ }),
 
@@ -440,21 +440,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 function Edit(props) {
-  const UnfoldHorizontalIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_8__["default"], {});
-  const FoldHorizontalIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_9__["default"], {});
-  const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
-  const [viewport, setViewport] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
-  const {
-    __experimentalSetPreviewDeviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)("core/edit-post");
-  // const [_width, _setWidth] = useState(0);
-  // const [_tabletWidth, _setTabletWidth] = useState(0);
-  // const [_mobileWidth, _setMobileWidth] = useState(0);
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.subscribe)(() => {
-    const currentViewport = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.select)("core/edit-post").__experimentalGetPreviewDeviceType();
-    setViewport(currentViewport);
-  });
   const {
     attributes: {
       width,
@@ -465,19 +450,65 @@ function Edit(props) {
       mobile_grow,
       shrink,
       tablet_shrink,
-      mobile_shrink
+      mobile_shrink,
+      hidden,
+      tablet_hidden,
+      mobile_hidden
     },
     setAttributes,
     clientId,
     toggleSelection
   } = props;
+  const UnfoldHorizontalIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_8__["default"], {});
+  const FoldHorizontalIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_9__["default"], {});
+  const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
+  const [viewport, setViewport] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
+  const {
+    __experimentalSetPreviewDeviceType
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)("core/edit-post");
+  const classNames = [];
+  if (grow) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--grow");
+  }
+  if (tablet_grow) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-grow");
+  }
+  if (mobile_grow) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-grow");
+  }
+  if (shrink) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--shrink");
+  }
+  if (tablet_shrink) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-shrink");
+  }
+  if (mobile_shrink) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-shrink");
+  }
+  if (hidden) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--hidden");
+  }
+  if (tablet_hidden) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--mobile-hidden");
+  }
+  if (mobile_hidden) {
+    classNames.push("miscellaneous-gutenberg-blocks-box--tablet-hidden");
+  }
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+    className: classNames.join(" ")
+  });
+  // const blockProps = useBlockProps();
+  (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.subscribe)(() => {
+    const currentViewport = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.select)("core/edit-post").__experimentalGetPreviewDeviceType();
+    setViewport(currentViewport);
+  });
   const innerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select("core/block-editor").getBlocks(clientId), [clientId]);
   const shouldRenderAppender = innerBlocks.length === 0;
   const MGBAppender = ({
     clientId
   }) => {
     return shouldRenderAppender ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-      class: "flex-child-appender",
+      class: "miscellaneous-gutenberg-blocks-box--appender",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.ButtonBlockAppender, {
         rootClientId: clientId
       })
@@ -502,7 +533,7 @@ function Edit(props) {
           onChange: value => setAttributes({
             width: value
           }),
-          min: 1,
+          min: 0,
           max: 100
         }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
           __nextHasNoMarginBottom: true,
@@ -512,7 +543,7 @@ function Edit(props) {
           onChange: value => setAttributes({
             tablet_width: value
           }),
-          min: 1,
+          min: 0,
           max: 100
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
           __nextHasNoMarginBottom: true,
@@ -522,7 +553,7 @@ function Edit(props) {
           onChange: value => setAttributes({
             mobile_width: value
           }),
-          min: 1,
+          min: 0,
           max: 100
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
           title: "Grow",
@@ -640,15 +671,73 @@ function Edit(props) {
             value: false,
             label: "Off"
           })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+          title: "Hidden",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: hidden,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            hidden: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Yes"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "No"
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: tablet_hidden,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            tablet_hidden: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Yes"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "No"
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: mobile_hidden,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            mobile_hidden: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Yes"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "No"
+          })]
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       ...blockProps,
       style: {
-        width: `${viewport == "Desktop" ? width : viewport == "Tablet" ? tablet_width : mobile_width}%`
+        width: `${viewport == "Desktop" ? width > 0 ? `${width}%` : "initial" : viewport == "Tablet" ? tablet_width > 0 ? `${tablet_width}%` : "initial" : mobile_width > 0 ? `${mobile_width}%` : "initial"}`
       },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        className: "flexbox-box-wrapper",
+        className: "miscellaneous-gutenberg-blocks-box--wrapper",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
           renderAppender: MGBAppender
         })

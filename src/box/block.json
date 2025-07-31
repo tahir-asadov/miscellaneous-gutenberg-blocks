@@ -9,7 +9,6 @@
   "description": "Box for flexbox or grid container",
   "example": {},
   "supports": {
-    "interactivity": true,
     "color": {
       "background": true,
       "text": true
@@ -67,11 +66,23 @@
     "mobile_shrink": {
       "type": "boolean",
       "default": false
+    },
+    "hidden": {
+      "type": "boolean",
+      "default": false
+    },
+    "tablet_hidden": {
+      "type": "boolean",
+      "default": false
+    },
+    "mobile_hidden": {
+      "type": "boolean",
+      "default": false
     }
   },
   "textdomain": "miscellaneous-gutenberg-blocks",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "render": "file:./render.php",
+  "style": "file:./style-index.css"
 }

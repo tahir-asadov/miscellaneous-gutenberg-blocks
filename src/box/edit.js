@@ -48,20 +48,6 @@ import { InspectorLabel } from "../libs/components/inspector-label";
  * @return {Element} Element to render.
  */
 export default function Edit(props) {
-	const UnfoldHorizontalIcon = <UnfoldHorizontal />;
-	const FoldHorizontalIcon = <FoldHorizontal />;
-	const [layout, setLayout] = useState("desktop");
-	const [viewport, setViewport] = useState("desktop");
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
-	// const [_width, _setWidth] = useState(0);
-	// const [_tabletWidth, _setTabletWidth] = useState(0);
-	// const [_mobileWidth, _setMobileWidth] = useState(0);
-	const blockProps = useBlockProps();
-	subscribe(() => {
-		const currentViewport =
-			select("core/edit-post").__experimentalGetPreviewDeviceType();
-		setViewport(currentViewport);
-	});
 	const {
 		attributes: {
 			width,
@@ -73,11 +59,57 @@ export default function Edit(props) {
 			shrink,
 			tablet_shrink,
 			mobile_shrink,
+			hidden,
+			tablet_hidden,
+			mobile_hidden,
 		},
 		setAttributes,
 		clientId,
 		toggleSelection,
 	} = props;
+	const UnfoldHorizontalIcon = <UnfoldHorizontal />;
+	const FoldHorizontalIcon = <FoldHorizontal />;
+	const [layout, setLayout] = useState("desktop");
+	const [viewport, setViewport] = useState("desktop");
+	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+	const classNames = [];
+
+	if (grow) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--grow");
+	}
+	if (tablet_grow) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--mobile-grow");
+	}
+	if (mobile_grow) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--tablet-grow");
+	}
+	if (shrink) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--shrink");
+	}
+	if (tablet_shrink) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--mobile-shrink");
+	}
+	if (mobile_shrink) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--tablet-shrink");
+	}
+	if (hidden) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--hidden");
+	}
+	if (tablet_hidden) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--mobile-hidden");
+	}
+	if (mobile_hidden) {
+		classNames.push("miscellaneous-gutenberg-blocks-box--tablet-hidden");
+	}
+	const blockProps = useBlockProps({
+		className: classNames.join(" "),
+	});
+	// const blockProps = useBlockProps();
+	subscribe(() => {
+		const currentViewport =
+			select("core/edit-post").__experimentalGetPreviewDeviceType();
+		setViewport(currentViewport);
+	});
 
 	const innerBlocks = useSelect(
 		(select) => select("core/block-editor").getBlocks(clientId),
@@ -87,7 +119,7 @@ export default function Edit(props) {
 
 	const MGBAppender = ({ clientId }) => {
 		return shouldRenderAppender ? (
-			<div class="flex-child-appender">
+			<div class="miscellaneous-gutenberg-blocks-box--appender">
 				<InnerBlocks.ButtonBlockAppender rootClientId={clientId} />
 			</div>
 		) : null;
@@ -122,7 +154,7 @@ export default function Edit(props) {
 									width: value,
 								})
 							}
-							min={1}
+							min={0}
 							max={100}
 						/>
 					) : layout == "tablet" ? (
@@ -136,7 +168,7 @@ export default function Edit(props) {
 									tablet_width: value,
 								})
 							}
-							min={1}
+							min={0}
 							max={100}
 						/>
 					) : (
@@ -150,7 +182,7 @@ export default function Edit(props) {
 									mobile_width: value,
 								})
 							}
-							min={1}
+							min={0}
 							max={100}
 						/>
 					)}
@@ -300,6 +332,79 @@ export default function Edit(props) {
 							/>
 						</ToggleGroupControl>
 					)}
+
+					<InspectorLabel
+						title="Hidden"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={hidden}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ hidden: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Yes"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="No"
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tablet_hidden}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tablet_hidden: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Yes"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="No"
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobile_hidden}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobile_hidden: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Yes"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="No"
+							/>
+						</ToggleGroupControl>
+					)}
 				</PanelBody>
 			</InspectorControls>
 			<div
@@ -307,14 +412,20 @@ export default function Edit(props) {
 				style={{
 					width: `${
 						viewport == "Desktop"
-							? width
+							? width > 0
+								? `${width}%`
+								: "initial"
 							: viewport == "Tablet"
-							? tablet_width
-							: mobile_width
-					}%`,
+							? tablet_width > 0
+								? `${tablet_width}%`
+								: "initial"
+							: mobile_width > 0
+							? `${mobile_width}%`
+							: "initial"
+					}`,
 				}}
 			>
-				<div className="flexbox-box-wrapper">
+				<div className="miscellaneous-gutenberg-blocks-box--wrapper">
 					<InnerBlocks renderAppender={MGBAppender} />
 				</div>
 			</div>

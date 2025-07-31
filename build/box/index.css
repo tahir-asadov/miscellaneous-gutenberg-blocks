@@ -8,20 +8,7 @@
  */
 .icon_svg__miscellaneous-gutenberg-blocks-box-icon {
   fill: none !important;
-  stroke: #f00d8d !important;
-}
-
-.wp-block-miscellaneous-gutenberg-blocks-box {
-  background: rgba(255, 255, 255, 0.8);
-}
-.wp-block-miscellaneous-gutenberg-blocks-box .flexbox-box-wrapper {
-  padding: 10px;
-}
-.wp-block-miscellaneous-gutenberg-blocks-box .flexbox-box-wrapper .block-editor-inner-blocks {
-  width: 100%;
-}
-.wp-block-miscellaneous-gutenberg-blocks-box .flexbox-box-wrapper .flex-child-appender * {
-  width: 100%;
+  stroke: #2c817b !important;
 }
 /*!*************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/libs/components/flexbox-inspector-label.scss ***!
