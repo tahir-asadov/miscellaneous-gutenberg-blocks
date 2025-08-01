@@ -52,6 +52,18 @@
       "type": "boolean",
       "default": false
     },
+    "stacked": {
+      "type": "boolean",
+      "default": false
+    },
+    "tablet_stacked": {
+      "type": "boolean",
+      "default": false
+    },
+    "mobile_stacked": {
+      "type": "boolean",
+      "default": false
+    },
     "gap": {
       "type": "number",
       "default": 15

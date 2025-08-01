@@ -238,6 +238,18 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
+			'stacked' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'tablet_stacked' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'mobile_stacked' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
 			'gap' => array(
 				'type' => 'number',
 				'default' => 15

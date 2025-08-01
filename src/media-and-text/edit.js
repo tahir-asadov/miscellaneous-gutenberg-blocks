@@ -65,7 +65,7 @@ import { useState } from "react";
  * @return {Element} Element to render.
  */
 
-import { useDispatch } from "@wordpress/data";
+import { useDispatch, useSelect } from "@wordpress/data";
 import {
 	row,
 	stack,
@@ -89,17 +89,61 @@ export default function Edit({
 		imageUrl,
 		imageName,
 		reversed,
+		tablet_reversed,
+		mobile_reversed,
+		stacked,
+		tablet_stacked,
+		mobile_stacked,
 		gap,
 		tablet_gap,
 		mobile_gap,
 	},
 	setAttributes,
+	clientId,
 }) {
 	const [layout, setLayout] = useState("desktop");
 	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+	const innerBlockCount = useSelect(
+		(select) => select("core/block-editor").getBlocks(clientId).length,
+		[clientId],
+	);
+
 	const classNames = [];
+	if (innerBlockCount == 1) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-media-and-text--single-child",
+		);
+	}
+
 	if (reversed) {
-		classNames.push("is-reversed");
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-media-and-text--is-reversed",
+		);
+	}
+	if (tablet_reversed) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-media-and-text--tablet-is-reversed",
+		);
+	}
+	if (mobile_reversed) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-media-and-text--mobile-is-reversed",
+		);
+	}
+	if (stacked) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-media-and-text--is-stacked",
+		);
+	}
+	if (tablet_stacked) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-media-and-text--tablet-is-stacked",
+		);
+	}
+	if (mobile_stacked) {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-media-and-text--mobile-is-stacked",
+		);
 	}
 	// if (attributes.show_search_icon) {
 	// 	classNames.push("show-search-icon");
@@ -118,13 +162,7 @@ export default function Edit({
 					: mobile_gap,
 		},
 	});
-	console.log("blockProps", blockProps);
 
-	const ALLOWED_BLOCKS = ["core/paragraph", "core/heading", "core/image"]; // Example: Only allow paragraph, heading, and image
-	const TEMPLATE = [
-		["core/heading", { placeholder: "Add a title..." }],
-		["core/paragraph", { placeholder: "Add content here..." }],
-	];
 	const onImageSelect = (media) => {
 		if (!media || !media.url) {
 			setAttributes({ imageId: 0, imageUrl: "", imageName: "" });
@@ -183,7 +221,7 @@ export default function Edit({
 									gap: value,
 								})
 							}
-							min={1}
+							min={0}
 							max={100}
 						/>
 					) : layout == "tablet" ? (
@@ -197,7 +235,7 @@ export default function Edit({
 									tablet_gap: value,
 								})
 							}
-							min={1}
+							min={0}
 							max={100}
 						/>
 					) : (
@@ -211,9 +249,153 @@ export default function Edit({
 									mobile_gap: value,
 								})
 							}
-							min={1}
+							min={0}
 							max={100}
 						/>
+					)}
+					<InspectorLabel
+						title="Reverse"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={reversed}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ reversed: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Enabled"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Disabled"
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tablet_reversed}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tablet_reversed: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Enabled"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Disabled"
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobile_reversed}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobile_reversed: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Enabled"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Disabled"
+							/>
+						</ToggleGroupControl>
+					)}
+					<InspectorLabel
+						title="Stacked"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={stacked}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ stacked: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Enabled"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Disabled"
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tablet_stacked}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tablet_stacked: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Enabled"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Disabled"
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobile_stacked}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobile_stacked: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Enabled"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Disabled"
+							/>
+						</ToggleGroupControl>
 					)}
 				</PanelBody>
 			</InspectorControls>
@@ -226,20 +408,22 @@ export default function Edit({
 						onSelect={onImageSelect}
 						render={({ open }) => (
 							<div
-								class={`wp-block-miscellaneous-gutenberg-blocks-and-text--left ${
+								class={`miscellaneous-gutenberg-blocks-media-and-text--left ${
 									imageUrl ? "has-image" : "has-no-image"
 								}`}
 							>
 								{imageUrl ? (
 									<>
 										<img src={imageUrl} alt={imageName} />
-										<Button
-											isDestructive
-											variant="secondary"
-											onClick={removeImage}
-										>
-											{__("Remove Image", "miscellaneous-gutenberg-blocks")}
-										</Button>
+										<div class="miscellaneous-gutenberg-blocks-media-and-text-button-container">
+											<Button
+												isDestructive
+												variant="secondary"
+												onClick={removeImage}
+											>
+												{__("Remove Image", "miscellaneous-gutenberg-blocks")}
+											</Button>
+										</div>
 									</>
 								) : (
 									<Button isPrimary onClick={open}>
@@ -253,8 +437,10 @@ export default function Edit({
 						)}
 					/>
 				</MediaUploadCheck>
-				<div class="wp-block-miscellaneous-gutenberg-blocks-media-and-text--right">
-					<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+				<div class="miscellaneous-gutenberg-blocks-media-and-text--right">
+					<div>
+						<InnerBlocks />
+					</div>
 				</div>
 			</div>
 		</>

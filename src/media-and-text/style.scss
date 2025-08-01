@@ -11,8 +11,7 @@
 	> * {
 		min-width: 0;
 		width: 50%;
-		border: solid 1px #ccc;
-		&.wp-block-miscellaneous-gutenberg-blocks-media-and-text--left {
+		&.miscellaneous-gutenberg-blocks-media-and-text--left {
 			img {
 				display: block;
 				margin: 0;
@@ -20,8 +19,16 @@
 			}
 			position: relative;
 			&.has-image {
-				button {
-					margin: 10px;
+				.miscellaneous-gutenberg-blocks-media-and-text-button-container {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					padding: 5px;
+					width: 100%;
+					background-color: rgba(255, 255, 255, 0.8);
+					button {
+						margin: 10px;
+					}
 				}
 			}
 			&.has-no-image {
@@ -31,13 +38,63 @@
 				align-items: center;
 			}
 		}
-		&.wp-block-miscellaneous-gutenberg-blocks-media-and-text--right {
-			display: flex;
-			flex-direction: column;
-			padding: 20px;
+		&.miscellaneous-gutenberg-blocks-media-and-text--right {
+			// display: flex;
+			// flex-wrap: wrap;
+			// > div {
+			// 	width: 100%;
+			// }
 		}
 	}
-	&.is-reversed {
-		flex-direction: row-reverse;
+	&.miscellaneous-gutenberg-blocks-media-and-text--single-child {
+		.miscellaneous-gutenberg-blocks-media-and-text--right {
+			display: flex;
+			> div {
+				display: flex;
+				width: 100%;
+			}
+		}
+	}
+	@media only screen and (min-width: 993px) {
+		&.miscellaneous-gutenberg-blocks-media-and-text--is-stacked {
+			flex-direction: column;
+			> * {
+				width: 100%;
+			}
+			&.miscellaneous-gutenberg-blocks-media-and-text--is-reversed {
+				flex-direction: column-reverse;
+			}
+		}
+		&.miscellaneous-gutenberg-blocks-media-and-text--is-reversed {
+			flex-direction: row-reverse;
+		}
+	}
+	@media only screen and (min-width: 601px) and (max-width: 992px) {
+		&.miscellaneous-gutenberg-blocks-media-and-text--tablet-is-stacked {
+			flex-direction: column;
+			> * {
+				width: 100%;
+			}
+			&.miscellaneous-gutenberg-blocks-media-and-text--tablet-is-reversed {
+				flex-direction: column-reverse;
+			}
+		}
+		&.miscellaneous-gutenberg-blocks-media-and-text--tablet-is-reversed {
+			flex-direction: row-reverse;
+		}
+	}
+	@media only screen and (max-width: 600px) {
+		&.miscellaneous-gutenberg-blocks-media-and-text--mobile-is-stacked {
+			flex-direction: column;
+			> * {
+				width: 100%;
+			}
+			&.miscellaneous-gutenberg-blocks-media-and-text--mobile-is-reversed {
+				flex-direction: column-reverse;
+			}
+		}
+		&.miscellaneous-gutenberg-blocks-media-and-text--mobile-is-reversed {
+			flex-direction: row-reverse;
+		}
 	}
 }

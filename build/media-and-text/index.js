@@ -407,7 +407,7 @@ const InspectorLabel = ({
   \***************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/media-and-text","version":"0.1.0","title":"Media & Text","category":"miscellaneous-gutenberg-blocks","description":"","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"imageId":{"type":"number","default":0},"imageUrl":{"type":"string","default":""},"imageName":{"type":"string","default":""},"reversed":{"type":"boolean","default":false},"tablet_reversed":{"type":"boolean","default":false},"mobile_reversed":{"type":"boolean","default":false},"gap":{"type":"number","default":15},"tablet_gap":{"type":"number","default":15},"mobile_gap":{"type":"number","default":15},"disable_css":{"type":"boolean","default":false},"show_category":{"type":"boolean","default":false},"show_search_icon":{"type":"boolean","default":true},"button_inside":{"type":"boolean","default":true},"search_placeholder":{"type":"string","default":""},"button_text":{"type":"string","default":""},"category_text":{"type":"string","default":""}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/media-and-text","version":"0.1.0","title":"Media & Text","category":"miscellaneous-gutenberg-blocks","description":"","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"imageId":{"type":"number","default":0},"imageUrl":{"type":"string","default":""},"imageName":{"type":"string","default":""},"reversed":{"type":"boolean","default":false},"tablet_reversed":{"type":"boolean","default":false},"mobile_reversed":{"type":"boolean","default":false},"stacked":{"type":"boolean","default":false},"tablet_stacked":{"type":"boolean","default":false},"mobile_stacked":{"type":"boolean","default":false},"gap":{"type":"number","default":15},"tablet_gap":{"type":"number","default":15},"mobile_gap":{"type":"number","default":15},"disable_css":{"type":"boolean","default":false},"show_category":{"type":"boolean","default":false},"show_search_icon":{"type":"boolean","default":true},"button_inside":{"type":"boolean","default":true},"search_placeholder":{"type":"string","default":""},"button_text":{"type":"string","default":""},"category_text":{"type":"string","default":""}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -482,19 +482,44 @@ function Edit({
     imageUrl,
     imageName,
     reversed,
+    tablet_reversed,
+    mobile_reversed,
+    stacked,
+    tablet_stacked,
+    mobile_stacked,
     gap,
     tablet_gap,
     mobile_gap
   },
-  setAttributes
+  setAttributes,
+  clientId
 }) {
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
   const {
     __experimentalSetPreviewDeviceType
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)("core/edit-post");
+  const innerBlockCount = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useSelect)(select => select("core/block-editor").getBlocks(clientId).length, [clientId]);
   const classNames = [];
+  if (innerBlockCount == 1) {
+    classNames.push("miscellaneous-gutenberg-blocks-media-and-text--single-child");
+  }
   if (reversed) {
-    classNames.push("is-reversed");
+    classNames.push("miscellaneous-gutenberg-blocks-media-and-text--is-reversed");
+  }
+  if (tablet_reversed) {
+    classNames.push("miscellaneous-gutenberg-blocks-media-and-text--tablet-is-reversed");
+  }
+  if (mobile_reversed) {
+    classNames.push("miscellaneous-gutenberg-blocks-media-and-text--mobile-is-reversed");
+  }
+  if (stacked) {
+    classNames.push("miscellaneous-gutenberg-blocks-media-and-text--is-stacked");
+  }
+  if (tablet_stacked) {
+    classNames.push("miscellaneous-gutenberg-blocks-media-and-text--tablet-is-stacked");
+  }
+  if (mobile_stacked) {
+    classNames.push("miscellaneous-gutenberg-blocks-media-and-text--mobile-is-stacked");
   }
   // if (attributes.show_search_icon) {
   // 	classNames.push("show-search-icon");
@@ -508,13 +533,6 @@ function Edit({
       gap: layout == "desktop" ? gap : layout == "tablet" ? tablet_gap : mobile_gap
     }
   });
-  console.log("blockProps", blockProps);
-  const ALLOWED_BLOCKS = ["core/paragraph", "core/heading", "core/image"]; // Example: Only allow paragraph, heading, and image
-  const TEMPLATE = [["core/heading", {
-    placeholder: "Add a title..."
-  }], ["core/paragraph", {
-    placeholder: "Add content here..."
-  }]];
   const onImageSelect = media => {
     if (!media || !media.url) {
       setAttributes({
@@ -573,7 +591,7 @@ function Edit({
           onChange: value => setAttributes({
             gap: value
           }),
-          min: 1,
+          min: 0,
           max: 100
         }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
           __nextHasNoMarginBottom: true,
@@ -583,7 +601,7 @@ function Edit({
           onChange: value => setAttributes({
             tablet_gap: value
           }),
-          min: 1,
+          min: 0,
           max: 100
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
           __nextHasNoMarginBottom: true,
@@ -593,8 +611,124 @@ function Edit({
           onChange: value => setAttributes({
             mobile_gap: value
           }),
-          min: 1,
+          min: 0,
           max: 100
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_2__.InspectorLabel, {
+          title: "Reverse",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: reversed,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            reversed: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Enabled"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Disabled"
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: tablet_reversed,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            tablet_reversed: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Enabled"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Disabled"
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: mobile_reversed,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            mobile_reversed: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Enabled"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Disabled"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_2__.InspectorLabel, {
+          title: "Stacked",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: stacked,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            stacked: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Enabled"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Disabled"
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: tablet_stacked,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            tablet_stacked: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Enabled"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Disabled"
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+          value: mobile_stacked,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            mobile_stacked: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Enabled"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Disabled"
+          })]
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
@@ -608,16 +742,19 @@ function Edit({
           render: ({
             open
           }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-            class: `wp-block-miscellaneous-gutenberg-blocks-and-text--left ${imageUrl ? "has-image" : "has-no-image"}`,
+            class: `miscellaneous-gutenberg-blocks-media-and-text--left ${imageUrl ? "has-image" : "has-no-image"}`,
             children: imageUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
                 src: imageUrl,
                 alt: imageName
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-                isDestructive: true,
-                variant: "secondary",
-                onClick: removeImage,
-                children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Remove Image", "miscellaneous-gutenberg-blocks")
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                class: "miscellaneous-gutenberg-blocks-media-and-text-button-container",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+                  isDestructive: true,
+                  variant: "secondary",
+                  onClick: removeImage,
+                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Remove Image", "miscellaneous-gutenberg-blocks")
+                })
               })]
             }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
               isPrimary: true,
@@ -627,9 +764,9 @@ function Edit({
           })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        class: "wp-block-miscellaneous-gutenberg-blocks-media-and-text--right",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {
-          allowedBlocks: ALLOWED_BLOCKS
+        class: "miscellaneous-gutenberg-blocks-media-and-text--right",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {})
         })
       })]
     })]

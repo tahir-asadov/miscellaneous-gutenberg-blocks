@@ -56,7 +56,6 @@ $mobile_width = !empty($attributes['mobile_width']) && $attributes['mobile_width
     <?php echo MISC_GB_BLOCKS_MIN_DESKTOP_BREAKING_POINT; ?>
   ) {
     #<?php echo $additional_attributes['id']; ?> {
-      background: blue;
       width:
         <?php echo $width; ?>
       ;
@@ -69,7 +68,6 @@ $mobile_width = !empty($attributes['mobile_width']) && $attributes['mobile_width
     <?php echo MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT; ?>
   ) {
     #<?php echo $additional_attributes['id']; ?> {
-      background: green;
       width:
         <?php echo $tablet_width; ?>
       ;
@@ -80,7 +78,6 @@ $mobile_width = !empty($attributes['mobile_width']) && $attributes['mobile_width
     <?php echo MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT; ?>
   ) {
     #<?php echo $additional_attributes['id']; ?> {
-      background: red;
       width:
         <?php echo $mobile_width; ?>
       ;
