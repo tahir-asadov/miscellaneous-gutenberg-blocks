@@ -205,7 +205,8 @@ return array(
 				'textAlign' => true
 			),
 			'background' => array(
-				'backgroundSize' => true
+				'backgroundSize' => true,
+				'backgroundImage' => true
 			),
 			'spacing' => array(
 				'margin' => true,

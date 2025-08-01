@@ -14,8 +14,6 @@
 .wp-block-miscellaneous-gutenberg-blocks-flexbox {
   display: flex;
   padding: 10px;
-  background: #000;
-  background: #eee;
   box-sizing: border-box;
 }
 .wp-block-miscellaneous-gutenberg-blocks-flexbox .pick-column-count {

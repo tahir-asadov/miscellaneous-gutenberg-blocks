@@ -19,7 +19,8 @@
       "textAlign": true
     },
     "background": {
-      "backgroundSize": true
+      "backgroundSize": true,
+      "backgroundImage": true
     },
     "spacing": {
       "margin": true,
