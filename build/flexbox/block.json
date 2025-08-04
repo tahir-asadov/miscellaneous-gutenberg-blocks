@@ -52,6 +52,30 @@
       "type": "boolean",
       "default": false
     },
+    "gap": {
+      "type": "number",
+      "default": 0
+    },
+    "tablet_gap": {
+      "type": "number",
+      "default": 0
+    },
+    "mobile_gap": {
+      "type": "number",
+      "default": 0
+    },
+    "gap_unit": {
+      "type": "string",
+      "default": "px"
+    },
+    "tablet_gap_unit": {
+      "type": "string",
+      "default": "px"
+    },
+    "mobile_gap_unit": {
+      "type": "string",
+      "default": "px"
+    },
     "justify_content": {
       "type": "string",
       "default": "flex-start"

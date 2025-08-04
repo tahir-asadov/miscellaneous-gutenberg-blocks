@@ -151,6 +151,30 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
+			'gap' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'tablet_gap' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'mobile_gap' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'gap_unit' => array(
+				'type' => 'string',
+				'default' => 'px'
+			),
+			'tablet_gap_unit' => array(
+				'type' => 'string',
+				'default' => 'px'
+			),
+			'mobile_gap_unit' => array(
+				'type' => 'string',
+				'default' => 'px'
+			),
 			'justify_content' => array(
 				'type' => 'string',
 				'default' => 'flex-start'

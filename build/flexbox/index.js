@@ -676,7 +676,7 @@ const hasA11yProp = (props) => {
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/flexbox","version":"0.1.0","title":"Flexbox Container","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" ><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z\\" /></svg>","description":"Flexbox container","example":{},"supports":{"html":false},"attributes":{"column":{"type":"number","default":0},"wrap":{"type":"boolean","default":false},"tablet_wrap":{"type":"boolean","default":false},"mobile_wrap":{"type":"boolean","default":false},"horizontal":{"type":"boolean","default":true},"tablet_horizontal":{"type":"boolean","default":true},"mobile_horizontal":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"tablet_reverse":{"type":"boolean","default":false},"mobile_reverse":{"type":"boolean","default":false},"justify_content":{"type":"string","default":"flex-start"},"tablet_justify_content":{"type":"string","default":"flex-start"},"mobile_justify_content":{"type":"string","default":"flex-start"},"align_items":{"type":"string","default":"flex-start"},"tablet_align_items":{"type":"string","default":"flex-start"},"mobile_align_items":{"type":"string","default":"flex-start"}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/flexbox","version":"0.1.0","title":"Flexbox Container","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" ><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z\\" /></svg>","description":"Flexbox container","example":{},"supports":{"html":false},"attributes":{"column":{"type":"number","default":0},"wrap":{"type":"boolean","default":false},"tablet_wrap":{"type":"boolean","default":false},"mobile_wrap":{"type":"boolean","default":false},"horizontal":{"type":"boolean","default":true},"tablet_horizontal":{"type":"boolean","default":true},"mobile_horizontal":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"tablet_reverse":{"type":"boolean","default":false},"mobile_reverse":{"type":"boolean","default":false},"gap":{"type":"number","default":0},"tablet_gap":{"type":"number","default":0},"mobile_gap":{"type":"number","default":0},"gap_unit":{"type":"string","default":"px"},"tablet_gap_unit":{"type":"string","default":"px"},"mobile_gap_unit":{"type":"string","default":"px"},"justify_content":{"type":"string","default":"flex-start"},"tablet_justify_content":{"type":"string","default":"flex-start"},"mobile_justify_content":{"type":"string","default":"flex-start"},"align_items":{"type":"string","default":"flex-start"},"tablet_align_items":{"type":"string","default":"flex-start"},"mobile_align_items":{"type":"string","default":"flex-start"}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ }),
 
@@ -795,6 +795,12 @@ function Edit(props) {
       reverse,
       tablet_reverse,
       mobile_reverse,
+      gap,
+      tablet_gap,
+      mobile_gap,
+      gap_unit,
+      tablet_gap_unit,
+      mobile_gap_unit,
       justify_content,
       tablet_justify_content,
       mobile_justify_content,
@@ -891,6 +897,25 @@ function Edit(props) {
     template: (0,_libs_global__WEBPACK_IMPORTED_MODULE_7__.generateTemplate)(column),
     templateLock: false
   }) : (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps);
+  const gap_units = [{
+    value: "px",
+    label: "px"
+  }, {
+    value: "%",
+    label: "%"
+  }, {
+    value: "em",
+    label: "em"
+  }, {
+    value: "rem",
+    label: "rem"
+  }, {
+    value: "vw",
+    label: "vw"
+  }, {
+    value: "vh",
+    label: "vh"
+  }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
@@ -1068,6 +1093,117 @@ function Edit(props) {
             isAdaptiveWidth: true,
             value: false,
             label: "Disabled"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+          title: "Gap",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
+          style: {
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            gap: "5px"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
+            style: {
+              width: "70%"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+              __nextHasNoMarginBottom: true,
+              value: gap,
+              label: null,
+              RangeControl: true,
+              onChange: value => setAttributes({
+                gap: value
+              }),
+              min: 0,
+              max: 100
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+            label: "",
+            value: gap_unit,
+            options: gap_units,
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
+            onChange: value => {
+              setAttributes({
+                gap_unit: value
+              });
+            }
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
+          style: {
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            gap: "5px"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
+            style: {
+              width: "70%"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+              __nextHasNoMarginBottom: true,
+              __next40pxDefaultSize: true,
+              value: tablet_gap,
+              label: null,
+              onChange: value => {
+                setAttributes({
+                  tablet_gap: value
+                });
+              },
+              min: 0,
+              max: 100
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+            label: "",
+            value: tablet_gap_unit,
+            options: gap_units,
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
+            onChange: value => {
+              setAttributes({
+                tablet_gap_unit: value
+              });
+            }
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
+          style: {
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            gap: "5px"
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
+            style: {
+              width: "70%"
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+              __nextHasNoMarginBottom: true,
+              __next40pxDefaultSize: true,
+              value: mobile_gap,
+              label: null,
+              onChange: value => setAttributes({
+                mobile_gap: value
+              }),
+              min: 0,
+              max: 100
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+            label: "",
+            value: mobile_gap_unit,
+            options: gap_units,
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
+            onChange: value => {
+              setAttributes({
+                mobile_gap_unit: value
+              });
+            }
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
           title: "Justify Content",

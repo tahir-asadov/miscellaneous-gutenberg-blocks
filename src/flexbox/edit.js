@@ -10,8 +10,10 @@ import {
 	PanelRow,
 	RangeControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalUnitControl as UnitControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+	SelectControl,
 } from "@wordpress/components";
 import { Button } from "@wordpress/components";
 // import {
@@ -112,6 +114,12 @@ export default function Edit(props) {
 			reverse,
 			tablet_reverse,
 			mobile_reverse,
+			gap,
+			tablet_gap,
+			mobile_gap,
+			gap_unit,
+			tablet_gap_unit,
+			mobile_gap_unit,
 			justify_content,
 			tablet_justify_content,
 			mobile_justify_content,
@@ -220,6 +228,32 @@ export default function Edit(props) {
 					templateLock: false,
 			  })
 			: useInnerBlocksProps(blockProps);
+	const gap_units = [
+		{
+			value: "px",
+			label: "px",
+		},
+		{
+			value: "%",
+			label: "%",
+		},
+		{
+			value: "em",
+			label: "em",
+		},
+		{
+			value: "rem",
+			label: "rem",
+		},
+		{
+			value: "vw",
+			label: "vw",
+		},
+		{
+			value: "vh",
+			label: "vh",
+		},
+	];
 
 	return (
 		<>
@@ -441,6 +475,134 @@ export default function Edit(props) {
 							/>
 						</ToggleGroupControl>
 					)}
+
+					<InspectorLabel
+						title="Gap"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									value={gap}
+									label={null}
+									RangeControl
+									onChange={(value) =>
+										setAttributes({
+											gap: value,
+										})
+									}
+									min={0}
+									max={100}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={gap_unit}
+								options={gap_units}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										gap_unit: value,
+									});
+								}}
+							/>
+						</div>
+					) : layout == "tablet" ? (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={tablet_gap}
+									label={null}
+									onChange={(value) => {
+										setAttributes({
+											tablet_gap: value,
+										});
+									}}
+									min={0}
+									max={100}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={tablet_gap_unit}
+								options={gap_units}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										tablet_gap_unit: value,
+									});
+								}}
+							/>
+						</div>
+					) : (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={mobile_gap}
+									label={null}
+									onChange={(value) =>
+										setAttributes({
+											mobile_gap: value,
+										})
+									}
+									min={0}
+									max={100}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={mobile_gap_unit}
+								options={gap_units}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										mobile_gap_unit: value,
+									});
+								}}
+							/>
+						</div>
+					)}
+
 					<InspectorLabel
 						title="Justify Content"
 						defaultValue={layout}

@@ -65,6 +65,13 @@ $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-' . $align_items;
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-tablet-' . $tablet_align_items;
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-mobile-' . $mobile_align_items;
 
+$gap_unit = !empty($attributes['gap_unit']) && $attributes['gap_unit'] > 0 ? $attributes['gap_unit'] : 'px';
+$tablet_gap_unit = !empty($attributes['tablet_gap_unit']) && $attributes['tablet_gap_unit'] > 0 ? $attributes['tablet_gap_unit'] : 'px';
+$mobile_gap_unit = !empty($attributes['mobile_gap_unit']) && $attributes['mobile_gap_unit'] > 0 ? $attributes['mobile_gap_unit'] : 'px';
+
+$gap = !empty($attributes['gap']) && $attributes['gap'] > 0 ? $attributes['gap'] . $gap_unit : 0;
+$tablet_gap = !empty($attributes['tablet_gap']) && $attributes['tablet_gap'] > 0 ? $attributes['tablet_gap'] . $tablet_gap_unit : 0;
+$mobile_gap = !empty($attributes['mobile_gap']) && $attributes['mobile_gap'] > 0 ? $attributes['mobile_gap'] . $mobile_gap_unit : 0;
 
 
 
@@ -83,3 +90,36 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
 
   ?>
 </div>
+<style>
+  @media only screen and (min-width:
+    <?php echo MISC_GB_BLOCKS_MIN_DESKTOP_BREAKING_POINT; ?>
+  ) {
+    #<?php echo $additional_attributes['id']; ?> {
+      gap:
+        <?php echo $gap; ?>
+      ;
+    }
+  }
+
+  @media only screen and (min-width:
+    <?php echo MISC_GB_BLOCKS_MIN_TABLET_BREAKING_POINT; ?>
+  ) and (max-width:
+    <?php echo MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT; ?>
+  ) {
+    #<?php echo $additional_attributes['id']; ?> {
+      gap:
+        <?php echo $tablet_gap; ?>
+      ;
+    }
+  }
+
+  @media only screen and (max-width:
+    <?php echo MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT; ?>
+  ) {
+    #<?php echo $additional_attributes['id']; ?> {
+      gap:
+        <?php echo $mobile_gap; ?>
+      ;
+    }
+  }
+</style>
