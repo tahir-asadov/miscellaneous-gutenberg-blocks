@@ -223,7 +223,10 @@ export default function Edit(props) {
 	const innerBlocksProps =
 		column != 0
 			? useInnerBlocksProps(blockProps, {
-					allowedBlocks: ["miscellaneous-gutenberg-blocks/box"],
+					// allowedBlocks: [
+					// 	"miscellaneous-gutenberg-blocks/box",
+					// 	"miscellaneous-gutenberg-blocks/flexbox",
+					// ],
 					template: generateTemplate(column),
 					templateLock: false,
 			  })

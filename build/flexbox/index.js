@@ -893,7 +893,10 @@ function Edit(props) {
     className: classNames.join(" ")
   });
   const innerBlocksProps = column != 0 ? (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps, {
-    allowedBlocks: ["miscellaneous-gutenberg-blocks/box"],
+    // allowedBlocks: [
+    // 	"miscellaneous-gutenberg-blocks/box",
+    // 	"miscellaneous-gutenberg-blocks/flexbox",
+    // ],
     template: (0,_libs_global__WEBPACK_IMPORTED_MODULE_7__.generateTemplate)(column),
     templateLock: false
   }) : (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps);
