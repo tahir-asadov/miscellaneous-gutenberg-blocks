@@ -4,6 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from "@wordpress/i18n";
+import { useSelect, select, subscribe } from "@wordpress/data";
 import {
 	ResizableBox,
 	PanelBody,
@@ -80,7 +81,7 @@ import "./editor.scss";
 import { useEffect, useState, useRef } from "react";
 // import { InspectorLabel } from "../libs/global";
 
-import { useDispatch } from "@wordpress/data";
+// import { useDispatch } from "@wordpress/data";
 import { InspectorLabel } from "../libs/components/inspector-label";
 import { generateTemplate, numberRange } from "../libs/global";
 /**
@@ -103,7 +104,6 @@ import sixColumn from "./../../svgs/six-column.svg";
 export default function Edit(props) {
 	const {
 		attributes: {
-			width,
 			column,
 			wrap,
 			tablet_wrap,
@@ -126,14 +126,36 @@ export default function Edit(props) {
 			align_items,
 			tablet_align_items,
 			mobile_align_items,
+			width,
+			tablet_width,
+			mobile_width,
+			grow,
+			tablet_grow,
+			mobile_grow,
+			shrink,
+			tablet_shrink,
+			mobile_shrink,
+			hidden,
+			tablet_hidden,
+			mobile_hidden,
 		},
 		setAttributes,
+		clientId,
 		toggleSelection,
 	} = props;
+	console.log("clientId", clientId);
+
 	const [layout, setLayout] = useState("desktop");
 	const [parentWidth, setParentWidth] = useState(0);
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+	// const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
 
+	const MGBAppender = ({ clientId }) => {
+		return (
+			<div class="miscellaneous-gutenberg-blocks-box--appender">
+				<InnerBlocks.ButtonBlockAppender rootClientId={clientId} />
+			</div>
+		);
+	};
 	const alignItemsStartIcon = <AlignVerticalJustifyStart width={17} />;
 	const alignItemsEndIcon = <AlignVerticalJustifyEnd width={17} />;
 	const alignItemsCenterIcon = <AlignVerticalJustifyCenter width={17} />;
@@ -216,21 +238,48 @@ export default function Edit(props) {
 		`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobile_align_items}`,
 	);
 
+	if (grow) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--grow");
+	}
+	if (tablet_grow) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-grow");
+	}
+	if (mobile_grow) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-grow");
+	}
+	if (shrink) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--shrink");
+	}
+	if (tablet_shrink) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-shrink");
+	}
+	if (mobile_shrink) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-shrink");
+	}
+	if (hidden) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--hidden");
+	}
+	if (tablet_hidden) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-hidden");
+	}
+	if (mobile_hidden) {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-hidden");
+	}
 	const blockProps = useBlockProps({
 		className: classNames.join(" "),
 	});
-
-	const innerBlocksProps =
-		column != 0
-			? useInnerBlocksProps(blockProps, {
-					// allowedBlocks: [
-					// 	"miscellaneous-gutenberg-blocks/box",
-					// 	"miscellaneous-gutenberg-blocks/flexbox",
-					// ],
-					template: generateTemplate(column),
-					templateLock: false,
-			  })
-			: useInnerBlocksProps(blockProps);
+	const innerBlocksProps = useInnerBlocksProps(blockProps);
+	// const innerBlocksProps =
+	// 	column != 0
+	// 		? useInnerBlocksProps(blockProps, {
+	// 				// allowedBlocks: [
+	// 				// 	"miscellaneous-gutenberg-blocks/box",
+	// 				// 	"miscellaneous-gutenberg-blocks/flexbox",
+	// 				// ],
+	// 				template: generateTemplate(column),
+	// 				templateLock: false,
+	// 		  })
+	// 		: useInnerBlocksProps(blockProps);
 	const gap_units = [
 		{
 			value: "px",
@@ -267,13 +316,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -339,13 +388,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -411,13 +460,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -484,13 +533,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -611,13 +660,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -732,13 +781,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 
@@ -860,10 +909,320 @@ export default function Edit(props) {
 							/>
 						</ToggleGroupControl>
 					)}
+					<InspectorLabel
+						title="Width"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
+						}}
+					/>
+					{layout == "desktop" ? (
+						<RangeControl
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							value={width}
+							label={null}
+							onChange={(value) =>
+								setAttributes({
+									width: value,
+								})
+							}
+							min={0}
+							max={100}
+						/>
+					) : layout == "tablet" ? (
+						<RangeControl
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							value={tablet_width}
+							label={null}
+							onChange={(value) =>
+								setAttributes({
+									tablet_width: value,
+								})
+							}
+							min={0}
+							max={100}
+						/>
+					) : (
+						<RangeControl
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							value={mobile_width}
+							label={null}
+							onChange={(value) =>
+								setAttributes({
+									mobile_width: value,
+								})
+							}
+							min={0}
+							max={100}
+						/>
+					)}
+					<InspectorLabel
+						title="Grow"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={grow}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ grow: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="On"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Off"
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tablet_grow}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tablet_grow: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="On"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Off"
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobile_grow}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobile_grow: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="On"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Off"
+							/>
+						</ToggleGroupControl>
+					)}
+					<InspectorLabel
+						title="Shrink"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
+						}}
+					/>
+
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={shrink}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ shrink: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="On"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Off"
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tablet_shrink}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tablet_shrink: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="On"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Off"
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobile_shrink}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobile_shrink: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="On"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="Off"
+							/>
+						</ToggleGroupControl>
+					)}
+
+					<InspectorLabel
+						title="Hidden"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={hidden}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ hidden: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Yes"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="No"
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tablet_hidden}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tablet_hidden: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Yes"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="No"
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobile_hidden}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobile_hidden: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label="Yes"
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label="No"
+							/>
+						</ToggleGroupControl>
+					)}
 				</PanelBody>
 			</InspectorControls>
-			{column == 0 ? (
-				<div {...blockProps}>
+			<div
+				{...innerBlocksProps}
+				style={{
+					width: `${
+						layout == "desktop"
+							? width > 0
+								? `${width}%`
+								: "initial"
+							: layout == "tablet"
+							? tablet_width > 0
+								? `${tablet_width}%`
+								: "initial"
+							: mobile_width > 0
+							? `${mobile_width}%`
+							: "initial"
+					}`,
+				}}
+			></div>
+			{/* {column == 0 ? (
+				<div
+					{...blockProps}
+					style={{
+						width: `${
+							layout == "desktop"
+								? width > 0
+									? `${width}%`
+									: "initial"
+								: layout == "tablet"
+								? tablet_width > 0
+									? `${tablet_width}%`
+									: "initial"
+								: mobile_width > 0
+								? `${mobile_width}%`
+								: "initial"
+						}`,
+					}}
+				>
 					<div class="pick-column-count">
 						<div
 							onClick={() => {
@@ -916,8 +1275,25 @@ export default function Edit(props) {
 					</div>
 				</div>
 			) : (
-				<div {...innerBlocksProps}></div>
-			)}
+				<div
+					{...innerBlocksProps}
+					style={{
+						width: `${
+							layout == "desktop"
+								? width > 0
+									? `${width}%`
+									: "initial"
+								: layout == "tablet"
+								? tablet_width > 0
+									? `${tablet_width}%`
+									: "initial"
+								: mobile_width > 0
+								? `${mobile_width}%`
+								: "initial"
+						}`,
+					}}
+				></div>
+			)} */}
 		</>
 	);
 }

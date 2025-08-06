@@ -50,6 +50,7 @@ import { desktop, tablet, mobile } from "@wordpress/icons"; // For the plus icon
 // };
 export const generateTemplate = (number) => {
 	const innerBlocksAttributes = {
+		column: 1,
 		width: 100 / number,
 		tablet_width: 50,
 		mobile_width: 100,

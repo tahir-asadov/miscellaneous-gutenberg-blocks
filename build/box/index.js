@@ -464,9 +464,7 @@ function Edit(props) {
   const FoldHorizontalIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_9__["default"], {});
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
   const [viewport, setViewport] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
-  const {
-    __experimentalSetPreviewDeviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)("core/edit-post");
+  // const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
   const classNames = [];
   classNames.push(`miscellaneous-gutenberg-blocks-box--display-${display}`);
   if (grow) {
@@ -500,10 +498,12 @@ function Edit(props) {
     className: classNames.join(" ")
   });
   // const blockProps = useBlockProps();
-  (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.subscribe)(() => {
-    const currentViewport = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.select)("core/edit-post").__experimentalGetPreviewDeviceType();
-    setViewport(currentViewport);
-  });
+  // subscribe(() => {
+  // 	const currentViewport =
+  // 		select("core/edit-post").__experimentalGetPreviewDeviceType();
+  // 	setViewport(currentViewport);
+  // });
+
   const innerBlocks = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select("core/block-editor").getBlocks(clientId), [clientId]);
   const shouldRenderAppender = innerBlocks.length === 0;
   const MGBAppender = ({
@@ -543,7 +543,13 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
         }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
           __nextHasNoMarginBottom: true,
@@ -580,7 +586,13 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
         }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
           value: grow,
@@ -638,7 +650,13 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
         }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
           value: shrink,
@@ -696,7 +714,13 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
         }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
           value: hidden,

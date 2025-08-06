@@ -56,6 +56,33 @@ if ($tablet_reverse) {
 if ($mobile_reverse) {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-reverse';
 }
+if (!empty($attributes['grow']) && $attributes['grow'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--grow';
+}
+if (!empty($attributes['tablet_grow']) && $attributes['tablet_grow'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-grow';
+}
+if (!empty($attributes['mobile_grow']) && $attributes['mobile_grow'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-grow';
+}
+if (!empty($attributes['shrink']) && $attributes['shrink'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--shrink';
+}
+if (!empty($attributes['tablet_shrink']) && $attributes['tablet_shrink'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-shrink';
+}
+if (!empty($attributes['mobile_shrink']) && $attributes['mobile_shrink'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-shrink';
+}
+if (!empty($attributes['shrink']) && $attributes['hidden'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--hidden';
+}
+if (!empty($attributes['tablet_hidden']) && $attributes['tablet_hidden'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-hidden';
+}
+if (!empty($attributes['mobile_hidden']) && $attributes['mobile_hidden'] == 1) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-hidden';
+}
 
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-' . $justify_content;
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-tablet-' . $tablet_justify_content;
@@ -73,6 +100,9 @@ $gap = !empty($attributes['gap']) && $attributes['gap'] > 0 ? $attributes['gap']
 $tablet_gap = !empty($attributes['tablet_gap']) && $attributes['tablet_gap'] > 0 ? $attributes['tablet_gap'] . $tablet_gap_unit : 0;
 $mobile_gap = !empty($attributes['mobile_gap']) && $attributes['mobile_gap'] > 0 ? $attributes['mobile_gap'] . $mobile_gap_unit : 0;
 
+$width = !empty($attributes['width']) && $attributes['width'] > 0 ? $attributes['width'] . '%' : 'initial';
+$tablet_width = !empty($attributes['tablet_width']) && $attributes['tablet_width'] > 0 ? $attributes['tablet_width'] . '%' : 'initial';
+$mobile_width = !empty($attributes['mobile_width']) && $attributes['mobile_width'] > 0 ? $attributes['mobile_width'] . '%' : 'initial';
 
 
 $additional_attributes['class'] = join(' ', $classes);
@@ -95,6 +125,9 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
     <?php echo MISC_GB_BLOCKS_MIN_DESKTOP_BREAKING_POINT; ?>
   ) {
     #<?php echo $additional_attributes['id']; ?> {
+      width:
+        <?php echo $width; ?>
+      ;
       gap:
         <?php echo $gap; ?>
       ;
@@ -107,6 +140,9 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
     <?php echo MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT; ?>
   ) {
     #<?php echo $additional_attributes['id']; ?> {
+      width:
+        <?php echo $tablet_width; ?>
+      ;
       gap:
         <?php echo $tablet_gap; ?>
       ;
@@ -117,6 +153,9 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
     <?php echo MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT; ?>
   ) {
     #<?php echo $additional_attributes['id']; ?> {
+      width:
+        <?php echo $mobile_width; ?>
+      ;
       gap:
         <?php echo $mobile_gap; ?>
       ;

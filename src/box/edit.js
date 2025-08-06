@@ -35,7 +35,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
-import { useSelect, select, subscribe, useDispatch } from "@wordpress/data";
+import { useSelect, select, subscribe } from "@wordpress/data";
 import { useState } from "react";
 import { InspectorLabel } from "../libs/components/inspector-label";
 
@@ -72,7 +72,7 @@ export default function Edit(props) {
 	const FoldHorizontalIcon = <FoldHorizontal />;
 	const [layout, setLayout] = useState("desktop");
 	const [viewport, setViewport] = useState("desktop");
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+	// const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
 	const classNames = [];
 
 	classNames.push(`miscellaneous-gutenberg-blocks-box--display-${display}`);
@@ -107,11 +107,11 @@ export default function Edit(props) {
 		className: classNames.join(" "),
 	});
 	// const blockProps = useBlockProps();
-	subscribe(() => {
-		const currentViewport =
-			select("core/edit-post").__experimentalGetPreviewDeviceType();
-		setViewport(currentViewport);
-	});
+	// subscribe(() => {
+	// 	const currentViewport =
+	// 		select("core/edit-post").__experimentalGetPreviewDeviceType();
+	// 	setViewport(currentViewport);
+	// });
 
 	const innerBlocks = useSelect(
 		(select) => select("core/block-editor").getBlocks(clientId),
@@ -155,13 +155,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -212,13 +212,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -285,13 +285,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 
@@ -359,13 +359,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
+							// __experimentalSetPreviewDeviceType(
+							// 	value == "desktop"
+							// 		? "Desktop"
+							// 		: value == "tablet"
+							// 		? "Tablet"
+							// 		: "Mobile",
+							// );
 						}}
 					/>
 					{layout == "desktop" ? (

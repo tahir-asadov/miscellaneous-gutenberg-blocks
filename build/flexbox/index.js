@@ -676,7 +676,7 @@ const hasA11yProp = (props) => {
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/flexbox","version":"0.1.0","title":"Flexbox Container","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" ><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z\\" /></svg>","description":"Flexbox container","example":{},"supports":{"html":false},"attributes":{"column":{"type":"number","default":0},"wrap":{"type":"boolean","default":false},"tablet_wrap":{"type":"boolean","default":false},"mobile_wrap":{"type":"boolean","default":false},"horizontal":{"type":"boolean","default":true},"tablet_horizontal":{"type":"boolean","default":true},"mobile_horizontal":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"tablet_reverse":{"type":"boolean","default":false},"mobile_reverse":{"type":"boolean","default":false},"gap":{"type":"number","default":0},"tablet_gap":{"type":"number","default":0},"mobile_gap":{"type":"number","default":0},"gap_unit":{"type":"string","default":"px"},"tablet_gap_unit":{"type":"string","default":"px"},"mobile_gap_unit":{"type":"string","default":"px"},"justify_content":{"type":"string","default":"flex-start"},"tablet_justify_content":{"type":"string","default":"flex-start"},"mobile_justify_content":{"type":"string","default":"flex-start"},"align_items":{"type":"string","default":"flex-start"},"tablet_align_items":{"type":"string","default":"flex-start"},"mobile_align_items":{"type":"string","default":"flex-start"}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/flexbox","version":"0.1.0","title":"Flexbox","category":"miscellaneous-gutenberg-blocks","icon":"<svg width=\\"24\\" height=\\"24\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\" stroke-width=\\"1.5\\" stroke=\\"currentColor\\" ><path stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\" d=\\"M9 4.5v15m6-15v15m-10.875 0h15.75c.621 0 1.125-.504 1.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H4.125C3.504 4.5 3 5.004 3 5.625v12.75c0 .621.504 1.125 1.125 1.125Z\\" /></svg>","description":"Flexbox container","example":{},"supports":{"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundImage":true,"backgroundSize":true},"shadow":true,"align":true,"alignWide":true,"spacing":{"margin":true,"padding":true}},"attributes":{"column":{"type":"number","default":0},"wrap":{"type":"boolean","default":false},"tablet_wrap":{"type":"boolean","default":false},"mobile_wrap":{"type":"boolean","default":false},"horizontal":{"type":"boolean","default":true},"tablet_horizontal":{"type":"boolean","default":true},"mobile_horizontal":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"tablet_reverse":{"type":"boolean","default":false},"mobile_reverse":{"type":"boolean","default":false},"gap":{"type":"number","default":0},"tablet_gap":{"type":"number","default":0},"mobile_gap":{"type":"number","default":0},"gap_unit":{"type":"string","default":"px"},"tablet_gap_unit":{"type":"string","default":"px"},"mobile_gap_unit":{"type":"string","default":"px"},"justify_content":{"type":"string","default":"flex-start"},"tablet_justify_content":{"type":"string","default":"flex-start"},"mobile_justify_content":{"type":"string","default":"flex-start"},"align_items":{"type":"string","default":"flex-start"},"tablet_align_items":{"type":"string","default":"flex-start"},"mobile_align_items":{"type":"string","default":"flex-start"},"width":{"type":"number","default":100},"tablet_width":{"type":"number","default":100},"mobile_width":{"type":"number","default":100},"grow":{"type":"boolean","default":false},"tablet_grow":{"type":"boolean","default":false},"mobile_grow":{"type":"boolean","default":false},"shrink":{"type":"boolean","default":false},"tablet_shrink":{"type":"boolean","default":false},"mobile_shrink":{"type":"boolean","default":false},"hidden":{"type":"boolean","default":false},"tablet_hidden":{"type":"boolean","default":false},"mobile_hidden":{"type":"boolean","default":false}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ }),
 
@@ -692,10 +692,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/align-vertical-justify-start.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/align-vertical-justify-end.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/align-vertical-justify-center.js");
@@ -707,11 +709,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/align-horizontal-justify-center.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/align-horizontal-space-between.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! lucide-react */ "./node_modules/lucide-react/dist/esm/icons/align-horizontal-space-around.js");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/flexbox/editor.scss");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/flexbox/editor.scss");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../libs/components/inspector-label */ "./src/libs/components/inspector-label.jsx");
 /* harmony import */ var _libs_global__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../libs/global */ "./src/libs/global.js");
 /* harmony import */ var _svgs_one_column_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../svgs/one-column.svg */ "./svgs/one-column.svg");
@@ -727,6 +727,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
+
 
 
 
@@ -761,7 +762,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // import { InspectorLabel } from "../libs/global";
 
-
+// import { useDispatch } from "@wordpress/data";
 
 
 /**
@@ -784,7 +785,6 @@ __webpack_require__.r(__webpack_exports__);
 function Edit(props) {
   const {
     attributes: {
-      width,
       column,
       wrap,
       tablet_wrap,
@@ -806,16 +806,39 @@ function Edit(props) {
       mobile_justify_content,
       align_items,
       tablet_align_items,
-      mobile_align_items
+      mobile_align_items,
+      width,
+      tablet_width,
+      mobile_width,
+      grow,
+      tablet_grow,
+      mobile_grow,
+      shrink,
+      tablet_shrink,
+      mobile_shrink,
+      hidden,
+      tablet_hidden,
+      mobile_hidden
     },
     setAttributes,
+    clientId,
     toggleSelection
   } = props;
-  const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)("desktop");
-  const [parentWidth, setParentWidth] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(0);
-  const {
-    __experimentalSetPreviewDeviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useDispatch)("core/edit-post");
+  console.log("clientId", clientId);
+  const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
+  const [parentWidth, setParentWidth] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(0);
+  // const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+
+  const MGBAppender = ({
+    clientId
+  }) => {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
+      class: "miscellaneous-gutenberg-blocks-box--appender",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.ButtonBlockAppender, {
+        rootClientId: clientId
+      })
+    });
+  };
   const alignItemsStartIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_15__["default"], {
     width: 17
   });
@@ -889,17 +912,48 @@ function Edit(props) {
   classNames.push(`miscellaneous-gutenberg-blocks-flexbox--align-${align_items}`);
   classNames.push(`miscellaneous-gutenberg-blocks-flexbox--align-tablet-${tablet_align_items}`);
   classNames.push(`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobile_align_items}`);
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+  if (grow) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--grow");
+  }
+  if (tablet_grow) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-grow");
+  }
+  if (mobile_grow) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-grow");
+  }
+  if (shrink) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--shrink");
+  }
+  if (tablet_shrink) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-shrink");
+  }
+  if (mobile_shrink) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-shrink");
+  }
+  if (hidden) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--hidden");
+  }
+  if (tablet_hidden) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-hidden");
+  }
+  if (mobile_hidden) {
+    classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-hidden");
+  }
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: classNames.join(" ")
   });
-  const innerBlocksProps = column != 0 ? (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps, {
-    // allowedBlocks: [
-    // 	"miscellaneous-gutenberg-blocks/box",
-    // 	"miscellaneous-gutenberg-blocks/flexbox",
-    // ],
-    template: (0,_libs_global__WEBPACK_IMPORTED_MODULE_7__.generateTemplate)(column),
-    templateLock: false
-  }) : (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useInnerBlocksProps)(blockProps);
+  const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps)(blockProps);
+  // const innerBlocksProps =
+  // 	column != 0
+  // 		? useInnerBlocksProps(blockProps, {
+  // 				// allowedBlocks: [
+  // 				// 	"miscellaneous-gutenberg-blocks/box",
+  // 				// 	"miscellaneous-gutenberg-blocks/flexbox",
+  // 				// ],
+  // 				template: generateTemplate(column),
+  // 				templateLock: false,
+  // 		  })
+  // 		: useInnerBlocksProps(blockProps);
   const gap_units = [{
     value: "px",
     label: "px"
@@ -920,17 +974,23 @@ function Edit(props) {
     label: "vh"
   }];
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: "Settings",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
           title: "Wrap",
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
-        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: wrap,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -938,16 +998,16 @@ function Edit(props) {
           onChange: value => setAttributes({
             wrap: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Wrap"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "No Wrap"
           })]
-        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: tablet_wrap,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -955,16 +1015,16 @@ function Edit(props) {
           onChange: value => setAttributes({
             tablet_wrap: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Wrap"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "No Wrap"
           })]
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: mobile_wrap,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -972,11 +1032,11 @@ function Edit(props) {
           onChange: value => setAttributes({
             mobile_wrap: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Wrap"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "No Wrap"
@@ -986,9 +1046,15 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
-        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: horizontal,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -996,16 +1062,16 @@ function Edit(props) {
           onChange: value => setAttributes({
             horizontal: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Horizontal"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "Vertical"
           })]
-        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: tablet_horizontal,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1013,16 +1079,16 @@ function Edit(props) {
           onChange: value => setAttributes({
             tablet_horizontal: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Horizontal"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "Vertical"
           })]
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: mobile_horizontal,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1030,11 +1096,11 @@ function Edit(props) {
           onChange: value => setAttributes({
             mobile_horizontal: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Horizontal"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "Vertical"
@@ -1044,9 +1110,15 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
-        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: reverse,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1054,16 +1126,16 @@ function Edit(props) {
           onChange: value => setAttributes({
             reverse: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Enabled"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "Disabled"
           })]
-        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: tablet_reverse,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1071,16 +1143,16 @@ function Edit(props) {
           onChange: value => setAttributes({
             tablet_reverse: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Enabled"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "Disabled"
           })]
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: mobile_reverse,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1088,11 +1160,11 @@ function Edit(props) {
           onChange: value => setAttributes({
             mobile_reverse: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: true,
             label: "Enabled"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
             value: false,
             label: "Disabled"
@@ -1102,7 +1174,13 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
         }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
           style: {
@@ -1115,7 +1193,7 @@ function Edit(props) {
             style: {
               width: "70%"
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
               __nextHasNoMarginBottom: true,
               value: gap,
               label: null,
@@ -1126,7 +1204,7 @@ function Edit(props) {
               min: 0,
               max: 100
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             label: "",
             value: gap_unit,
             options: gap_units,
@@ -1149,7 +1227,7 @@ function Edit(props) {
             style: {
               width: "70%"
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
               __nextHasNoMarginBottom: true,
               __next40pxDefaultSize: true,
               value: tablet_gap,
@@ -1162,7 +1240,7 @@ function Edit(props) {
               min: 0,
               max: 100
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             label: "",
             value: tablet_gap_unit,
             options: gap_units,
@@ -1185,7 +1263,7 @@ function Edit(props) {
             style: {
               width: "70%"
             },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
               __nextHasNoMarginBottom: true,
               __next40pxDefaultSize: true,
               value: mobile_gap,
@@ -1196,7 +1274,7 @@ function Edit(props) {
               min: 0,
               max: 100
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             label: "",
             value: mobile_gap_unit,
             options: gap_units,
@@ -1213,9 +1291,15 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
-        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: justify_content,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1223,28 +1307,28 @@ function Edit(props) {
           onChange: value => setAttributes({
             justify_content: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignStartVerticalIcon,
             value: "flex-start",
             label: "Flex start"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignEndVerticalIcon,
             value: "flex-end",
             label: "Flex end"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalJustifyCenterIcon,
             value: "center",
             label: "Center"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceBetweenIcon,
             value: "space-between",
             label: "Space Between"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceAroundIcon,
             value: "space-around",
             label: "Space Around"
           })]
-        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: tablet_justify_content,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1252,28 +1336,28 @@ function Edit(props) {
           onChange: value => setAttributes({
             tablet_justify_content: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignStartVerticalIcon,
             value: "flex-start",
             label: "Flex start"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignEndVerticalIcon,
             value: "flex-end",
             label: "Flex end"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalJustifyCenterIcon,
             value: "center",
             label: "Center"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceBetweenIcon,
             value: "space-between",
             label: "Space Between"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceAroundIcon,
             value: "space-around",
             label: "Space Around"
           })]
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: mobile_justify_content,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1281,23 +1365,23 @@ function Edit(props) {
           onChange: value => setAttributes({
             mobile_justify_content: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignStartVerticalIcon,
             value: "flex-start",
             label: "Flex start"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignEndVerticalIcon,
             value: "flex-end",
             label: "Flex end"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalJustifyCenterIcon,
             value: "center",
             label: "Center"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceBetweenIcon,
             value: "space-between",
             label: "Space Between"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: AlignHorizontalSpaceAroundIcon,
             value: "space-around",
             label: "Space Around"
@@ -1307,9 +1391,15 @@ function Edit(props) {
           defaultValue: layout,
           onChange: value => {
             setLayout(value);
-            __experimentalSetPreviewDeviceType(value == "desktop" ? "Desktop" : value == "tablet" ? "Tablet" : "Mobile");
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
           }
-        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: align_items,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1317,32 +1407,32 @@ function Edit(props) {
           onChange: value => setAttributes({
             align_items: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsStartIcon,
             value: "flex-start",
             label: "Flex start"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsEndIcon,
             value: "flex-end",
             label: "Flex end"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsCenterIcon,
             value: "center",
             label: "Center"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsBaselineIcon,
             value: "baseline",
             label: "Baseline"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsStretchIcon,
             value: "stretch",
             label: "Stretch"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsNoneIcon,
             value: "none",
             label: "None"
           })]
-        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: tablet_align_items,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1350,32 +1440,32 @@ function Edit(props) {
           onChange: value => setAttributes({
             tablet_align_items: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsStartIcon,
             value: "flex-start",
             label: "Flex start"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsEndIcon,
             value: "flex-end",
             label: "Flex end"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsCenterIcon,
             value: "center",
             label: "Center"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsBaselineIcon,
             value: "baseline",
             label: "Baseline"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsStretchIcon,
             value: "stretch",
             label: "Stretch"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsNoneIcon,
             value: "none",
             label: "None"
           })]
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
           value: mobile_align_items,
           isBlock: true,
           __nextHasNoMarginBottom: true,
@@ -1383,108 +1473,273 @@ function Edit(props) {
           onChange: value => setAttributes({
             mobile_align_items: value
           }),
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsStartIcon,
             value: "flex-start",
             label: "Flex start"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsEndIcon,
             value: "flex-end",
             label: "Flex end"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsCenterIcon,
             value: "center",
             label: "Center"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsBaselineIcon,
             value: "baseline",
             label: "Baseline"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsStretchIcon,
             value: "stretch",
             label: "Stretch"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOptionIcon, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOptionIcon, {
             icon: alignItemsNoneIcon,
             value: "none",
             label: "None"
           })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+          title: "Width",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          value: width,
+          label: null,
+          onChange: value => setAttributes({
+            width: value
+          }),
+          min: 0,
+          max: 100
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          value: tablet_width,
+          label: null,
+          onChange: value => setAttributes({
+            tablet_width: value
+          }),
+          min: 0,
+          max: 100
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          value: mobile_width,
+          label: null,
+          onChange: value => setAttributes({
+            mobile_width: value
+          }),
+          min: 0,
+          max: 100
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+          title: "Grow",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: grow,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            grow: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "On"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Off"
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: tablet_grow,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            tablet_grow: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "On"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Off"
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: mobile_grow,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            mobile_grow: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "On"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Off"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+          title: "Shrink",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: shrink,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            shrink: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "On"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Off"
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: tablet_shrink,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            tablet_shrink: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "On"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Off"
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: mobile_shrink,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            mobile_shrink: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "On"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "Off"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
+          title: "Hidden",
+          defaultValue: layout,
+          onChange: value => {
+            setLayout(value);
+            // __experimentalSetPreviewDeviceType(
+            // 	value == "desktop"
+            // 		? "Desktop"
+            // 		: value == "tablet"
+            // 		? "Tablet"
+            // 		: "Mobile",
+            // );
+          }
+        }), layout == "desktop" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: hidden,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            hidden: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Yes"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "No"
+          })]
+        }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: tablet_hidden,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            tablet_hidden: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Yes"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "No"
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControl, {
+          value: mobile_hidden,
+          isBlock: true,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          onChange: value => setAttributes({
+            mobile_hidden: value
+          }),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: true,
+            label: "Yes"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalToggleGroupControlOption, {
+            isAdaptiveWidth: true,
+            value: false,
+            label: "No"
+          })]
         })]
       })
-    }), column == 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-      ...blockProps,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
-        class: "pick-column-count",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-          onClick: () => {
-            setAttributes({
-              column: 1
-            });
-          },
-          title: "One column",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("img", {
-            src: _svgs_one_column_svg__WEBPACK_IMPORTED_MODULE_8__["default"],
-            fillColor: "#ccc",
-            height: 48
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-          onClick: () => {
-            setAttributes({
-              column: 2
-            });
-          },
-          title: "Two column",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("img", {
-            src: _svgs_two_column_svg__WEBPACK_IMPORTED_MODULE_9__["default"],
-            height: 48
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-          onClick: () => {
-            setAttributes({
-              column: 3
-            });
-          },
-          title: "Three column",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("img", {
-            src: _svgs_three_column_svg__WEBPACK_IMPORTED_MODULE_10__["default"],
-            height: 48
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-          onClick: () => {
-            setAttributes({
-              column: 4
-            });
-          },
-          title: "Four column",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("img", {
-            src: _svgs_four_column_svg__WEBPACK_IMPORTED_MODULE_11__["default"],
-            height: 48
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-          onClick: () => {
-            setAttributes({
-              column: 5
-            });
-          },
-          title: "Five column",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("img", {
-            src: _svgs_five_column_svg__WEBPACK_IMPORTED_MODULE_12__["default"],
-            height: 48
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-          onClick: () => {
-            setAttributes({
-              column: 6
-            });
-          },
-          title: "Six column",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("img", {
-            src: _svgs_six_column_svg__WEBPACK_IMPORTED_MODULE_13__["default"],
-            height: 48
-          })
-        })]
-      })
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
-      ...innerBlocksProps
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)("div", {
+      ...innerBlocksProps,
+      style: {
+        width: `${layout == "desktop" ? width > 0 ? `${width}%` : "initial" : layout == "tablet" ? tablet_width > 0 ? `${tablet_width}%` : "initial" : mobile_width > 0 ? `${mobile_width}%` : "initial"}`
+      }
     })]
   });
 }
@@ -1796,6 +2051,7 @@ __webpack_require__.r(__webpack_exports__);
 // };
 const generateTemplate = number => {
   const innerBlocksAttributes = {
+    column: 1,
     width: 100 / number,
     tablet_width: 50,
     mobile_width: 100
