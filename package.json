@@ -19,6 +19,7 @@
 	},
 	"dependencies": {
 		"@wordpress/icons": "^10.26.0",
+		"@wordpress/viewport": "^6.27.0",
 		"lucide-react": "^0.525.0"
 	}
 }

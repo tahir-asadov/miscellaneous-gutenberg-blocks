@@ -4,7 +4,12 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from "@wordpress/i18n";
+import { store as viewportStore } from "@wordpress/viewport";
+import { useViewportMatch } from "@wordpress/viewport";
 import { useSelect, select, subscribe } from "@wordpress/data";
+
+// import * as vp from "@wordpress/viewport";
+// console.log(vp);
 import {
 	ResizableBox,
 	PanelBody,
@@ -81,7 +86,7 @@ import "./editor.scss";
 import { useEffect, useState, useRef } from "react";
 // import { InspectorLabel } from "../libs/global";
 
-// import { useDispatch } from "@wordpress/data";
+import { useDispatch } from "@wordpress/data";
 import { InspectorLabel } from "../libs/components/inspector-label";
 import { generateTemplate, numberRange } from "../libs/global";
 /**
@@ -143,12 +148,104 @@ export default function Edit(props) {
 		clientId,
 		toggleSelection,
 	} = props;
-	console.log("clientId", clientId);
+	let previousDeviceType = select("core/editor").getDeviceType();
+	const unsubscribe = subscribe(() => {
+		const newDeviceType = select("core/editor").getDeviceType();
+
+		if (newDeviceType !== previousDeviceType) {
+			// Perform actions when the device type changes
+			console.log(
+				"Device type changed from",
+				previousDeviceType,
+				"to",
+				newDeviceType,
+			);
+			setLayout(newDeviceType?.toLowerCase());
+			// Update the previousDeviceType for the next comparison
+			previousDeviceType = newDeviceType;
+		}
+	});
+	// unsubscribe();
+
+	// subscribe(() => {
+	// 	const currentViewport =
+	// 		select("core/edit-post").__experimentalGetPreviewDeviceType();
+	// 	console.log("currentViewport", currentViewport);
+
+	// 	// setViewport(currentViewport);
+	// });
+	// console.log("clientId", clientId);
+	// useEffect(() => {
+	// 	const isSmall = select(viewportStore).isViewportMatch("< medium");
+	// 	console.log("isSmall", isSmall);
+	// });
+	// const { deviceType } = useSelect(
+	// 	(select) => select("core/editor").__experimentalGetPreviewDeviceType(),
+	// 	[],
+	// );
+	// console.log("deviceType", deviceType);
+
+	// const isLarge = useViewportMatch("large");
+
+	// // Check if the viewport is exactly 'medium'
+	// const isMedium = useViewportMatch("medium");
+
+	// // Check if the viewport is 'small' or smaller
+	// const isSmall = useViewportMatch("small", "<");
+	// console.log("isLarge", isLarge);
+
+	// console.log("isMedium", isMedium);
+
+	// console.log("isSmall", isSmall);
+
+	// const isSmall = useViewportMatch("small");
+	// const isMedium = useViewportMatch("medium");
+	// const isLarge = useViewportMatch("large");
+
+	// useEffect(() => {
+	// 	if (isLarge) {
+	// 		console.log("Current viewport: large");
+	// 	} else if (isMedium) {
+	// 		console.log("Current viewport: medium");
+	// 	} else if (isSmall) {
+	// 		console.log("Current viewport: small");
+	// 	}
+	// }, [isSmall, isMedium, isLarge]);
+
+	// console.log("isMobile", isMobile);
 
 	const [layout, setLayout] = useState("desktop");
-	const [parentWidth, setParentWidth] = useState(0);
-	// const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+	// const [parentWidth, setParentWidth] = useState(0);
+	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
+	// const isMobile = useSelect(
+	// 	(select) => select(viewportStore).isViewportMatch("< small"),
+	// 	[],
+	// );
+	// console.log("isMobile", isMobile);
 
+	// const { isViewportMatch } = select(viewportStore);
+	// const isSmall = isViewportMatch("< medium");
+	// const isWideOrHuge = isViewportMatch(">= wide");
+	// console.log("isViewportMatch", isViewportMatch);
+
+	// console.log("isSmall", isSmall);
+
+	// console.log("isWideOrHuge", isWideOrHuge);
+
+	// subscribe(() => {
+	// 	console.log("subscribe");
+	// 	const { isViewportMatch } = select(viewportStore);
+	// 	const isSmall = isViewportMatch("< medium");
+	// 	const isWideOrHuge = isViewportMatch(">= wide");
+	// 	// console.log("isViewportMatch", isViewportMatch);
+	// 	console.log("isSmall", isSmall);
+	// 	console.log("isWideOrHuge", isWideOrHuge);
+	// 	// 	const currentViewport =
+	// 	// 		select("core/edit-post")?.__experimentalGetPreviewDeviceType();
+	// 	// 	console.log("currentViewport", currentViewport);
+	// 	// 	console.log('select("core/edit-post")', select("core/edit-post"));
+	// 	// 	// setViewport(currentViewport);
+	// });
 	const MGBAppender = ({ clientId }) => {
 		return (
 			<div class="miscellaneous-gutenberg-blocks-box--appender">
@@ -316,13 +413,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -1200,6 +1297,19 @@ export default function Edit(props) {
 								: "initial"
 							: mobile_width > 0
 							? `${mobile_width}%`
+							: "initial"
+					}`,
+					gap: `${
+						layout == "desktop"
+							? gap > 0
+								? `${gap}${gap_unit}`
+								: "initial"
+							: layout == "tablet"
+							? tablet_gap > 0
+								? `${tablet_gap}${tablet_gap_unit}`
+								: "initial"
+							: mobile_gap > 0
+							? `${mobile_gap}${mobile_gap_unit}`
 							: "initial"
 					}`,
 				}}
