@@ -92,13 +92,21 @@ $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-' . $align_items;
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-tablet-' . $tablet_align_items;
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-mobile-' . $mobile_align_items;
 
-$gap_unit = !empty($attributes['gap_unit']) && $attributes['gap_unit'] > 0 ? $attributes['gap_unit'] : 'px';
-$tablet_gap_unit = !empty($attributes['tablet_gap_unit']) && $attributes['tablet_gap_unit'] > 0 ? $attributes['tablet_gap_unit'] : 'px';
-$mobile_gap_unit = !empty($attributes['mobile_gap_unit']) && $attributes['mobile_gap_unit'] > 0 ? $attributes['mobile_gap_unit'] : 'px';
+$column_gap_unit = !empty($attributes['column_gap_unit']) && $attributes['column_gap_unit'] > 0 ? $attributes['column_gap_unit'] : 'px';
+$tablet_column_gap_unit = !empty($attributes['tablet_column_gap_unit']) && $attributes['tablet_column_gap_unit'] > 0 ? $attributes['tablet_column_gap_unit'] : 'px';
+$mobile_column_gap_unit = !empty($attributes['mobile_column_gap_unit']) && $attributes['mobile_column_gap_unit'] > 0 ? $attributes['mobile_column_gap_unit'] : 'px';
 
-$gap = !empty($attributes['gap']) && $attributes['gap'] > 0 ? $attributes['gap'] . $gap_unit : 0;
-$tablet_gap = !empty($attributes['tablet_gap']) && $attributes['tablet_gap'] > 0 ? $attributes['tablet_gap'] . $tablet_gap_unit : 0;
-$mobile_gap = !empty($attributes['mobile_gap']) && $attributes['mobile_gap'] > 0 ? $attributes['mobile_gap'] . $mobile_gap_unit : 0;
+$row_gap_unit = !empty($attributes['row_gap_unit']) && $attributes['row_gap_unit'] > 0 ? $attributes['row_gap_unit'] : 'px';
+$tablet_row_gap_unit = !empty($attributes['tablet_row_gap_unit']) && $attributes['tablet_row_gap_unit'] > 0 ? $attributes['tablet_row_gap_unit'] : 'px';
+$mobile_row_gap_unit = !empty($attributes['mobile_row_gap_unit']) && $attributes['mobile_row_gap_unit'] > 0 ? $attributes['mobile_row_gap_unit'] : 'px';
+
+$column_gap = !empty($attributes['column_gap']) && $attributes['column_gap'] > 0 ? $attributes['column_gap'] . $column_gap_unit : 0;
+$tablet_column_gap = !empty($attributes['tablet_column_gap']) && $attributes['tablet_column_gap'] > 0 ? $attributes['tablet_column_gap'] . $tablet_column_gap_unit : 0;
+$mobile_column_gap = !empty($attributes['mobile_column_gap']) && $attributes['mobile_column_gap'] > 0 ? $attributes['mobile_column_gap'] . $mobile_column_gap_unit : 0;
+
+$row_gap = !empty($attributes['row_gap']) && $attributes['row_gap'] > 0 ? $attributes['row_gap'] . $column_gap_unit : 0;
+$tablet_row_gap = !empty($attributes['tablet_row_gap']) && $attributes['tablet_row_gap'] > 0 ? $attributes['tablet_row_gap'] . $tablet_column_gap_unit : 0;
+$mobile_row_gap = !empty($attributes['mobile_row_gap']) && $attributes['mobile_row_gap'] > 0 ? $attributes['mobile_row_gap'] . $mobile_row_gap_unit : 0;
 
 $width = !empty($attributes['width']) && $attributes['width'] > 0 ? $attributes['width'] . '%' : 'initial';
 $tablet_width = !empty($attributes['tablet_width']) && $attributes['tablet_width'] > 0 ? $attributes['tablet_width'] . '%' : 'initial';
@@ -128,8 +136,11 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
       width:
         <?php echo $width; ?>
       ;
-      gap:
-        <?php echo $gap; ?>
+      column-gap:
+        <?php echo $column_gap; ?>
+      ;
+      row-gap:
+        <?php echo $row_gap; ?>
       ;
     }
   }
@@ -143,8 +154,11 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
       width:
         <?php echo $tablet_width; ?>
       ;
-      gap:
-        <?php echo $tablet_gap; ?>
+      column-gap:
+        <?php echo $tablet_column_gap; ?>
+      ;
+      row-gap:
+        <?php echo $tablet_row_gap; ?>
       ;
     }
   }
@@ -156,8 +170,11 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
       width:
         <?php echo $mobile_width; ?>
       ;
-      gap:
-        <?php echo $mobile_gap; ?>
+      column-gap:
+        <?php echo $mobile_column_gap; ?>
+      ;
+      row-gap:
+        <?php echo $mobile_row_gap; ?>
       ;
     }
   }

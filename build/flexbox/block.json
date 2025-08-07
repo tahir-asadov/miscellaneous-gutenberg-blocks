@@ -71,27 +71,51 @@
       "type": "boolean",
       "default": false
     },
-    "gap": {
+    "column_gap": {
       "type": "number",
       "default": 0
     },
-    "tablet_gap": {
+    "tablet_column_gap": {
       "type": "number",
       "default": 0
     },
-    "mobile_gap": {
+    "mobile_column_gap": {
       "type": "number",
       "default": 0
     },
-    "gap_unit": {
+    "column_gap_unit": {
       "type": "string",
       "default": "px"
     },
-    "tablet_gap_unit": {
+    "tablet_column_gap_unit": {
       "type": "string",
       "default": "px"
     },
-    "mobile_gap_unit": {
+    "mobile_column_gap_unit": {
+      "type": "string",
+      "default": "px"
+    },
+    "row_gap": {
+      "type": "number",
+      "default": 0
+    },
+    "tablet_row_gap": {
+      "type": "number",
+      "default": 0
+    },
+    "mobile_row_gap": {
+      "type": "number",
+      "default": 0
+    },
+    "row_gap_unit": {
+      "type": "string",
+      "default": "px"
+    },
+    "tablet_row_gap_unit": {
+      "type": "string",
+      "default": "px"
+    },
+    "mobile_row_gap_unit": {
       "type": "string",
       "default": "px"
     },

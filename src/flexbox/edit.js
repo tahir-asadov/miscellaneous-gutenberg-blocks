@@ -4,51 +4,19 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from "@wordpress/i18n";
-import { store as viewportStore } from "@wordpress/viewport";
-import { useViewportMatch } from "@wordpress/viewport";
 import { useSelect, select, subscribe } from "@wordpress/data";
 
 // import * as vp from "@wordpress/viewport";
 // console.log(vp);
 import {
-	ResizableBox,
 	PanelBody,
-	PanelRow,
 	RangeControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalUnitControl as UnitControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 	SelectControl,
-} from "@wordpress/components";
-import { Button } from "@wordpress/components";
-// import {
-// 	row, stack, keyboardReturn,
-// 	justifyCenter, justifyLeft, justifyRight, justifySpaceBetween, justifyStretch,
-// 	alignLeft,
-// 	alignCenter,
-// 	alignRight,
-// 	paragraph,
-// 	formatBold,
-// 	formatItalic,
-// 	link
-// } from '@wordpress/icons';
-import {
-	plus,
-	check,
-	desktop,
-	tablet,
-	mobile,
-	button,
-	justifyCenter,
-	justifyLeft,
-	justifyRight,
-	justifySpaceBetween,
-	justifyStretch,
-	alignLeft,
-	alignCenter,
-	alignRight,
-} from "@wordpress/icons"; // For the plus icon
+} from "@wordpress/components"; // For the plus icon
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
@@ -83,12 +51,11 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import "./editor.scss";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 // import { InspectorLabel } from "../libs/global";
 
 import { useDispatch } from "@wordpress/data";
 import { InspectorLabel } from "../libs/components/inspector-label";
-import { generateTemplate, numberRange } from "../libs/global";
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -98,18 +65,9 @@ import { generateTemplate, numberRange } from "../libs/global";
  * @return {Element} Element to render.
  */
 
-// Column icons
-import oneColumn from "./../../svgs/one-column.svg";
-import twoColumn from "./../../svgs/two-column.svg";
-import threeColumn from "./../../svgs/three-column.svg";
-import fourColumn from "./../../svgs/four-column.svg";
-import fiveColumn from "./../../svgs/five-column.svg";
-import sixColumn from "./../../svgs/six-column.svg";
-
 export default function Edit(props) {
 	const {
 		attributes: {
-			column,
 			wrap,
 			tablet_wrap,
 			mobile_wrap,
@@ -119,12 +77,18 @@ export default function Edit(props) {
 			reverse,
 			tablet_reverse,
 			mobile_reverse,
-			gap,
-			tablet_gap,
-			mobile_gap,
-			gap_unit,
-			tablet_gap_unit,
-			mobile_gap_unit,
+			column_gap,
+			tablet_column_gap,
+			mobile_column_gap,
+			column_gap_unit,
+			tablet_column_gap_unit,
+			mobile_column_gap_unit,
+			row_gap,
+			tablet_row_gap,
+			mobile_row_gap,
+			row_gap_unit,
+			tablet_row_gap_unit,
+			mobile_row_gap_unit,
 			justify_content,
 			tablet_justify_content,
 			mobile_justify_content,
@@ -145,8 +109,6 @@ export default function Edit(props) {
 			mobile_hidden,
 		},
 		setAttributes,
-		clientId,
-		toggleSelection,
 	} = props;
 	let previousDeviceType = select("core/editor").getDeviceType();
 	const unsubscribe = subscribe(() => {
@@ -165,94 +127,9 @@ export default function Edit(props) {
 			previousDeviceType = newDeviceType;
 		}
 	});
-	// unsubscribe();
-
-	// subscribe(() => {
-	// 	const currentViewport =
-	// 		select("core/edit-post").__experimentalGetPreviewDeviceType();
-	// 	console.log("currentViewport", currentViewport);
-
-	// 	// setViewport(currentViewport);
-	// });
-	// console.log("clientId", clientId);
-	// useEffect(() => {
-	// 	const isSmall = select(viewportStore).isViewportMatch("< medium");
-	// 	console.log("isSmall", isSmall);
-	// });
-	// const { deviceType } = useSelect(
-	// 	(select) => select("core/editor").__experimentalGetPreviewDeviceType(),
-	// 	[],
-	// );
-	// console.log("deviceType", deviceType);
-
-	// const isLarge = useViewportMatch("large");
-
-	// // Check if the viewport is exactly 'medium'
-	// const isMedium = useViewportMatch("medium");
-
-	// // Check if the viewport is 'small' or smaller
-	// const isSmall = useViewportMatch("small", "<");
-	// console.log("isLarge", isLarge);
-
-	// console.log("isMedium", isMedium);
-
-	// console.log("isSmall", isSmall);
-
-	// const isSmall = useViewportMatch("small");
-	// const isMedium = useViewportMatch("medium");
-	// const isLarge = useViewportMatch("large");
-
-	// useEffect(() => {
-	// 	if (isLarge) {
-	// 		console.log("Current viewport: large");
-	// 	} else if (isMedium) {
-	// 		console.log("Current viewport: medium");
-	// 	} else if (isSmall) {
-	// 		console.log("Current viewport: small");
-	// 	}
-	// }, [isSmall, isMedium, isLarge]);
-
-	// console.log("isMobile", isMobile);
 
 	const [layout, setLayout] = useState("desktop");
-	// const [parentWidth, setParentWidth] = useState(0);
 	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
-	// const isMobile = useSelect(
-	// 	(select) => select(viewportStore).isViewportMatch("< small"),
-	// 	[],
-	// );
-	// console.log("isMobile", isMobile);
-
-	// const { isViewportMatch } = select(viewportStore);
-	// const isSmall = isViewportMatch("< medium");
-	// const isWideOrHuge = isViewportMatch(">= wide");
-	// console.log("isViewportMatch", isViewportMatch);
-
-	// console.log("isSmall", isSmall);
-
-	// console.log("isWideOrHuge", isWideOrHuge);
-
-	// subscribe(() => {
-	// 	console.log("subscribe");
-	// 	const { isViewportMatch } = select(viewportStore);
-	// 	const isSmall = isViewportMatch("< medium");
-	// 	const isWideOrHuge = isViewportMatch(">= wide");
-	// 	// console.log("isViewportMatch", isViewportMatch);
-	// 	console.log("isSmall", isSmall);
-	// 	console.log("isWideOrHuge", isWideOrHuge);
-	// 	// 	const currentViewport =
-	// 	// 		select("core/edit-post")?.__experimentalGetPreviewDeviceType();
-	// 	// 	console.log("currentViewport", currentViewport);
-	// 	// 	console.log('select("core/edit-post")', select("core/edit-post"));
-	// 	// 	// setViewport(currentViewport);
-	// });
-	const MGBAppender = ({ clientId }) => {
-		return (
-			<div class="miscellaneous-gutenberg-blocks-box--appender">
-				<InnerBlocks.ButtonBlockAppender rootClientId={clientId} />
-			</div>
-		);
-	};
 	const alignItemsStartIcon = <AlignVerticalJustifyStart width={17} />;
 	const alignItemsEndIcon = <AlignVerticalJustifyEnd width={17} />;
 	const alignItemsCenterIcon = <AlignVerticalJustifyCenter width={17} />;
@@ -366,17 +243,6 @@ export default function Edit(props) {
 		className: classNames.join(" "),
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps);
-	// const innerBlocksProps =
-	// 	column != 0
-	// 		? useInnerBlocksProps(blockProps, {
-	// 				// allowedBlocks: [
-	// 				// 	"miscellaneous-gutenberg-blocks/box",
-	// 				// 	"miscellaneous-gutenberg-blocks/flexbox",
-	// 				// ],
-	// 				template: generateTemplate(column),
-	// 				templateLock: false,
-	// 		  })
-	// 		: useInnerBlocksProps(blockProps);
 	const gap_units = [
 		{
 			value: "px",
@@ -485,13 +351,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -557,13 +423,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -626,17 +492,17 @@ export default function Edit(props) {
 					)}
 
 					<InspectorLabel
-						title="Gap"
+						title="Column Gap"
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -651,12 +517,12 @@ export default function Edit(props) {
 							<div style={{ width: "70%" }}>
 								<RangeControl
 									__nextHasNoMarginBottom
-									value={gap}
+									value={column_gap}
 									label={null}
 									RangeControl
 									onChange={(value) =>
 										setAttributes({
-											gap: value,
+											column_gap: value,
 										})
 									}
 									min={0}
@@ -665,13 +531,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={gap_unit}
+								value={column_gap_unit}
 								options={gap_units}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										gap_unit: value,
+										column_gap_unit: value,
 									});
 								}}
 							/>
@@ -689,11 +555,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={tablet_gap}
+									value={tablet_column_gap}
 									label={null}
 									onChange={(value) => {
 										setAttributes({
-											tablet_gap: value,
+											tablet_column_gap: value,
 										});
 									}}
 									min={0}
@@ -702,13 +568,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={tablet_gap_unit}
+								value={tablet_column_gap_unit}
 								options={gap_units}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										tablet_gap_unit: value,
+										tablet_column_gap_unit: value,
 									});
 								}}
 							/>
@@ -726,11 +592,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={mobile_gap}
+									value={mobile_column_gap}
 									label={null}
 									onChange={(value) =>
 										setAttributes({
-											mobile_gap: value,
+											mobile_column_gap: value,
 										})
 									}
 									min={0}
@@ -739,31 +605,156 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={mobile_gap_unit}
+								value={mobile_column_gap_unit}
 								options={gap_units}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										mobile_gap_unit: value,
+										mobile_column_gap_unit: value,
 									});
 								}}
 							/>
 						</div>
 					)}
-
+					<InspectorLabel
+						title="Row Gap"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={row_gap}
+									label={null}
+									onChange={(value) => {
+										setAttributes({
+											row_gap: value,
+										});
+									}}
+									min={0}
+									max={100}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={row_gap_unit}
+								options={gap_units}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										row_gap_unit: value,
+									});
+								}}
+							/>
+						</div>
+					) : layout == "tablet" ? (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={tablet_row_gap}
+									label={null}
+									onChange={(value) => {
+										setAttributes({
+											tablet_row_gap: value,
+										});
+									}}
+									min={0}
+									max={100}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={tablet_row_gap_unit}
+								options={gap_units}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										tablet_row_gap_unit: value,
+									});
+								}}
+							/>
+						</div>
+					) : (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={mobile_row_gap}
+									label={null}
+									onChange={(value) => {
+										setAttributes({
+											mobile_row_gap: value,
+										});
+									}}
+									min={0}
+									max={100}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={mobile_row_gap_unit}
+								options={gap_units}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										mobile_row_gap_unit: value,
+									});
+								}}
+							/>
+						</div>
+					)}
 					<InspectorLabel
 						title="Justify Content"
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -878,13 +869,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 
@@ -1011,13 +1002,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -1068,13 +1059,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -1140,13 +1131,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 
@@ -1214,13 +1205,13 @@ export default function Edit(props) {
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
-							// __experimentalSetPreviewDeviceType(
-							// 	value == "desktop"
-							// 		? "Desktop"
-							// 		: value == "tablet"
-							// 		? "Tablet"
-							// 		: "Mobile",
-							// );
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
 						}}
 					/>
 					{layout == "desktop" ? (
@@ -1299,111 +1290,34 @@ export default function Edit(props) {
 							? `${mobile_width}%`
 							: "initial"
 					}`,
-					gap: `${
+					columnGap: `${
 						layout == "desktop"
-							? gap > 0
-								? `${gap}${gap_unit}`
+							? column_gap > 0
+								? `${column_gap}${column_gap_unit}`
 								: "initial"
 							: layout == "tablet"
-							? tablet_gap > 0
-								? `${tablet_gap}${tablet_gap_unit}`
+							? tablet_column_gap > 0
+								? `${tablet_column_gap}${tablet_column_gap_unit}`
 								: "initial"
-							: mobile_gap > 0
-							? `${mobile_gap}${mobile_gap_unit}`
+							: mobile_column_gap > 0
+							? `${mobile_column_gap}${mobile_column_gap_unit}`
+							: "initial"
+					}`,
+					rowGap: `${
+						layout == "desktop"
+							? row_gap > 0
+								? `${row_gap}${row_gap_unit}`
+								: "initial"
+							: layout == "tablet"
+							? tablet_row_gap > 0
+								? `${tablet_row_gap}${tablet_row_gap_unit}`
+								: "initial"
+							: mobile_row_gap > 0
+							? `${mobile_row_gap}${mobile_row_gap_unit}`
 							: "initial"
 					}`,
 				}}
 			></div>
-			{/* {column == 0 ? (
-				<div
-					{...blockProps}
-					style={{
-						width: `${
-							layout == "desktop"
-								? width > 0
-									? `${width}%`
-									: "initial"
-								: layout == "tablet"
-								? tablet_width > 0
-									? `${tablet_width}%`
-									: "initial"
-								: mobile_width > 0
-								? `${mobile_width}%`
-								: "initial"
-						}`,
-					}}
-				>
-					<div class="pick-column-count">
-						<div
-							onClick={() => {
-								setAttributes({ column: 1 });
-							}}
-							title="One column"
-						>
-							<img src={oneColumn} fillColor={"#ccc"} height={48} />
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 2 });
-							}}
-							title="Two column"
-						>
-							<img src={twoColumn} height={48} />
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 3 });
-							}}
-							title="Three column"
-						>
-							<img src={threeColumn} height={48} />
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 4 });
-							}}
-							title="Four column"
-						>
-							<img src={fourColumn} height={48} />
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 5 });
-							}}
-							title="Five column"
-						>
-							<img src={fiveColumn} height={48} />
-						</div>
-						<div
-							onClick={() => {
-								setAttributes({ column: 6 });
-							}}
-							title="Six column"
-						>
-							<img src={sixColumn} height={48} />
-						</div>
-					</div>
-				</div>
-			) : (
-				<div
-					{...innerBlocksProps}
-					style={{
-						width: `${
-							layout == "desktop"
-								? width > 0
-									? `${width}%`
-									: "initial"
-								: layout == "tablet"
-								? tablet_width > 0
-									? `${tablet_width}%`
-									: "initial"
-								: mobile_width > 0
-								? `${mobile_width}%`
-								: "initial"
-						}`,
-					}}
-				></div>
-			)} */}
 		</>
 	);
 }

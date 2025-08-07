@@ -170,27 +170,51 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'gap' => array(
+			'column_gap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'tablet_gap' => array(
+			'tablet_column_gap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'mobile_gap' => array(
+			'mobile_column_gap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'gap_unit' => array(
+			'column_gap_unit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'tablet_gap_unit' => array(
+			'tablet_column_gap_unit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'mobile_gap_unit' => array(
+			'mobile_column_gap_unit' => array(
+				'type' => 'string',
+				'default' => 'px'
+			),
+			'row_gap' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'tablet_row_gap' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'mobile_row_gap' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'row_gap_unit' => array(
+				'type' => 'string',
+				'default' => 'px'
+			),
+			'tablet_row_gap_unit' => array(
+				'type' => 'string',
+				'default' => 'px'
+			),
+			'mobile_row_gap_unit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
