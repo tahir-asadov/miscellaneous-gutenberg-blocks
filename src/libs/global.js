@@ -70,3 +70,30 @@ export const numberRange = (start, end) => {
 	const endNum = Number(end);
 	return Array.from({ length: endNum - startNum + 1 }, (_, i) => startNum + i);
 };
+
+export const gapUnits = [
+	{
+		value: "px",
+		label: "px",
+	},
+	{
+		value: "%",
+		label: "%",
+	},
+	{
+		value: "em",
+		label: "em",
+	},
+	{
+		value: "rem",
+		label: "rem",
+	},
+	{
+		value: "vw",
+		label: "vw",
+	},
+	{
+		value: "vh",
+		label: "vh",
+	},
+];

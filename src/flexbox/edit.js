@@ -4,7 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from "@wordpress/i18n";
-import { useSelect, select, subscribe } from "@wordpress/data";
+import { select, subscribe } from "@wordpress/data";
 
 // import * as vp from "@wordpress/viewport";
 // console.log(vp);
@@ -56,6 +56,7 @@ import { useState } from "react";
 
 import { useDispatch } from "@wordpress/data";
 import { InspectorLabel } from "../libs/components/inspector-label";
+import { gapUnits } from "../libs/global";
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -111,19 +112,11 @@ export default function Edit(props) {
 		setAttributes,
 	} = props;
 	let previousDeviceType = select("core/editor").getDeviceType();
-	const unsubscribe = subscribe(() => {
+	subscribe(() => {
 		const newDeviceType = select("core/editor").getDeviceType();
 
 		if (newDeviceType !== previousDeviceType) {
-			// Perform actions when the device type changes
-			console.log(
-				"Device type changed from",
-				previousDeviceType,
-				"to",
-				newDeviceType,
-			);
 			setLayout(newDeviceType?.toLowerCase());
-			// Update the previousDeviceType for the next comparison
 			previousDeviceType = newDeviceType;
 		}
 	});
@@ -243,32 +236,6 @@ export default function Edit(props) {
 		className: classNames.join(" "),
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps);
-	const gap_units = [
-		{
-			value: "px",
-			label: "px",
-		},
-		{
-			value: "%",
-			label: "%",
-		},
-		{
-			value: "em",
-			label: "em",
-		},
-		{
-			value: "rem",
-			label: "rem",
-		},
-		{
-			value: "vw",
-			label: "vw",
-		},
-		{
-			value: "vh",
-			label: "vh",
-		},
-	];
 
 	return (
 		<>
@@ -511,12 +478,15 @@ export default function Edit(props) {
 								display: "flex",
 								width: "100%",
 								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
 								gap: "5px",
 							}}
 						>
 							<div style={{ width: "70%" }}>
 								<RangeControl
 									__nextHasNoMarginBottom
+									__next40pxDefaultSize
 									value={column_gap}
 									label={null}
 									RangeControl
@@ -532,7 +502,7 @@ export default function Edit(props) {
 							<SelectControl
 								label=""
 								value={column_gap_unit}
-								options={gap_units}
+								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
@@ -548,6 +518,8 @@ export default function Edit(props) {
 								display: "flex",
 								width: "100%",
 								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
 								gap: "5px",
 							}}
 						>
@@ -569,7 +541,7 @@ export default function Edit(props) {
 							<SelectControl
 								label=""
 								value={tablet_column_gap_unit}
-								options={gap_units}
+								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
@@ -585,6 +557,8 @@ export default function Edit(props) {
 								display: "flex",
 								width: "100%",
 								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
 								gap: "5px",
 							}}
 						>
@@ -606,7 +580,7 @@ export default function Edit(props) {
 							<SelectControl
 								label=""
 								value={mobile_column_gap_unit}
-								options={gap_units}
+								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
@@ -637,6 +611,8 @@ export default function Edit(props) {
 								display: "flex",
 								width: "100%",
 								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
 								gap: "5px",
 							}}
 						>
@@ -658,7 +634,7 @@ export default function Edit(props) {
 							<SelectControl
 								label=""
 								value={row_gap_unit}
-								options={gap_units}
+								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
@@ -674,6 +650,8 @@ export default function Edit(props) {
 								display: "flex",
 								width: "100%",
 								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
 								gap: "5px",
 							}}
 						>
@@ -695,7 +673,7 @@ export default function Edit(props) {
 							<SelectControl
 								label=""
 								value={tablet_row_gap_unit}
-								options={gap_units}
+								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
@@ -711,6 +689,8 @@ export default function Edit(props) {
 								display: "flex",
 								width: "100%",
 								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
 								gap: "5px",
 							}}
 						>
@@ -732,7 +712,7 @@ export default function Edit(props) {
 							<SelectControl
 								label=""
 								value={mobile_row_gap_unit}
-								options={gap_units}
+								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {

@@ -34,8 +34,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { mediaAndText, pullLeft, pullRight } from "@wordpress/icons";
-
 /**
  * Retrieves the translation of text.
  *

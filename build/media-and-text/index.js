@@ -475,7 +475,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function Edit({
   attributes: {
     imageId,
@@ -495,9 +494,17 @@ function Edit({
   clientId
 }) {
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
+  let previousDeviceType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.select)("core/editor").getDeviceType();
+  (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.subscribe)(() => {
+    const newDeviceType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.select)("core/editor").getDeviceType();
+    if (newDeviceType !== previousDeviceType) {
+      setLayout(newDeviceType?.toLowerCase());
+      previousDeviceType = newDeviceType;
+    }
+  });
   const {
     __experimentalSetPreviewDeviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)("core/edit-post");
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)("core/edit-site");
   const innerBlockCount = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useSelect)(select => select("core/block-editor").getBlocks(clientId).length, [clientId]);
   const classNames = [];
   if (innerBlockCount == 1) {
@@ -521,12 +528,6 @@ function Edit({
   if (mobile_stacked) {
     classNames.push("miscellaneous-gutenberg-blocks-media-and-text--mobile-is-stacked");
   }
-  // if (attributes.show_search_icon) {
-  // 	classNames.push("show-search-icon");
-  // }
-  // if (attributes.show_category) {
-  // 	classNames.push("show-category");
-  // }
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
     className: classNames.join(" "),
     style: {

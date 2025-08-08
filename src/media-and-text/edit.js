@@ -8,26 +8,14 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 	Button,
-	Popover,
-	Toolbar,
-	ToolbarDropdownMenu,
 	ToolbarGroup,
 	ToolbarButton,
-	Panel,
 	PanelBody,
-	PanelRow,
-	PanelHeader,
-	ToggleControl,
-	TextControl,
 	RangeControl,
 } from "@wordpress/components";
 
 import { InspectorLabel } from "../libs/components/inspector-label";
-import {
-	ArrowRightToLine,
-	ArrowLeftToLine,
-	ArrowRightLeft,
-} from "lucide-react";
+import { ArrowRightLeft } from "lucide-react";
 /**
  * Retrieves the translation of text.
  *
@@ -65,24 +53,8 @@ import { useState } from "react";
  * @return {Element} Element to render.
  */
 
-import { useDispatch, useSelect } from "@wordpress/data";
-import {
-	row,
-	stack,
-	keyboardReturn,
-	justifyCenter,
-	justifyLeft,
-	justifyRight,
-	justifySpaceBetween,
-	justifyStretch,
-	alignLeft,
-	alignCenter,
-	alignRight,
-	paragraph,
-	formatBold,
-	formatItalic,
-	link,
-} from "@wordpress/icons";
+import { useDispatch, useSelect, subscribe, select } from "@wordpress/data";
+
 export default function Edit({
 	attributes: {
 		imageId,
@@ -102,7 +74,16 @@ export default function Edit({
 	clientId,
 }) {
 	const [layout, setLayout] = useState("desktop");
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-post");
+	let previousDeviceType = select("core/editor").getDeviceType();
+	subscribe(() => {
+		const newDeviceType = select("core/editor").getDeviceType();
+
+		if (newDeviceType !== previousDeviceType) {
+			setLayout(newDeviceType?.toLowerCase());
+			previousDeviceType = newDeviceType;
+		}
+	});
+	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
 	const innerBlockCount = useSelect(
 		(select) => select("core/block-editor").getBlocks(clientId).length,
 		[clientId],
@@ -145,12 +126,6 @@ export default function Edit({
 			"miscellaneous-gutenberg-blocks-media-and-text--mobile-is-stacked",
 		);
 	}
-	// if (attributes.show_search_icon) {
-	// 	classNames.push("show-search-icon");
-	// }
-	// if (attributes.show_category) {
-	// 	classNames.push("show-category");
-	// }
 	const blockProps = useBlockProps({
 		className: classNames.join(" "),
 		style: {

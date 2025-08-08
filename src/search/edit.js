@@ -1,27 +1,11 @@
-import {
-	InnerBlocks,
-	BlockControls,
-	InspectorControls,
-} from "@wordpress/block-editor";
+import { InspectorControls } from "@wordpress/block-editor";
 import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
-	Button,
-	Popover,
-	Toolbar,
-	ToolbarDropdownMenu,
-	ToolbarGroup,
-	ToolbarButton,
-	Panel,
 	PanelBody,
-	PanelRow,
-	PanelHeader,
-	ToggleControl,
 	TextControl,
 } from "@wordpress/components";
-
-// import { mediaAndText, pullLeft, pullRight } from "@wordpress/icons";
 
 /**
  * Retrieves the translation of text.
