@@ -1,0 +1,76 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-miscellaneous-gutenberg-blocks-icon-and-text {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	> * {
+		min-width: 0;
+		&.miscellaneous-gutenberg-blocks-icon-and-text--left {
+			img {
+				display: block;
+				margin: 0;
+				width: 100%;
+			}
+			position: relative;
+		}
+		&.miscellaneous-gutenberg-blocks-icon-and-text--right {
+		}
+	}
+	&.miscellaneous-gutenberg-blocks-icon-and-text--single-child {
+		.miscellaneous-gutenberg-blocks-icon-and-text--right {
+			display: flex;
+			> div {
+				display: flex;
+				width: 100%;
+			}
+		}
+	}
+	@media only screen and (min-width: 993px) {
+		&.miscellaneous-gutenberg-blocks-icon-and-text--is-stacked {
+			flex-direction: column;
+			> * {
+				width: 100%;
+			}
+			&.miscellaneous-gutenberg-blocks-icon-and-text--is-reversed {
+				flex-direction: column-reverse;
+			}
+		}
+		&.miscellaneous-gutenberg-blocks-icon-and-text--is-reversed {
+			flex-direction: row-reverse;
+		}
+	}
+	@media only screen and (min-width: 601px) and (max-width: 992px) {
+		&.miscellaneous-gutenberg-blocks-icon-and-text--tablet-is-stacked {
+			flex-direction: column;
+			> * {
+				width: 100%;
+			}
+			&.miscellaneous-gutenberg-blocks-icon-and-text--tablet-is-reversed {
+				flex-direction: column-reverse;
+			}
+		}
+		&.miscellaneous-gutenberg-blocks-icon-and-text--tablet-is-reversed {
+			flex-direction: row-reverse;
+		}
+	}
+	@media only screen and (max-width: 600px) {
+		&.miscellaneous-gutenberg-blocks-icon-and-text--mobile-is-stacked {
+			flex-direction: column;
+			> * {
+				width: 100%;
+			}
+			&.miscellaneous-gutenberg-blocks-icon-and-text--mobile-is-reversed {
+				flex-direction: column-reverse;
+			}
+		}
+		&.miscellaneous-gutenberg-blocks-icon-and-text--mobile-is-reversed {
+			flex-direction: row-reverse;
+		}
+	}
+}

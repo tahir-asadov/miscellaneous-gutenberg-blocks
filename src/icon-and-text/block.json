@@ -1,0 +1,102 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "miscellaneous-gutenberg-blocks/icon-and-text",
+	"version": "0.1.0",
+	"title": "Icon & Text",
+	"category": "miscellaneous-gutenberg-blocks",
+	"description": "",
+	"example": {},
+	"supports": {
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": true
+		},
+		"background": {
+			"backgroundSize": true,
+			"backgroundImage": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		}
+	},
+	"attributes": {
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageName": {
+			"type": "string",
+			"default": ""
+		},
+		"imageWidth": {
+			"type": "number",
+			"default": "32"
+		},
+		"imageContent": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"reversed": {
+			"type": "boolean",
+			"default": false
+		},
+		"tablet_reversed": {
+			"type": "boolean",
+			"default": false
+		},
+		"mobile_reversed": {
+			"type": "boolean",
+			"default": false
+		},
+		"stacked": {
+			"type": "boolean",
+			"default": false
+		},
+		"tablet_stacked": {
+			"type": "boolean",
+			"default": false
+		},
+		"mobile_stacked": {
+			"type": "boolean",
+			"default": false
+		},
+		"gap": {
+			"type": "number",
+			"default": 15
+		},
+		"tablet_gap": {
+			"type": "number",
+			"default": 15
+		},
+		"mobile_gap": {
+			"type": "number",
+			"default": 15
+		},
+		"svgColor": {
+			"type": "string"
+		}
+	},
+	"textdomain": "miscellaneous-gutenberg-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

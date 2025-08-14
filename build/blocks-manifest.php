@@ -130,10 +130,6 @@ return array(
 			)
 		),
 		'attributes' => array(
-			'column' => array(
-				'type' => 'number',
-				'default' => 0
-			),
 			'wrap' => array(
 				'type' => 'boolean',
 				'default' => false
@@ -254,6 +250,18 @@ return array(
 				'type' => 'number',
 				'default' => 100
 			),
+			'width_unit' => array(
+				'type' => 'string',
+				'default' => '%'
+			),
+			'tablet_width_unit' => array(
+				'type' => 'string',
+				'default' => '%'
+			),
+			'mobile_width_unit' => array(
+				'type' => 'string',
+				'default' => '%'
+			),
 			'grow' => array(
 				'type' => 'boolean',
 				'default' => false
@@ -296,6 +304,110 @@ return array(
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
 		'render' => 'file:./render.php'
+	),
+	'icon-and-text' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'miscellaneous-gutenberg-blocks/icon-and-text',
+		'version' => '0.1.0',
+		'title' => 'Icon & Text',
+		'category' => 'miscellaneous-gutenberg-blocks',
+		'description' => '',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'textAlign' => true
+			),
+			'background' => array(
+				'backgroundSize' => true,
+				'backgroundImage' => true
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true,
+				'blockGap' => true
+			)
+		),
+		'attributes' => array(
+			'imageId' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageName' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageWidth' => array(
+				'type' => 'number',
+				'default' => '32'
+			),
+			'imageContent' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'text' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'reversed' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'tablet_reversed' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'mobile_reversed' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'stacked' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'tablet_stacked' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'mobile_stacked' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'gap' => array(
+				'type' => 'number',
+				'default' => 15
+			),
+			'tablet_gap' => array(
+				'type' => 'number',
+				'default' => 15
+			),
+			'mobile_gap' => array(
+				'type' => 'number',
+				'default' => 15
+			),
+			'svgColor' => array(
+				'type' => 'string'
+			)
+		),
+		'textdomain' => 'miscellaneous-gutenberg-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
 	),
 	'media-and-text' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',

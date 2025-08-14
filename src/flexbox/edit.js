@@ -99,6 +99,9 @@ export default function Edit(props) {
 			width,
 			tablet_width,
 			mobile_width,
+			width_unit,
+			tablet_width_unit,
+			mobile_width_unit,
 			grow,
 			tablet_grow,
 			mobile_grow,
@@ -241,6 +244,136 @@ export default function Edit(props) {
 		<>
 			<InspectorControls>
 				<PanelBody title="Settings">
+					<InspectorLabel
+						title="Width"
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={width}
+									label={null}
+									onChange={(value) =>
+										setAttributes({
+											width: value,
+										})
+									}
+									min={0}
+									max={500}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={width_unit}
+								options={gapUnits}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										width_unit: value,
+									});
+								}}
+							/>
+						</div>
+					) : layout == "tablet" ? (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={tablet_width}
+									label={null}
+									onChange={(value) =>
+										setAttributes({
+											tablet_width: value,
+										})
+									}
+									min={0}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={tablet_width_unit}
+								options={gapUnits}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										tablet_width_unit: value,
+									});
+								}}
+							/>
+						</div>
+					) : (
+						<div
+							style={{
+								display: "flex",
+								width: "100%",
+								alignItems: "center",
+								marginTop: "5px",
+								marginBottom: "10px",
+								gap: "5px",
+							}}
+						>
+							<div style={{ width: "70%" }}>
+								<RangeControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={mobile_width}
+									label={null}
+									onChange={(value) =>
+										setAttributes({
+											mobile_width: value,
+										})
+									}
+									min={0}
+								/>
+							</div>
+							<SelectControl
+								label=""
+								value={mobile_width_unit}
+								options={gapUnits}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								onChange={(value) => {
+									setAttributes({
+										mobile_width_unit: value,
+									});
+								}}
+							/>
+						</div>
+					)}
 					<InspectorLabel
 						title="Wrap"
 						defaultValue={layout}
@@ -978,63 +1111,6 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Width"
-						defaultValue={layout}
-						onChange={(value) => {
-							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
-						}}
-					/>
-					{layout == "desktop" ? (
-						<RangeControl
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							value={width}
-							label={null}
-							onChange={(value) =>
-								setAttributes({
-									width: value,
-								})
-							}
-							min={0}
-							max={100}
-						/>
-					) : layout == "tablet" ? (
-						<RangeControl
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							value={tablet_width}
-							label={null}
-							onChange={(value) =>
-								setAttributes({
-									tablet_width: value,
-								})
-							}
-							min={0}
-							max={100}
-						/>
-					) : (
-						<RangeControl
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							value={mobile_width}
-							label={null}
-							onChange={(value) =>
-								setAttributes({
-									mobile_width: value,
-								})
-							}
-							min={0}
-							max={100}
-						/>
-					)}
-					<InspectorLabel
 						title="Grow"
 						defaultValue={layout}
 						onChange={(value) => {
@@ -1260,14 +1336,14 @@ export default function Edit(props) {
 					width: `${
 						layout == "desktop"
 							? width > 0
-								? `${width}%`
+								? `${width}${width_unit}`
 								: "initial"
 							: layout == "tablet"
 							? tablet_width > 0
-								? `${tablet_width}%`
+								? `${tablet_width}${tablet_width_unit}`
 								: "initial"
 							: mobile_width > 0
-							? `${mobile_width}%`
+							? `${mobile_width}${mobile_width_unit}`
 							: "initial"
 					}`,
 					columnGap: `${

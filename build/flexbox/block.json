@@ -31,10 +31,6 @@
     }
   },
   "attributes": {
-    "column": {
-      "type": "number",
-      "default": 0
-    },
     "wrap": {
       "type": "boolean",
       "default": false
@@ -154,6 +150,18 @@
     "mobile_width": {
       "type": "number",
       "default": 100
+    },
+    "width_unit": {
+      "type": "string",
+      "default": "%"
+    },
+    "tablet_width_unit": {
+      "type": "string",
+      "default": "%"
+    },
+    "mobile_width_unit": {
+      "type": "string",
+      "default": "%"
     },
     "grow": {
       "type": "boolean",

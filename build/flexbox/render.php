@@ -16,12 +16,7 @@ $mobile_justify_content = !empty($attributes['mobile_justify_content']) ? $attri
 $align_items = !empty($attributes['align_items']) ? $attributes['align_items'] : '';
 $tablet_align_items = !empty($attributes['tablet_align_items']) ? $attributes['tablet_align_items'] : '';
 $mobile_align_items = !empty($attributes['mobile_align_items']) ? $attributes['mobile_align_items'] : '';
-// 
-// 
-// 
-// 
-// 
-// 
+
 if ($wrap) {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--wrap';
 }
@@ -108,9 +103,9 @@ $row_gap = !empty($attributes['row_gap']) && $attributes['row_gap'] > 0 ? $attri
 $tablet_row_gap = !empty($attributes['tablet_row_gap']) && $attributes['tablet_row_gap'] > 0 ? $attributes['tablet_row_gap'] . $tablet_column_gap_unit : 0;
 $mobile_row_gap = !empty($attributes['mobile_row_gap']) && $attributes['mobile_row_gap'] > 0 ? $attributes['mobile_row_gap'] . $mobile_row_gap_unit : 0;
 
-$width = !empty($attributes['width']) && $attributes['width'] > 0 ? $attributes['width'] . '%' : 'initial';
-$tablet_width = !empty($attributes['tablet_width']) && $attributes['tablet_width'] > 0 ? $attributes['tablet_width'] . '%' : 'initial';
-$mobile_width = !empty($attributes['mobile_width']) && $attributes['mobile_width'] > 0 ? $attributes['mobile_width'] . '%' : 'initial';
+$width = !empty($attributes['width']) && $attributes['width'] > 0 ? $attributes['width'] . $attributes['width_unit'] : 'initial';
+$tablet_width = !empty($attributes['tablet_width']) && $attributes['tablet_width'] > 0 ? $attributes['tablet_width'] . $attributes['tablet_width_unit'] : 'initial';
+$mobile_width = !empty($attributes['mobile_width']) && $attributes['mobile_width'] > 0 ? $attributes['mobile_width'] . $attributes['mobile_width_unit'] : 'initial';
 
 
 $additional_attributes['class'] = join(' ', $classes);
