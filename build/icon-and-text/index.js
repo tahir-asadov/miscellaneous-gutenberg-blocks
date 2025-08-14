@@ -327,7 +327,7 @@ const hasA11yProp = (props) => {
   \**************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/icon-and-text","version":"0.1.0","title":"Icon & Text","category":"miscellaneous-gutenberg-blocks","description":"","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true,"backgroundImage":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"imageId":{"type":"number","default":0},"imageUrl":{"type":"string","default":""},"imageName":{"type":"string","default":""},"imageWidth":{"type":"number","default":"32"},"imageContent":{"type":"string","default":""},"text":{"type":"string","default":""},"reversed":{"type":"boolean","default":false},"tablet_reversed":{"type":"boolean","default":false},"mobile_reversed":{"type":"boolean","default":false},"stacked":{"type":"boolean","default":false},"tablet_stacked":{"type":"boolean","default":false},"mobile_stacked":{"type":"boolean","default":false},"gap":{"type":"number","default":15},"tablet_gap":{"type":"number","default":15},"mobile_gap":{"type":"number","default":15},"svgColor":{"type":"string"}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/icon-and-text","version":"0.1.0","title":"Icon & Text","category":"miscellaneous-gutenberg-blocks","description":"","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true,"backgroundImage":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"imageId":{"type":"number","default":0},"imageUrl":{"type":"string","default":""},"imageName":{"type":"string","default":""},"imageWidth":{"type":"number","default":"32"},"imageContent":{"type":"string","default":""},"text":{"type":"string","default":""},"reversed":{"type":"boolean","default":false},"tabletReversed":{"type":"boolean","default":false},"mobileReversed":{"type":"boolean","default":false},"stacked":{"type":"boolean","default":false},"tabletStacked":{"type":"boolean","default":false},"mobileStacked":{"type":"boolean","default":false},"gap":{"type":"number","default":15},"tabletGap":{"type":"number","default":15},"mobileGap":{"type":"number","default":15},"svgColor":{"type":"string"}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -403,14 +403,14 @@ function Edit({
     imageContent,
     text,
     reversed,
-    tablet_reversed,
-    mobile_reversed,
+    tabletReversed,
+    mobileReversed,
     stacked,
-    tablet_stacked,
-    mobile_stacked,
+    tabletStacked,
+    mobileStacked,
     gap,
-    tablet_gap,
-    mobile_gap,
+    tabletGap,
+    mobileGap,
     imageWidth,
     svgColor
   },
@@ -455,25 +455,25 @@ function Edit({
   if (reversed) {
     classNames.push("miscellaneous-gutenberg-blocks-icon-and-text--is-reversed");
   }
-  if (tablet_reversed) {
+  if (tabletReversed) {
     classNames.push("miscellaneous-gutenberg-blocks-icon-and-text--tablet-is-reversed");
   }
-  if (mobile_reversed) {
+  if (mobileReversed) {
     classNames.push("miscellaneous-gutenberg-blocks-icon-and-text--mobile-is-reversed");
   }
   if (stacked) {
     classNames.push("miscellaneous-gutenberg-blocks-icon-and-text--is-stacked");
   }
-  if (tablet_stacked) {
+  if (tabletStacked) {
     classNames.push("miscellaneous-gutenberg-blocks-icon-and-text--tablet-is-stacked");
   }
-  if (mobile_stacked) {
+  if (mobileStacked) {
     classNames.push("miscellaneous-gutenberg-blocks-icon-and-text--mobile-is-stacked");
   }
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
     className: classNames.join(" "),
     style: {
-      gap: layout == "desktop" ? gap : layout == "tablet" ? tablet_gap : mobile_gap
+      gap: layout == "desktop" ? gap : layout == "tablet" ? tabletGap : mobileGap
     }
   });
   console.log("stacked", stacked);
@@ -567,20 +567,20 @@ function Edit({
         }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          value: tablet_gap,
+          value: tabletGap,
           label: null,
           onChange: value => setAttributes({
-            tablet_gap: value
+            tabletGap: value
           }),
           min: 0,
           max: 100
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
-          value: mobile_gap,
+          value: mobileGap,
           label: null,
           onChange: value => setAttributes({
-            mobile_gap: value
+            mobileGap: value
           }),
           min: 0,
           max: 100
@@ -609,12 +609,12 @@ function Edit({
             label: "Disabled"
           })]
         }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
-          value: tablet_reversed,
+          value: tabletReversed,
           isBlock: true,
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
           onChange: value => setAttributes({
-            tablet_reversed: value
+            tabletReversed: value
           }),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
@@ -626,12 +626,12 @@ function Edit({
             label: "Disabled"
           })]
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
-          value: mobile_reversed,
+          value: mobileReversed,
           isBlock: true,
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
           onChange: value => setAttributes({
-            mobile_reversed: value
+            mobileReversed: value
           }),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
@@ -667,12 +667,12 @@ function Edit({
             label: "Disabled"
           })]
         }) : layout == "tablet" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
-          value: tablet_stacked,
+          value: tabletStacked,
           isBlock: true,
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
           onChange: value => setAttributes({
-            tablet_stacked: value
+            tabletStacked: value
           }),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
@@ -684,12 +684,12 @@ function Edit({
             label: "Disabled"
           })]
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControl, {
-          value: mobile_stacked,
+          value: mobileStacked,
           isBlock: true,
           __nextHasNoMarginBottom: true,
           __next40pxDefaultSize: true,
           onChange: value => setAttributes({
-            mobile_stacked: value
+            mobileStacked: value
           }),
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalToggleGroupControlOption, {
             isAdaptiveWidth: true,
@@ -755,6 +755,7 @@ function Edit({
             hideLayoutButton: true
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
+          asButtons: true,
           clearable: true,
           width: "100%",
           value: svgColor,

@@ -57,11 +57,11 @@
       "type": "boolean",
       "default": false
     },
-    "tablet_reversed": {
+    "tabletReversed": {
       "type": "boolean",
       "default": false
     },
-    "mobile_reversed": {
+    "mobileReversed": {
       "type": "boolean",
       "default": false
     },
@@ -69,11 +69,11 @@
       "type": "boolean",
       "default": false
     },
-    "tablet_stacked": {
+    "tabletStacked": {
       "type": "boolean",
       "default": false
     },
-    "mobile_stacked": {
+    "mobileStacked": {
       "type": "boolean",
       "default": false
     },
@@ -81,11 +81,11 @@
       "type": "number",
       "default": 15
     },
-    "tablet_gap": {
+    "tabletGap": {
       "type": "number",
       "default": 15
     },
-    "mobile_gap": {
+    "mobileGap": {
       "type": "number",
       "default": 15
     },

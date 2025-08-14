@@ -366,11 +366,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_reversed' => array(
+			'tabletReversed' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_reversed' => array(
+			'mobileReversed' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
@@ -378,11 +378,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_stacked' => array(
+			'tabletStacked' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_stacked' => array(
+			'mobileStacked' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
@@ -390,11 +390,11 @@ return array(
 				'type' => 'number',
 				'default' => 15
 			),
-			'tablet_gap' => array(
+			'tabletGap' => array(
 				'type' => 'number',
 				'default' => 15
 			),
-			'mobile_gap' => array(
+			'mobileGap' => array(
 				'type' => 'number',
 				'default' => 15
 			),

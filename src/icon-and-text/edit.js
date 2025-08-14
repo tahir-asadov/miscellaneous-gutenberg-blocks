@@ -13,7 +13,6 @@ import {
 	TextControl,
 	PanelRow,
 	PanelBody,
-	ColorPicker,
 	RangeControl,
 	ColorPalette,
 } from "@wordpress/components";
@@ -67,14 +66,14 @@ export default function Edit({
 		imageContent,
 		text,
 		reversed,
-		tablet_reversed,
-		mobile_reversed,
+		tabletReversed,
+		mobileReversed,
 		stacked,
-		tablet_stacked,
-		mobile_stacked,
+		tabletStacked,
+		mobileStacked,
 		gap,
-		tablet_gap,
-		mobile_gap,
+		tabletGap,
+		mobileGap,
 		imageWidth,
 		svgColor,
 	},
@@ -129,12 +128,12 @@ export default function Edit({
 			"miscellaneous-gutenberg-blocks-icon-and-text--is-reversed",
 		);
 	}
-	if (tablet_reversed) {
+	if (tabletReversed) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-icon-and-text--tablet-is-reversed",
 		);
 	}
-	if (mobile_reversed) {
+	if (mobileReversed) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-icon-and-text--mobile-is-reversed",
 		);
@@ -142,12 +141,12 @@ export default function Edit({
 	if (stacked) {
 		classNames.push("miscellaneous-gutenberg-blocks-icon-and-text--is-stacked");
 	}
-	if (tablet_stacked) {
+	if (tabletStacked) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-icon-and-text--tablet-is-stacked",
 		);
 	}
-	if (mobile_stacked) {
+	if (mobileStacked) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-icon-and-text--mobile-is-stacked",
 		);
@@ -156,11 +155,7 @@ export default function Edit({
 		className: classNames.join(" "),
 		style: {
 			gap:
-				layout == "desktop"
-					? gap
-					: layout == "tablet"
-					? tablet_gap
-					: mobile_gap,
+				layout == "desktop" ? gap : layout == "tablet" ? tabletGap : mobileGap,
 		},
 	});
 	console.log("stacked", stacked);
@@ -257,11 +252,11 @@ export default function Edit({
 						<RangeControl
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							value={tablet_gap}
+							value={tabletGap}
 							label={null}
 							onChange={(value) =>
 								setAttributes({
-									tablet_gap: value,
+									tabletGap: value,
 								})
 							}
 							min={0}
@@ -271,11 +266,11 @@ export default function Edit({
 						<RangeControl
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							value={mobile_gap}
+							value={mobileGap}
 							label={null}
 							onChange={(value) =>
 								setAttributes({
-									mobile_gap: value,
+									mobileGap: value,
 								})
 							}
 							min={0}
@@ -317,11 +312,11 @@ export default function Edit({
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_reversed}
+							value={tabletReversed}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_reversed: value })}
+							onChange={(value) => setAttributes({ tabletReversed: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -336,11 +331,11 @@ export default function Edit({
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_reversed}
+							value={mobileReversed}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_reversed: value })}
+							onChange={(value) => setAttributes({ mobileReversed: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -389,11 +384,11 @@ export default function Edit({
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_stacked}
+							value={tabletStacked}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_stacked: value })}
+							onChange={(value) => setAttributes({ tabletStacked: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -408,11 +403,11 @@ export default function Edit({
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_stacked}
+							value={mobileStacked}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_stacked: value })}
+							onChange={(value) => setAttributes({ mobileStacked: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -483,6 +478,7 @@ export default function Edit({
 						<InspectorLabel title="SVG color" hideLayoutButton={true} />
 					</div>
 					<ColorPalette
+						asButtons={true}
 						clearable={true}
 						width="100%"
 						value={svgColor}
