@@ -22,15 +22,24 @@
 		&.miscellaneous-gutenberg-blocks-icon-and-text--right {
 		}
 	}
-	&.miscellaneous-gutenberg-blocks-icon-and-text--single-child {
-		.miscellaneous-gutenberg-blocks-icon-and-text--right {
-			display: flex;
-			> div {
-				display: flex;
-				width: 100%;
-			}
-		}
+	&.has-text-align-left {
+		justify-content: flex-start;
 	}
+	&.has-text-align-right {
+		justify-content: flex-end;
+	}
+	&.has-text-align-center {
+		justify-content: center;
+	}
+	// &.miscellaneous-gutenberg-blocks-icon-and-text--single-child {
+	// 	.miscellaneous-gutenberg-blocks-icon-and-text--right {
+	// 		display: flex;
+	// 		> div {
+	// 			display: flex;
+	// 			width: 100%;
+	// 		}
+	// 	}
+	// }
 	@media only screen and (min-width: 993px) {
 		&.miscellaneous-gutenberg-blocks-icon-and-text--is-stacked {
 			flex-direction: column;

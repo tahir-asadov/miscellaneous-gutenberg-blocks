@@ -24,12 +24,14 @@
   margin: 0;
   width: 100%;
 }
-.wp-block-miscellaneous-gutenberg-blocks-icon-and-text.miscellaneous-gutenberg-blocks-icon-and-text--single-child .miscellaneous-gutenberg-blocks-icon-and-text--right {
-  display: flex;
+.wp-block-miscellaneous-gutenberg-blocks-icon-and-text.has-text-align-left {
+  justify-content: flex-start;
 }
-.wp-block-miscellaneous-gutenberg-blocks-icon-and-text.miscellaneous-gutenberg-blocks-icon-and-text--single-child .miscellaneous-gutenberg-blocks-icon-and-text--right > div {
-  display: flex;
-  width: 100%;
+.wp-block-miscellaneous-gutenberg-blocks-icon-and-text.has-text-align-right {
+  justify-content: flex-end;
+}
+.wp-block-miscellaneous-gutenberg-blocks-icon-and-text.has-text-align-center {
+  justify-content: center;
 }
 @media only screen and (min-width: 993px) {
   .wp-block-miscellaneous-gutenberg-blocks-icon-and-text.miscellaneous-gutenberg-blocks-icon-and-text--is-stacked {
