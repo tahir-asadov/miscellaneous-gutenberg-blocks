@@ -83,7 +83,14 @@ export default function Edit({
 			previousDeviceType = newDeviceType;
 		}
 	});
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
+	// const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
+
+	let __experimentalSetPreviewDeviceType = (device) => {};
+	const siteEditor = useDispatch("core/edit-site");
+	if (siteEditor) {
+		__experimentalSetPreviewDeviceType =
+			siteEditor.__experimentalSetPreviewDeviceType;
+	}
 	const innerBlockCount = useSelect(
 		(select) => select("core/block-editor").getBlocks(clientId).length,
 		[clientId],

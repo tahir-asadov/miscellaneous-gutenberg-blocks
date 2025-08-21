@@ -725,7 +725,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import * as vp from "@wordpress/viewport";
-// console.log(vp);
  // For the plus icon
 /**
  * React hook that is used to mark the block wrapper element.
@@ -746,6 +745,13 @@ __webpack_require__.r(__webpack_exports__);
 
 // import { InspectorLabel } from "../libs/global";
 
+
+
+// if (store.hasStore("core/edit-site")) {
+// 	console.log("has edit site");
+// } else {
+// 	console.log("dont have edit site");
+// }
 
 
 
@@ -814,10 +820,14 @@ function Edit(props) {
       previousDeviceType = newDeviceType;
     }
   });
+  const isSiteEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(select => select("core/edit-site") !== null, []);
+  console.log("isSiteEditor", isSiteEditor);
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
-  const {
-    __experimentalSetPreviewDeviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)("core/edit-site");
+  let __experimentalSetPreviewDeviceType = device => {};
+  const siteEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)("core/edit-site");
+  if (siteEditor) {
+    __experimentalSetPreviewDeviceType = siteEditor.__experimentalSetPreviewDeviceType;
+  }
   const alignItemsStartIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
     width: 17
   });

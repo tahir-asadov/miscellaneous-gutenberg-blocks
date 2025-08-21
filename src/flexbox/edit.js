@@ -7,7 +7,6 @@ import { __ } from "@wordpress/i18n";
 import { select, subscribe } from "@wordpress/data";
 
 // import * as vp from "@wordpress/viewport";
-// console.log(vp);
 import {
 	PanelBody,
 	RangeControl,
@@ -54,7 +53,14 @@ import "./editor.scss";
 import { useState } from "react";
 // import { InspectorLabel } from "../libs/global";
 
-import { useDispatch } from "@wordpress/data";
+import { useDispatch, useSelect } from "@wordpress/data";
+
+// if (store.hasStore("core/edit-site")) {
+// 	console.log("has edit site");
+// } else {
+// 	console.log("dont have edit site");
+// }
+
 import { InspectorLabel } from "../libs/components/inspector-label";
 import { gapUnits } from "../libs/global";
 /**
@@ -124,8 +130,19 @@ export default function Edit(props) {
 		}
 	});
 
+	const isSiteEditor = useSelect(
+		(select) => select("core/edit-site") !== null,
+		[],
+	);
+	console.log("isSiteEditor", isSiteEditor);
+
 	const [layout, setLayout] = useState("desktop");
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
+	let __experimentalSetPreviewDeviceType = (device) => {};
+	const siteEditor = useDispatch("core/edit-site");
+	if (siteEditor) {
+		__experimentalSetPreviewDeviceType =
+			siteEditor.__experimentalSetPreviewDeviceType;
+	}
 	const alignItemsStartIcon = <AlignVerticalJustifyStart width={17} />;
 	const alignItemsEndIcon = <AlignVerticalJustifyEnd width={17} />;
 	const alignItemsCenterIcon = <AlignVerticalJustifyCenter width={17} />;

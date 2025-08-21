@@ -85,14 +85,11 @@ export default function Edit({
 	const [color, setColor] = useState("#111");
 	useEffect(() => {
 		if (imageUrl && imageUrl.endsWith(".svg")) {
-			console.log("imageUrl", imageUrl);
-
 			fetch(imageUrl)
 				.then((response) => response.text())
 				.then((svgText) => {
 					setSvgContent(svgText);
 					setAttributes({ imageContent: svgText });
-					console.log("svgText", svgText);
 				})
 				.catch((error) => {
 					console.error("Error fetching SVG:", error);
@@ -110,7 +107,13 @@ export default function Edit({
 			previousDeviceType = newDeviceType;
 		}
 	});
-	const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
+
+	let __experimentalSetPreviewDeviceType = (device) => {};
+	const siteEditor = useDispatch("core/edit-site");
+	if (siteEditor) {
+		__experimentalSetPreviewDeviceType =
+			siteEditor.__experimentalSetPreviewDeviceType;
+	}
 	const innerBlockCount = useSelect(
 		(select) => select("core/block-editor").getBlocks(clientId).length,
 		[clientId],
@@ -158,7 +161,6 @@ export default function Edit({
 				layout == "desktop" ? gap : layout == "tablet" ? tabletGap : mobileGap,
 		},
 	});
-	console.log("stacked", stacked);
 
 	const onImageSelect = (media) => {
 		if (!media || !media.url) {

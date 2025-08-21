@@ -422,13 +422,11 @@ function Edit({
   const [color, setColor] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("#111");
   (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(() => {
     if (imageUrl && imageUrl.endsWith(".svg")) {
-      console.log("imageUrl", imageUrl);
       fetch(imageUrl).then(response => response.text()).then(svgText => {
         setSvgContent(svgText);
         setAttributes({
           imageContent: svgText
         });
-        console.log("svgText", svgText);
       }).catch(error => {
         console.error("Error fetching SVG:", error);
       });
@@ -444,9 +442,11 @@ function Edit({
       previousDeviceType = newDeviceType;
     }
   });
-  const {
-    __experimentalSetPreviewDeviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)("core/edit-site");
+  let __experimentalSetPreviewDeviceType = device => {};
+  const siteEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)("core/edit-site");
+  if (siteEditor) {
+    __experimentalSetPreviewDeviceType = siteEditor.__experimentalSetPreviewDeviceType;
+  }
   const innerBlockCount = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useSelect)(select => select("core/block-editor").getBlocks(clientId).length, [clientId]);
   const classNames = [];
   if (innerBlockCount == 1) {
@@ -476,7 +476,6 @@ function Edit({
       gap: layout == "desktop" ? gap : layout == "tablet" ? tabletGap : mobileGap
     }
   });
-  console.log("stacked", stacked);
   const onImageSelect = media => {
     if (!media || !media.url) {
       setAttributes({
