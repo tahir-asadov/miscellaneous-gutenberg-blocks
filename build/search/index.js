@@ -8,7 +8,7 @@
   \*******************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/search","version":"0.1.0","title":"Search","category":"miscellaneous-gutenberg-blocks","icon":"search","description":"Search using post category.","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"disable_css":{"type":"boolean","default":false},"show_category":{"type":"boolean","default":false},"show_search_icon":{"type":"boolean","default":true},"button_inside":{"type":"boolean","default":true},"search_placeholder":{"type":"string","default":""},"button_text":{"type":"string","default":""},"category_text":{"type":"string","default":""}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/search","version":"0.1.0","title":"Search","category":"miscellaneous-gutenberg-blocks","icon":"search","description":"Search using post category.","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"disable_css":{"type":"boolean","default":false},"show_category":{"type":"boolean","default":false},"show_search_icon":{"type":"boolean","default":true},"button_inside":{"type":"boolean","default":true},"search_placeholder":{"type":"string","default":""},"button_text":{"type":"string","default":""},"category_text":{"type":"string","default":""},"height":{"type":"number","default":40}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -81,8 +81,12 @@ function Edit({
     classNames.push("show-category");
   }
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
-    className: classNames.join(" ")
+    className: classNames.join(" "),
+    style: {
+      height: `${attributes.height}px`
+    }
   });
+  console.log("blockProps", blockProps);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
@@ -156,6 +160,16 @@ function Edit({
           onChange: value => setAttributes({
             button_text: value
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          value: attributes.height,
+          label: null,
+          onChange: value => setAttributes({
+            height: value
+          }),
+          min: 0,
+          max: 100
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {

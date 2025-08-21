@@ -505,9 +505,13 @@ function Edit({
       previousDeviceType = newDeviceType;
     }
   });
-  const {
-    __experimentalSetPreviewDeviceType
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)("core/edit-site");
+  // const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
+
+  let __experimentalSetPreviewDeviceType = device => {};
+  const siteEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useDispatch)("core/edit-site");
+  if (siteEditor) {
+    __experimentalSetPreviewDeviceType = siteEditor.__experimentalSetPreviewDeviceType;
+  }
   const innerBlockCount = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_6__.useSelect)(select => select("core/block-editor").getBlocks(clientId).length, [clientId]);
   const classNames = [];
   if (innerBlockCount == 1) {

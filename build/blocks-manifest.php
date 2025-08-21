@@ -586,6 +586,10 @@ return array(
 			'category_text' => array(
 				'type' => 'string',
 				'default' => ''
+			),
+			'height' => array(
+				'type' => 'number',
+				'default' => 40
 			)
 		),
 		'textdomain' => 'miscellaneous-gutenberg-blocks',

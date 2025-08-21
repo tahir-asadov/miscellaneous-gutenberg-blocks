@@ -56,6 +56,10 @@
     "category_text": {
       "type": "string",
       "default": ""
+    },
+    "height": {
+      "type": "number",
+      "default": 40
     }
   },
   "textdomain": "miscellaneous-gutenberg-blocks",

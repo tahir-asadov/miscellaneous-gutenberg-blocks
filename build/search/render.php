@@ -5,6 +5,7 @@ $disable_css = !empty($attributes['disable_css']) && $attributes['disable_css'] 
 $search_placeholder = !empty($attributes['search_placeholder']) ? $attributes['search_placeholder'] : '';
 $category_text = !empty($attributes['category_text']) ? $attributes['category_text'] : '';
 $button_text = !empty($attributes['button_text']) ? $attributes['button_text'] : '';
+$height = !empty($attributes['height']) ? $attributes['height'] : '0';
 
 $classes = [];
 if (!$disable_css) {
@@ -16,12 +17,13 @@ if ($show_search_icon) {
 if ($show_category) {
   $classes[] = 'show-category';
 }
-$additional_classes['class'] = join(' ', $classes);
+$additional_attributes['class'] = join(' ', $classes);
+$additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
 $categories = get_categories();
 ?>
 <div>
   <form>
-    <div <?php echo get_block_wrapper_attributes($additional_classes); ?>>
+    <div <?php echo get_block_wrapper_attributes($additional_attributes); ?>>
       <?php if ($show_category && !empty($categories)) { ?>
         <select name="cat" class="search-category">
           <?php if ($category_text != '') { ?>
@@ -37,3 +39,8 @@ $categories = get_categories();
     </div>
   </form>
 </div>
+<style>
+  #<?php echo $additional_attributes['id']; ?> {
+    <?php echo "height: {$height}px;" ?>
+  }
+</style>

@@ -31,7 +31,6 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  height: 56px;
   background: transparent;
   border-radius: 56px;
   overflow: hidden;
@@ -52,7 +51,7 @@
   color: inherit;
 }
 .wp-block-miscellaneous-gutenberg-blocks-search.has-style select.search-category {
-  padding: 8px 25px 8px 25px;
+  padding: 0 25px 0 25px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -73,7 +72,8 @@
   justify-content: center;
   flex-shrink: 0;
   border-radius: 56px;
-  padding: 8px 25px 8px 25px;
+  padding: 0 25px 0 25px;
+  height: 100%;
 }
 .wp-block-miscellaneous-gutenberg-blocks-search.has-style button[type=submit].search-button svg {
   color: #333;

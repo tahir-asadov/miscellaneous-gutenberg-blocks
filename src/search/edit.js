@@ -5,6 +5,7 @@ import {
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 	PanelBody,
 	TextControl,
+	RangeControl,
 } from "@wordpress/components";
 
 /**
@@ -52,7 +53,10 @@ export default function Edit({ attributes, setAttributes }) {
 	}
 	const blockProps = useBlockProps({
 		className: classNames.join(" "),
+		style: { height: `${attributes.height}px` },
 	});
+	console.log("blockProps", blockProps);
+
 	return (
 		<>
 			<InspectorControls>
@@ -125,6 +129,19 @@ export default function Edit({ attributes, setAttributes }) {
 						label={__("Button text", "miscellaneous-gutenberg-blocks")}
 						value={attributes.button_text}
 						onChange={(value) => setAttributes({ button_text: value })}
+					/>
+					<RangeControl
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
+						value={attributes.height}
+						label={null}
+						onChange={(value) =>
+							setAttributes({
+								height: value,
+							})
+						}
+						min={0}
+						max={100}
 					/>
 				</PanelBody>
 			</InspectorControls>
