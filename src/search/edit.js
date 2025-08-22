@@ -55,7 +55,6 @@ export default function Edit({ attributes, setAttributes }) {
 		className: classNames.join(" "),
 		style: { height: `${attributes.height}px` },
 	});
-	console.log("blockProps", blockProps);
 
 	return (
 		<>

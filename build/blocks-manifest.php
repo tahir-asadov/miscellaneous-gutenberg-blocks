@@ -95,6 +95,64 @@ return array(
 		'render' => 'file:./render.php',
 		'style' => 'file:./style-index.css'
 	),
+	'categories' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'miscellaneous-gutenberg-blocks/categories',
+		'version' => '0.1.0',
+		'title' => 'Categories',
+		'category' => 'miscellaneous-gutenberg-blocks',
+		'icon' => 'search',
+		'description' => 'Categories list.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'textAlign' => true
+			),
+			'background' => array(
+				'backgroundSize' => true
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true,
+				'blockGap' => true
+			)
+		),
+		'attributes' => array(
+			'categories' => array(
+				'type' => 'array',
+				'default' => array(
+					array(
+						'id' => 1,
+						'name' => 'One'
+					),
+					array(
+						'id' => 2,
+						'name' => 'Two'
+					),
+					array(
+						'id' => 3,
+						'name' => 'Three'
+					)
+				)
+			)
+		),
+		'textdomain' => 'miscellaneous-gutenberg-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
 	'flexbox' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,

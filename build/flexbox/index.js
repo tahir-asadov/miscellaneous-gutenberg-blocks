@@ -747,13 +747,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// if (store.hasStore("core/edit-site")) {
-// 	console.log("has edit site");
-// } else {
-// 	console.log("dont have edit site");
-// }
-
-
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -821,7 +814,6 @@ function Edit(props) {
     }
   });
   const isSiteEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(select => select("core/edit-site") !== null, []);
-  console.log("isSiteEditor", isSiteEditor);
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
   let __experimentalSetPreviewDeviceType = device => {};
   const siteEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)("core/edit-site");

@@ -55,12 +55,6 @@ import { useState } from "react";
 
 import { useDispatch, useSelect } from "@wordpress/data";
 
-// if (store.hasStore("core/edit-site")) {
-// 	console.log("has edit site");
-// } else {
-// 	console.log("dont have edit site");
-// }
-
 import { InspectorLabel } from "../libs/components/inspector-label";
 import { gapUnits } from "../libs/global";
 /**
@@ -134,7 +128,6 @@ export default function Edit(props) {
 		(select) => select("core/edit-site") !== null,
 		[],
 	);
-	console.log("isSiteEditor", isSiteEditor);
 
 	const [layout, setLayout] = useState("desktop");
 	let __experimentalSetPreviewDeviceType = (device) => {};
