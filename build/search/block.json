@@ -29,31 +29,27 @@
     }
   },
   "attributes": {
-    "disable_css": {
+    "disableCSS": {
       "type": "boolean",
       "default": false
     },
-    "show_category": {
+    "showCategory": {
       "type": "boolean",
       "default": false
     },
-    "show_search_icon": {
+    "showSearchIcon": {
       "type": "boolean",
       "default": true
     },
-    "button_inside": {
-      "type": "boolean",
-      "default": true
-    },
-    "search_placeholder": {
+    "searchPlaceholder": {
       "type": "string",
       "default": ""
     },
-    "button_text": {
+    "buttonText": {
       "type": "string",
       "default": ""
     },
-    "category_text": {
+    "categoryText": {
       "type": "string",
       "default": ""
     },
@@ -66,6 +62,5 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "render": "file:./render.php",
-  "viewScript": "file:./view.js"
+  "render": "file:./render.php"
 }

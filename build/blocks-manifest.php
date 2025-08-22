@@ -617,31 +617,27 @@ return array(
 			)
 		),
 		'attributes' => array(
-			'disable_css' => array(
+			'disableCSS' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'show_category' => array(
+			'showCategory' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'show_search_icon' => array(
+			'showSearchIcon' => array(
 				'type' => 'boolean',
 				'default' => true
 			),
-			'button_inside' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'search_placeholder' => array(
+			'searchPlaceholder' => array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'button_text' => array(
+			'buttonText' => array(
 				'type' => 'string',
 				'default' => ''
 			),
-			'category_text' => array(
+			'categoryText' => array(
 				'type' => 'string',
 				'default' => ''
 			),
@@ -654,7 +650,6 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'render' => 'file:./render.php',
-		'viewScript' => 'file:./view.js'
+		'render' => 'file:./render.php'
 	)
 );
