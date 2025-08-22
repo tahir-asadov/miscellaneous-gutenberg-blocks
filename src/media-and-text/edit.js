@@ -1,7 +1,14 @@
+/**
+ * WordPress dependencies
+ */
+import { useDispatch, useSelect, subscribe, select } from "@wordpress/data";
 import {
 	InnerBlocks,
 	BlockControls,
 	InspectorControls,
+	useBlockProps,
+	MediaUpload,
+	MediaUploadCheck,
 } from "@wordpress/block-editor";
 import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
@@ -13,77 +20,52 @@ import {
 	PanelBody,
 	RangeControl,
 } from "@wordpress/components";
-
-import { InspectorLabel } from "../libs/components/inspector-label";
-import { ArrowRightLeft } from "lucide-react";
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
 import { __ } from "@wordpress/i18n";
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import {
-	useBlockProps,
-	MediaUpload,
-	MediaUploadCheck,
-} from "@wordpress/block-editor";
+import "./editor.scss";
 
 /**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ * External dependencies
  */
-import "./editor.scss";
+import { ArrowRightLeft } from "lucide-react";
 import { useState } from "react";
 
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
+ * Internal dependencies
  */
+import { InspectorLabel } from "../libs/components/inspector-label";
 
-import { useDispatch, useSelect, subscribe, select } from "@wordpress/data";
-
+/**
+ * Block edit function
+ */
 export default function Edit({
 	attributes: {
 		imageId,
 		imageUrl,
 		imageName,
 		reversed,
-		tablet_reversed,
-		mobile_reversed,
+		tabletReversed,
+		mobileReversed,
 		stacked,
-		tablet_stacked,
-		mobile_stacked,
+		tabletStacked,
+		mobileStacked,
 		gap,
-		tablet_gap,
-		mobile_gap,
+		tabletGap,
+		mobileGap,
 	},
 	setAttributes,
 	clientId,
 }) {
 	const [layout, setLayout] = useState("desktop");
-	let previousDeviceType = select("core/editor").getDeviceType();
-	subscribe(() => {
-		const newDeviceType = select("core/editor").getDeviceType();
+	// let previousDeviceType = select("core/editor").getDeviceType();
+	// subscribe(() => {
+	// 	const newDeviceType = select("core/editor").getDeviceType();
 
-		if (newDeviceType !== previousDeviceType) {
-			setLayout(newDeviceType?.toLowerCase());
-			previousDeviceType = newDeviceType;
-		}
-	});
-	// const { __experimentalSetPreviewDeviceType } = useDispatch("core/edit-site");
+	// 	if (newDeviceType !== previousDeviceType) {
+	// 		setLayout(newDeviceType?.toLowerCase());
+	// 		previousDeviceType = newDeviceType;
+	// 	}
+	// });
 
 	let __experimentalSetPreviewDeviceType = (device) => {};
 	const siteEditor = useDispatch("core/edit-site");
@@ -108,12 +90,12 @@ export default function Edit({
 			"miscellaneous-gutenberg-blocks-media-and-text--is-reversed",
 		);
 	}
-	if (tablet_reversed) {
+	if (tabletReversed) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-media-and-text--tablet-is-reversed",
 		);
 	}
-	if (mobile_reversed) {
+	if (mobileReversed) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-media-and-text--mobile-is-reversed",
 		);
@@ -123,12 +105,12 @@ export default function Edit({
 			"miscellaneous-gutenberg-blocks-media-and-text--is-stacked",
 		);
 	}
-	if (tablet_stacked) {
+	if (tabletStacked) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-media-and-text--tablet-is-stacked",
 		);
 	}
-	if (mobile_stacked) {
+	if (mobileStacked) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-media-and-text--mobile-is-stacked",
 		);
@@ -137,11 +119,7 @@ export default function Edit({
 		className: classNames.join(" "),
 		style: {
 			gap:
-				layout == "desktop"
-					? gap
-					: layout == "tablet"
-					? tablet_gap
-					: mobile_gap,
+				layout == "desktop" ? gap : layout == "tablet" ? tabletGap : mobileGap,
 		},
 	});
 
@@ -167,7 +145,7 @@ export default function Edit({
 			<BlockControls>
 				<ToolbarGroup>
 					<ToolbarButton
-						label="Reverse"
+						label={__("Reverse", "miscellaneous-gutenberg-blocks")}
 						icon={ArrowRightLeftIcon}
 						isPressed={reversed}
 						onClick={() => {
@@ -179,7 +157,7 @@ export default function Edit({
 			<InspectorControls>
 				<PanelBody title="Settings">
 					<InspectorLabel
-						title="Gap"
+						title={__("Gap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -210,11 +188,11 @@ export default function Edit({
 						<RangeControl
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							value={tablet_gap}
+							value={tabletGap}
 							label={null}
 							onChange={(value) =>
 								setAttributes({
-									tablet_gap: value,
+									tabletGap: value,
 								})
 							}
 							min={0}
@@ -224,11 +202,11 @@ export default function Edit({
 						<RangeControl
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							value={mobile_gap}
+							value={mobileGap}
 							label={null}
 							onChange={(value) =>
 								setAttributes({
-									mobile_gap: value,
+									mobileGap: value,
 								})
 							}
 							min={0}
@@ -236,7 +214,7 @@ export default function Edit({
 						/>
 					)}
 					<InspectorLabel
-						title="Reverse"
+						title={__("Reverse", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -260,55 +238,55 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_reversed}
+							value={tabletReversed}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_reversed: value })}
+							onChange={(value) => setAttributes({ tabletReversed: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_reversed}
+							value={mobileReversed}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_reversed: value })}
+							onChange={(value) => setAttributes({ mobileReversed: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Stacked"
+						title={__("Stacked", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -332,50 +310,50 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_stacked}
+							value={tabletStacked}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_stacked: value })}
+							onChange={(value) => setAttributes({ tabletStacked: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_stacked}
+							value={mobileStacked}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_stacked: value })}
+							onChange={(value) => setAttributes({ mobileStacked: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
@@ -408,7 +386,7 @@ export default function Edit({
 										</div>
 									</>
 								) : (
-									<Button isPrimary onClick={open}>
+									<Button variant="primary" onClick={open}>
 										{__(
 											"Upload or Select Image",
 											"miscellaneous-gutenberg-blocks",

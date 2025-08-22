@@ -464,7 +464,7 @@ export default function Edit({
 												width: "100%",
 											}}
 										>
-											<Button isPrimary onClick={open}>
+											<Button variant="primary" onClick={open}>
 												{__(
 													"Upload or Select Image",
 													"miscellaneous-gutenberg-blocks",

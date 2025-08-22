@@ -9,10 +9,8 @@ import {
 	TextControl,
 	RangeControl,
 } from "@wordpress/components";
-import { InspectorControls } from "@wordpress/block-editor";
+import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
-import { useBlockProps } from "@wordpress/block-editor";
-
 import "./editor.scss";
 
 /**

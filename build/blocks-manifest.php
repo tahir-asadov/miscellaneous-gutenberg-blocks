@@ -516,11 +516,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_reversed' => array(
+			'tabletReversed' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_reversed' => array(
+			'mobileReversed' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
@@ -528,11 +528,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_stacked' => array(
+			'tabletStacked' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_stacked' => array(
+			'mobileStacked' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
@@ -540,49 +540,20 @@ return array(
 				'type' => 'number',
 				'default' => 15
 			),
-			'tablet_gap' => array(
+			'tabletGap' => array(
 				'type' => 'number',
 				'default' => 15
 			),
-			'mobile_gap' => array(
+			'mobileGap' => array(
 				'type' => 'number',
 				'default' => 15
-			),
-			'disable_css' => array(
-				'type' => 'boolean',
-				'default' => false
-			),
-			'show_category' => array(
-				'type' => 'boolean',
-				'default' => false
-			),
-			'show_search_icon' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'button_inside' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'search_placeholder' => array(
-				'type' => 'string',
-				'default' => ''
-			),
-			'button_text' => array(
-				'type' => 'string',
-				'default' => ''
-			),
-			'category_text' => array(
-				'type' => 'string',
-				'default' => ''
 			)
 		),
 		'textdomain' => 'miscellaneous-gutenberg-blocks',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'render' => 'file:./render.php',
-		'viewScript' => 'file:./view.js'
+		'render' => 'file:./render.php'
 	),
 	'search' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
