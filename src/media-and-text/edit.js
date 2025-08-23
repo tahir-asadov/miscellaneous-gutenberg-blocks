@@ -155,7 +155,7 @@ export default function Edit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title="Settings">
+				<PanelBody title={__("Settings", "miscellaneous-gutenberg-blocks")}>
 					<InspectorLabel
 						title={__("Gap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}

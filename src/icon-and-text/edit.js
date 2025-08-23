@@ -165,7 +165,7 @@ export default function Edit({
 			<BlockControls>
 				<ToolbarGroup>
 					<ToolbarButton
-						label="Reverse"
+						label={__("Reverse", "miscellaneous-gutenberg-blocks")}
 						icon={ArrowRightLeftIcon}
 						isPressed={reversed}
 						onClick={() => {
@@ -177,7 +177,10 @@ export default function Edit({
 			<InspectorControls>
 				<PanelBody title={__("Settings", "miscellaneous-gutenberg-blocks")}>
 					<div style={{ marginTop: "10px", marginBottom: "10px" }}>
-						<InspectorLabel title="Image width" hideLayoutButton={true} />
+						<InspectorLabel
+							title={__("Image width", "miscellaneous-gutenberg-blocks")}
+							hideLayoutButton={true}
+						/>
 					</div>
 					<RangeControl
 						__nextHasNoMarginBottom

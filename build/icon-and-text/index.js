@@ -490,7 +490,7 @@ function Edit({
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarGroup, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToolbarButton, {
-          label: "Reverse",
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Reverse", "miscellaneous-gutenberg-blocks"),
           icon: ArrowRightLeftIcon,
           isPressed: reversed,
           onClick: () => {
@@ -509,7 +509,7 @@ function Edit({
             marginBottom: "10px"
           },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_libs_components_inspector_label__WEBPACK_IMPORTED_MODULE_6__.InspectorLabel, {
-            title: "Image width",
+            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image width", "miscellaneous-gutenberg-blocks"),
             hideLayoutButton: true
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {

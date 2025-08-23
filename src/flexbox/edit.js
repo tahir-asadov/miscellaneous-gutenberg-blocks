@@ -229,9 +229,9 @@ export default function Edit(props) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title="Settings">
+				<PanelBody title={__("Settings", "miscellaneous-gutenberg-blocks")}>
 					<InspectorLabel
-						title="Width"
+						title={__("Width", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -361,7 +361,7 @@ export default function Edit(props) {
 						</div>
 					)}
 					<InspectorLabel
-						title="Wrap"
+						title={__("Wrap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -385,12 +385,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Wrap"
+								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="No Wrap"
+								label={__("No Wrap", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -404,12 +404,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Wrap"
+								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="No Wrap"
+								label={__("No Wrap", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -423,17 +423,17 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Wrap"
+								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="No Wrap"
+								label={__("No Wrap", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Direction"
+						title={__("Direction", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -457,12 +457,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Horizontal"
+								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Vertical"
+								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -476,12 +476,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Horizontal"
+								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Vertical"
+								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -495,17 +495,17 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Horizontal"
+								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Vertical"
+								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Reverse"
+						title={__("Reverse", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -529,12 +529,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -548,12 +548,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -567,18 +567,18 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 
 					<InspectorLabel
-						title="Column Gap"
+						title={__("Column Gap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -711,7 +711,7 @@ export default function Edit(props) {
 						</div>
 					)}
 					<InspectorLabel
-						title="Row Gap"
+						title={__("Row Gap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -843,7 +843,7 @@ export default function Edit(props) {
 						</div>
 					)}
 					<InspectorLabel
-						title="Justify Content"
+						title={__("Justify Content", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -867,27 +867,27 @@ export default function Edit(props) {
 							<ToggleGroupControlOptionIcon
 								icon={AlignStartVerticalIcon}
 								value="flex-start"
-								label="Flex start"
+								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignEndVerticalIcon}
 								value="flex-end"
-								label="Flex end"
+								label={__("Flex end", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalJustifyCenterIcon}
 								value="center"
-								label="Center"
+								label={__("Center", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceBetweenIcon}
 								value="space-between"
-								label="Space Between"
+								label={__("Space Between", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceAroundIcon}
 								value="space-around"
-								label="Space Around"
+								label={__("Space Around", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -903,27 +903,27 @@ export default function Edit(props) {
 							<ToggleGroupControlOptionIcon
 								icon={AlignStartVerticalIcon}
 								value="flex-start"
-								label="Flex start"
+								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignEndVerticalIcon}
 								value="flex-end"
-								label="Flex end"
+								label={__("Flex end", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalJustifyCenterIcon}
 								value="center"
-								label="Center"
+								label={__("Center", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceBetweenIcon}
 								value="space-between"
-								label="Space Between"
+								label={__("Space Between", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceAroundIcon}
 								value="space-around"
-								label="Space Around"
+								label={__("Space Around", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -939,32 +939,32 @@ export default function Edit(props) {
 							<ToggleGroupControlOptionIcon
 								icon={AlignStartVerticalIcon}
 								value="flex-start"
-								label="Flex start"
+								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignEndVerticalIcon}
 								value="flex-end"
-								label="Flex end"
+								label={__("Flex end", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalJustifyCenterIcon}
 								value="center"
-								label="Center"
+								label={__("Center", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceBetweenIcon}
 								value="space-between"
-								label="Space Between"
+								label={__("Space Between", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignHorizontalSpaceAroundIcon}
 								value="space-around"
-								label="Space Around"
+								label={__("Space Around", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Align items"
+						title={__("Align items", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -989,32 +989,32 @@ export default function Edit(props) {
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
 								value="flex-start"
-								label="Flex start"
+								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsEndIcon}
 								value="flex-end"
-								label="Flex end"
+								label={__("Flex end", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsCenterIcon}
 								value="center"
-								label="Center"
+								label={__("Center", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsBaselineIcon}
 								value="baseline"
-								label="Baseline"
+								label={__("Baseline", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStretchIcon}
 								value="stretch"
-								label="Stretch"
+								label={__("Stretch", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsNoneIcon}
 								value="none"
-								label="None"
+								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -1028,32 +1028,32 @@ export default function Edit(props) {
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
 								value="flex-start"
-								label="Flex start"
+								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsEndIcon}
 								value="flex-end"
-								label="Flex end"
+								label={__("Flex end", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsCenterIcon}
 								value="center"
-								label="Center"
+								label={__("Center", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsBaselineIcon}
 								value="baseline"
-								label="Baseline"
+								label={__("Baseline", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStretchIcon}
 								value="stretch"
-								label="Stretch"
+								label={__("Stretch", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsNoneIcon}
 								value="none"
-								label="None"
+								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -1067,37 +1067,37 @@ export default function Edit(props) {
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
 								value="flex-start"
-								label="Flex start"
+								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsEndIcon}
 								value="flex-end"
-								label="Flex end"
+								label={__("Flex end", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsCenterIcon}
 								value="center"
-								label="Center"
+								label={__("Center", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsBaselineIcon}
 								value="baseline"
-								label="Baseline"
+								label={__("Baseline", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStretchIcon}
 								value="stretch"
-								label="Stretch"
+								label={__("Stretch", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsNoneIcon}
 								value="none"
-								label="None"
+								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Grow"
+						title={__("Grow", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -1121,12 +1121,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="On"
+								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Off"
+								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -1140,12 +1140,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="On"
+								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Off"
+								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -1159,17 +1159,17 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="On"
+								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Off"
+								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Shrink"
+						title={__("Shrink", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -1194,12 +1194,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="On"
+								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Off"
+								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -1213,12 +1213,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="On"
+								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Off"
+								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -1232,18 +1232,18 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="On"
+								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Off"
+								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 
 					<InspectorLabel
-						title="Hidden"
+						title={__("Hidden", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -1267,12 +1267,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Yes"
+								label={__("Yes", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="No"
+								label={__("No", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -1286,12 +1286,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Yes"
+								label={__("Yes", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="No"
+								label={__("No", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -1305,12 +1305,12 @@ export default function Edit(props) {
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Yes"
+								label={__("Yes", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="No"
+								label={__("No", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
