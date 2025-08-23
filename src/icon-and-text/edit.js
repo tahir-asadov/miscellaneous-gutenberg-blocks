@@ -1,7 +1,16 @@
+/**
+ * WordPress dependencies
+ */
+import { useEffect, useState } from "react";
+import { __ } from "@wordpress/i18n";
+import { useDispatch, useSelect, subscribe, select } from "@wordpress/data";
 import {
 	InnerBlocks,
 	BlockControls,
 	InspectorControls,
+	useBlockProps,
+	MediaUpload,
+	MediaUploadCheck,
 } from "@wordpress/block-editor";
 import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
@@ -16,48 +25,21 @@ import {
 	RangeControl,
 	ColorPalette,
 } from "@wordpress/components";
-
-import { InspectorLabel } from "../libs/components/inspector-label";
-import { ArrowRightLeft } from "lucide-react";
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
- */
-import { __ } from "@wordpress/i18n";
-
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-import {
-	useBlockProps,
-	MediaUpload,
-	MediaUploadCheck,
-} from "@wordpress/block-editor";
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
 import "./editor.scss";
-import { useEffect, useState } from "react";
 
 /**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
+ * External dependencies
  */
+import { ArrowRightLeft } from "lucide-react";
 
-import { useDispatch, useSelect, subscribe, select } from "@wordpress/data";
+/**
+ * Internal dependencies
+ */
+import { InspectorLabel } from "../libs/components/inspector-label";
 
+/**
+ * Block edit function
+ */
 export default function Edit({
 	attributes: {
 		imageId,
@@ -82,7 +64,6 @@ export default function Edit({
 }) {
 	const [layout, setLayout] = useState("desktop");
 	const [svgContent, setSvgContent] = useState("");
-	const [color, setColor] = useState("#111");
 	useEffect(() => {
 		if (imageUrl && imageUrl.endsWith(".svg")) {
 			fetch(imageUrl)
@@ -194,7 +175,7 @@ export default function Edit({
 				</ToolbarGroup>
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title="Settings">
+				<PanelBody title={__("Settings", "miscellaneous-gutenberg-blocks")}>
 					<div style={{ marginTop: "10px", marginBottom: "10px" }}>
 						<InspectorLabel title="Image width" hideLayoutButton={true} />
 					</div>
@@ -214,7 +195,7 @@ export default function Edit({
 					<TextControl
 						__nextHasNoMarginBottom
 						__next40pxDefaultSize
-						label="Add text"
+						label={__("Add text", "miscellaneous-gutenberg-blocks")}
 						value={text}
 						onChange={(value) =>
 							setAttributes({
@@ -223,7 +204,7 @@ export default function Edit({
 						}
 					/>
 					<InspectorLabel
-						title="Gap"
+						title={__("Gap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -280,7 +261,7 @@ export default function Edit({
 						/>
 					)}
 					<InspectorLabel
-						title="Reverse"
+						title={__("Reverse", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -304,12 +285,12 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -323,12 +304,12 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -342,17 +323,17 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 					<InspectorLabel
-						title="Stacked"
+						title={__("Stacked", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -376,12 +357,12 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -395,12 +376,12 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -414,12 +395,12 @@ export default function Edit({
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={true}
-								label="Enabled"
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
 								value={false}
-								label="Disabled"
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
@@ -477,7 +458,10 @@ export default function Edit({
 						/>
 					</MediaUploadCheck>
 					<div style={{ marginTop: "10px", marginBottom: "10px" }}>
-						<InspectorLabel title="SVG color" hideLayoutButton={true} />
+						<InspectorLabel
+							title={__("SVG color", "miscellaneous-gutenberg-blocks")}
+							hideLayoutButton={true}
+						/>
 					</div>
 					<ColorPalette
 						asButtons={true}
