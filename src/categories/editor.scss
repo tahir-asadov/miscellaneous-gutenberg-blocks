@@ -4,11 +4,16 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.icon_svg__miscellaneous-gutenberg-blocks-search-icon {
+.icon_svg__miscellaneous-gutenberg-blocks-category-icon {
 	fill: none !important;
 	stroke: #2c817b !important;
 }
 
-.wp-block-miscellaneous-gutenberg-blocks-search {
-	// padding: 10px;
+.miscellaneous-gutenberg-blocks-list-item {
+	cursor: pointer;
+	width: 100%;
+	padding: 5px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

@@ -41,6 +41,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 import "./editor.scss";
 import { useState } from "react";
 
+import { lineDotted } from "@wordpress/icons";
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -84,11 +85,10 @@ export default function Edit({ attributes, setAttributes }) {
 		newItems.splice(newIndex, 0, movedItem);
 		setAttributes({ listItems: newItems });
 	};
-
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__("Category Settings", "my-plugin")}>
+				<PanelBody title={__("Settings", "miscellaneous-gutenberg-blocks")}>
 					{/* Show a spinner while loading categories */}
 					{/* {!hasResolved && <Spinner />} */}
 					{/* Display checkboxes once categories are loaded */}
@@ -105,12 +105,22 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						))} */}
 					<Button variant="primary" onClick={() => setIsPopoverVisible(true)}>
-						{__("Open Settings", "my-plugin")}
+						{__("Open Settings", "miscellaneous-gutenberg-blocks")}
 					</Button>{" "}
 					<PanelRow>
-						<ReactSortable list={categories} setList={() => {}}>
+						<ReactSortable
+							list={categories}
+							setList={() => {}}
+							style={{ width: "100%" }}
+						>
 							{categories.map((item) => (
-								<div key={item.id}>{item.name}</div>
+								<div
+									className="miscellaneous-gutenberg-blocks-list-item"
+									key={item.id}
+								>
+									<span>{item.name}</span>
+									<Button size="compact" icon={lineDotted}></Button>
+								</div>
 							))}
 						</ReactSortable>
 						{isPopoverVisible && (
@@ -119,9 +129,11 @@ export default function Edit({ attributes, setAttributes }) {
 								onClose={() => setIsPopoverVisible(false)}
 							>
 								<div style={{ padding: "16px", width: "260px" }}>
-									<h4>{__("Advanced Options", "my-plugin")}</h4>
+									<h4>
+										{__("Advanced Options", "miscellaneous-gutenberg-blocks")}
+									</h4>
 									<TextControl
-										label={__("Custom Value", "my-plugin")}
+										label={__("Custom Value", "miscellaneous-gutenberg-blocks")}
 										value={attributes.customValue || ""}
 										onChange={(val) => setAttributes({ customValue: val })}
 									/>
@@ -129,7 +141,7 @@ export default function Edit({ attributes, setAttributes }) {
 										variant="secondary"
 										onClick={() => setIsPopoverVisible(false)}
 									>
-										{__("Close", "my-plugin")}
+										{__("Close", "miscellaneous-gutenberg-blocks")}
 									</Button>
 								</div>
 							</Popover>
@@ -140,8 +152,14 @@ export default function Edit({ attributes, setAttributes }) {
 			<div {...blockProps}>
 				{/* Display a preview in the editor */}
 				{categories.length > 0
-					? __("Categories selected. See Inspector.", "my-plugin")
-					: __("Please select categories from the sidebar.", "my-plugin")}
+					? __(
+							"Categories selected. See Inspector.",
+							"miscellaneous-gutenberg-blocks",
+					  )
+					: __(
+							"Please select categories from the sidebar.",
+							"miscellaneous-gutenberg-blocks",
+					  )}
 			</div>
 		</>
 	);
