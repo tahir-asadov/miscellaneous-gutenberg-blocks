@@ -1,12 +1,8 @@
 /**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
-import { select, subscribe } from "@wordpress/data";
-
-// import * as vp from "@wordpress/viewport";
+import { select, subscribe, useDispatch, useSelect } from "@wordpress/data";
 import {
 	PanelBody,
 	RangeControl,
@@ -16,19 +12,18 @@ import {
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 	SelectControl,
 } from "@wordpress/components"; // For the plus icon
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
 import {
 	useBlockProps,
 	InnerBlocks,
 	useInnerBlocksProps,
 	InspectorControls,
 } from "@wordpress/block-editor";
+import "./editor.scss";
 
+/**
+ * External dependencies
+ */
+import { useState } from "react";
 import {
 	AlignVerticalJustifyEnd,
 	AlignVerticalJustifyStart,
@@ -44,73 +39,59 @@ import {
 } from "lucide-react";
 
 /**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ * Internal dependencies
  */
-import "./editor.scss";
-import { useState } from "react";
-// import { InspectorLabel } from "../libs/global";
-
-import { useDispatch, useSelect } from "@wordpress/data";
-
 import { InspectorLabel } from "../libs/components/inspector-label";
 import { gapUnits } from "../libs/global";
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
- * @return {Element} Element to render.
- */
 
+/**
+ * Block edit function
+ */
 export default function Edit(props) {
 	const {
 		attributes: {
 			wrap,
-			tablet_wrap,
-			mobile_wrap,
+			tabletWrap,
+			mobileWrap,
 			horizontal,
-			tablet_horizontal,
-			mobile_horizontal,
+			tabletHorizontal,
+			mobileHorizontal,
 			reverse,
-			tablet_reverse,
-			mobile_reverse,
-			column_gap,
-			tablet_column_gap,
-			mobile_column_gap,
-			column_gap_unit,
-			tablet_column_gap_unit,
-			mobile_column_gap_unit,
-			row_gap,
-			tablet_row_gap,
-			mobile_row_gap,
-			row_gap_unit,
-			tablet_row_gap_unit,
-			mobile_row_gap_unit,
-			justify_content,
-			tablet_justify_content,
-			mobile_justify_content,
-			align_items,
-			tablet_align_items,
-			mobile_align_items,
+			tabletReverse,
+			mobileReverse,
+			columnGap,
+			tabletColumnGap,
+			mobileColumnGap,
+			columnGapUnit,
+			tabletColumnGapUnit,
+			mobileColumnGapUnit,
+			rowGap,
+			tabletRowGap,
+			mobileRowGap,
+			rowGapUnit,
+			tabletRowGapUnit,
+			mobileRowGapUnit,
+			justifyContent,
+			tabletJustifyContent,
+			mobileJustifyContent,
+			alignItems,
+			tabletAlignItems,
+			mobileAlignItems,
 			width,
-			tablet_width,
-			mobile_width,
-			width_unit,
-			tablet_width_unit,
-			mobile_width_unit,
+			tabletWidth,
+			mobileWidth,
+			widthUnit,
+			tabletWidthUnit,
+			mobileWidthUnit,
 			grow,
-			tablet_grow,
-			mobile_grow,
+			tabletGrow,
+			mobileGrow,
 			shrink,
-			tablet_shrink,
-			mobile_shrink,
+			tabletShrink,
+			mobileShrink,
 			hidden,
-			tablet_hidden,
-			mobile_hidden,
+			tabletHidden,
+			mobileHidden,
 		},
 		setAttributes,
 	} = props;
@@ -123,11 +104,6 @@ export default function Edit(props) {
 			previousDeviceType = newDeviceType;
 		}
 	});
-
-	const isSiteEditor = useSelect(
-		(select) => select("core/edit-site") !== null,
-		[],
-	);
 
 	const [layout, setLayout] = useState("desktop");
 	let __experimentalSetPreviewDeviceType = (device) => {};
@@ -160,11 +136,11 @@ export default function Edit(props) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--wrap");
 	}
 
-	if (tablet_wrap) {
+	if (tabletWrap) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-wrap");
 	}
 
-	if (mobile_wrap) {
+	if (mobileWrap) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-wrap");
 	}
 
@@ -174,7 +150,7 @@ export default function Edit(props) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--vertical");
 	}
 
-	if (tablet_horizontal) {
+	if (tabletHorizontal) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-flexbox--tablet-horizontal",
 		);
@@ -182,7 +158,7 @@ export default function Edit(props) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-vertical");
 	}
 
-	if (mobile_horizontal) {
+	if (mobileHorizontal) {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-flexbox--mobile-horizontal",
 		);
@@ -193,56 +169,56 @@ export default function Edit(props) {
 	if (reverse) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--reverse");
 	}
-	if (tablet_reverse) {
+	if (tabletReverse) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-reverse");
 	}
-	if (mobile_reverse) {
+	if (mobileReverse) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-reverse");
 	}
 	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--justify-${justify_content}`,
+		`miscellaneous-gutenberg-blocks-flexbox--justify-${justifyContent}`,
 	);
 	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--justify-tablet-${tablet_justify_content}`,
+		`miscellaneous-gutenberg-blocks-flexbox--justify-tablet-${tabletJustifyContent}`,
 	);
 	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--justify-mobile-${mobile_justify_content}`,
+		`miscellaneous-gutenberg-blocks-flexbox--justify-mobile-${mobileJustifyContent}`,
 	);
 	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--align-${align_items}`,
+		`miscellaneous-gutenberg-blocks-flexbox--align-${alignItems}`,
 	);
 	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--align-tablet-${tablet_align_items}`,
+		`miscellaneous-gutenberg-blocks-flexbox--align-tablet-${tabletAlignItems}`,
 	);
 	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobile_align_items}`,
+		`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobileAlignItems}`,
 	);
 
 	if (grow) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--grow");
 	}
-	if (tablet_grow) {
+	if (tabletGrow) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-grow");
 	}
-	if (mobile_grow) {
+	if (mobileGrow) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-grow");
 	}
 	if (shrink) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--shrink");
 	}
-	if (tablet_shrink) {
+	if (tabletShrink) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-shrink");
 	}
-	if (mobile_shrink) {
+	if (mobileShrink) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-shrink");
 	}
 	if (hidden) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--hidden");
 	}
-	if (tablet_hidden) {
+	if (tabletHidden) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-hidden");
 	}
-	if (mobile_hidden) {
+	if (mobileHidden) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-hidden");
 	}
 	const blockProps = useBlockProps({
@@ -296,13 +272,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={width_unit}
+								value={widthUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										width_unit: value,
+										widthUnit: value,
 									});
 								}}
 							/>
@@ -322,11 +298,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={tablet_width}
+									value={tabletWidth}
 									label={null}
 									onChange={(value) =>
 										setAttributes({
-											tablet_width: value,
+											tabletWidth: value,
 										})
 									}
 									min={0}
@@ -334,13 +310,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={tablet_width_unit}
+								value={tabletWidthUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										tablet_width_unit: value,
+										tabletWidthUnit: value,
 									});
 								}}
 							/>
@@ -360,11 +336,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={mobile_width}
+									value={mobileWidth}
 									label={null}
 									onChange={(value) =>
 										setAttributes({
-											mobile_width: value,
+											mobileWidth: value,
 										})
 									}
 									min={0}
@@ -372,13 +348,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={mobile_width_unit}
+								value={mobileWidthUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										mobile_width_unit: value,
+										mobileWidthUnit: value,
 									});
 								}}
 							/>
@@ -419,11 +395,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_wrap}
+							value={tabletWrap}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_wrap: value })}
+							onChange={(value) => setAttributes({ tabletWrap: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -438,11 +414,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_wrap}
+							value={mobileWrap}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_wrap: value })}
+							onChange={(value) => setAttributes({ mobileWrap: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -491,11 +467,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_horizontal}
+							value={tabletHorizontal}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_horizontal: value })}
+							onChange={(value) => setAttributes({ tabletHorizontal: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -510,11 +486,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_horizontal}
+							value={mobileHorizontal}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_horizontal: value })}
+							onChange={(value) => setAttributes({ mobileHorizontal: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -563,11 +539,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_reverse}
+							value={tabletReverse}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_reverse: value })}
+							onChange={(value) => setAttributes({ tabletReverse: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -582,11 +558,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_reverse}
+							value={mobileReverse}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_reverse: value })}
+							onChange={(value) => setAttributes({ mobileReverse: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -630,12 +606,12 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={column_gap}
+									value={columnGap}
 									label={null}
 									RangeControl
 									onChange={(value) =>
 										setAttributes({
-											column_gap: value,
+											columnGap: value,
 										})
 									}
 									min={0}
@@ -644,13 +620,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={column_gap_unit}
+								value={columnGapUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										column_gap_unit: value,
+										columnGapUnit: value,
 									});
 								}}
 							/>
@@ -670,11 +646,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={tablet_column_gap}
+									value={tabletColumnGap}
 									label={null}
 									onChange={(value) => {
 										setAttributes({
-											tablet_column_gap: value,
+											tabletColumnGap: value,
 										});
 									}}
 									min={0}
@@ -683,13 +659,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={tablet_column_gap_unit}
+								value={tabletColumnGapUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										tablet_column_gap_unit: value,
+										tabletColumnGapUnit: value,
 									});
 								}}
 							/>
@@ -709,11 +685,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={mobile_column_gap}
+									value={mobileColumnGap}
 									label={null}
 									onChange={(value) =>
 										setAttributes({
-											mobile_column_gap: value,
+											mobileColumnGap: value,
 										})
 									}
 									min={0}
@@ -722,13 +698,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={mobile_column_gap_unit}
+								value={mobileColumnGapUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										mobile_column_gap_unit: value,
+										mobileColumnGapUnit: value,
 									});
 								}}
 							/>
@@ -763,11 +739,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={row_gap}
+									value={rowGap}
 									label={null}
 									onChange={(value) => {
 										setAttributes({
-											row_gap: value,
+											rowGap: value,
 										});
 									}}
 									min={0}
@@ -776,13 +752,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={row_gap_unit}
+								value={rowGapUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										row_gap_unit: value,
+										rowGapUnit: value,
 									});
 								}}
 							/>
@@ -802,11 +778,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={tablet_row_gap}
+									value={tabletRowGap}
 									label={null}
 									onChange={(value) => {
 										setAttributes({
-											tablet_row_gap: value,
+											tabletRowGap: value,
 										});
 									}}
 									min={0}
@@ -815,13 +791,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={tablet_row_gap_unit}
+								value={tabletRowGapUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										tablet_row_gap_unit: value,
+										tabletRowGapUnit: value,
 									});
 								}}
 							/>
@@ -841,11 +817,11 @@ export default function Edit(props) {
 								<RangeControl
 									__nextHasNoMarginBottom
 									__next40pxDefaultSize
-									value={mobile_row_gap}
+									value={mobileRowGap}
 									label={null}
 									onChange={(value) => {
 										setAttributes({
-											mobile_row_gap: value,
+											mobileRowGap: value,
 										});
 									}}
 									min={0}
@@ -854,13 +830,13 @@ export default function Edit(props) {
 							</div>
 							<SelectControl
 								label=""
-								value={mobile_row_gap_unit}
+								value={mobileRowGapUnit}
 								options={gapUnits}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								onChange={(value) => {
 									setAttributes({
-										mobile_row_gap_unit: value,
+										mobileRowGapUnit: value,
 									});
 								}}
 							/>
@@ -882,11 +858,11 @@ export default function Edit(props) {
 					/>
 					{layout == "desktop" ? (
 						<ToggleGroupControl
-							value={justify_content}
+							value={justifyContent}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ justify_content: value })}
+							onChange={(value) => setAttributes({ justifyContent: value })}
 						>
 							<ToggleGroupControlOptionIcon
 								icon={AlignStartVerticalIcon}
@@ -916,12 +892,12 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_justify_content}
+							value={tabletJustifyContent}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
 							onChange={(value) =>
-								setAttributes({ tablet_justify_content: value })
+								setAttributes({ tabletJustifyContent: value })
 							}
 						>
 							<ToggleGroupControlOptionIcon
@@ -952,12 +928,12 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_justify_content}
+							value={mobileJustifyContent}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
 							onChange={(value) =>
-								setAttributes({ mobile_justify_content: value })
+								setAttributes({ mobileJustifyContent: value })
 							}
 						>
 							<ToggleGroupControlOptionIcon
@@ -1004,11 +980,11 @@ export default function Edit(props) {
 
 					{layout == "desktop" ? (
 						<ToggleGroupControl
-							value={align_items}
+							value={alignItems}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ align_items: value })}
+							onChange={(value) => setAttributes({ alignItems: value })}
 						>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
@@ -1043,11 +1019,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_align_items}
+							value={tabletAlignItems}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_align_items: value })}
+							onChange={(value) => setAttributes({ tabletAlignItems: value })}
 						>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
@@ -1082,11 +1058,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_align_items}
+							value={mobileAlignItems}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_align_items: value })}
+							onChange={(value) => setAttributes({ mobileAlignItems: value })}
 						>
 							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
@@ -1155,11 +1131,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_grow}
+							value={tabletGrow}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_grow: value })}
+							onChange={(value) => setAttributes({ tabletGrow: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -1174,11 +1150,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_grow}
+							value={mobileGrow}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_grow: value })}
+							onChange={(value) => setAttributes({ mobileGrow: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -1228,11 +1204,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_shrink}
+							value={tabletShrink}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_shrink: value })}
+							onChange={(value) => setAttributes({ tabletShrink: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -1247,11 +1223,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_shrink}
+							value={mobileShrink}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_shrink: value })}
+							onChange={(value) => setAttributes({ mobileShrink: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -1301,11 +1277,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tablet_hidden}
+							value={tabletHidden}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tablet_hidden: value })}
+							onChange={(value) => setAttributes({ tabletHidden: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -1320,11 +1296,11 @@ export default function Edit(props) {
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobile_hidden}
+							value={mobileHidden}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobile_hidden: value })}
+							onChange={(value) => setAttributes({ mobileHidden: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
@@ -1341,49 +1317,55 @@ export default function Edit(props) {
 				</PanelBody>
 			</InspectorControls>
 			<div
-				{...innerBlocksProps}
+				{...blockProps}
 				style={{
 					width: `${
 						layout == "desktop"
 							? width > 0
-								? `${width}${width_unit}`
+								? `${width}${widthUnit}`
 								: "initial"
 							: layout == "tablet"
-							? tablet_width > 0
-								? `${tablet_width}${tablet_width_unit}`
+							? tabletWidth > 0
+								? `${tabletWidth}${tabletWidthUnit}`
 								: "initial"
-							: mobile_width > 0
-							? `${mobile_width}${mobile_width_unit}`
-							: "initial"
-					}`,
-					columnGap: `${
-						layout == "desktop"
-							? column_gap > 0
-								? `${column_gap}${column_gap_unit}`
-								: "initial"
-							: layout == "tablet"
-							? tablet_column_gap > 0
-								? `${tablet_column_gap}${tablet_column_gap_unit}`
-								: "initial"
-							: mobile_column_gap > 0
-							? `${mobile_column_gap}${mobile_column_gap_unit}`
-							: "initial"
-					}`,
-					rowGap: `${
-						layout == "desktop"
-							? row_gap > 0
-								? `${row_gap}${row_gap_unit}`
-								: "initial"
-							: layout == "tablet"
-							? tablet_row_gap > 0
-								? `${tablet_row_gap}${tablet_row_gap_unit}`
-								: "initial"
-							: mobile_row_gap > 0
-							? `${mobile_row_gap}${mobile_row_gap_unit}`
+							: mobileWidth > 0
+							? `${mobileWidth}${mobileWidthUnit}`
 							: "initial"
 					}`,
 				}}
-			></div>
+			>
+				<div
+					{...innerBlocksProps}
+					style={{
+						columnGap: `${
+							layout == "desktop"
+								? columnGap > 0
+									? `${columnGap}${columnGapUnit}`
+									: "initial"
+								: layout == "tablet"
+								? tabletColumnGap > 0
+									? `${tabletColumnGap}${tabletColumnGapUnit}`
+									: "initial"
+								: mobileColumnGap > 0
+								? `${mobileColumnGap}${mobileColumnGapUnit}`
+								: "initial"
+						}`,
+						rowGap: `${
+							layout == "desktop"
+								? rowGap > 0
+									? `${rowGap}${rowGapUnit}`
+									: "initial"
+								: layout == "tablet"
+								? tabletRowGap > 0
+									? `${tabletRowGap}${tabletRowGapUnit}`
+									: "initial"
+								: mobileRowGap > 0
+								? `${mobileRowGap}${mobileRowGapUnit}`
+								: "initial"
+						}`,
+					}}
+				/>
+			</div>
 		</>
 	);
 }

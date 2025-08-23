@@ -192,11 +192,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_wrap' => array(
+			'tabletWrap' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_wrap' => array(
+			'mobileWrap' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
@@ -204,11 +204,11 @@ return array(
 				'type' => 'boolean',
 				'default' => true
 			),
-			'tablet_horizontal' => array(
+			'tabletHorizontal' => array(
 				'type' => 'boolean',
 				'default' => true
 			),
-			'mobile_horizontal' => array(
+			'mobileHorizontal' => array(
 				'type' => 'boolean',
 				'default' => true
 			),
@@ -216,83 +216,83 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_reverse' => array(
+			'tabletReverse' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_reverse' => array(
+			'mobileReverse' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'column_gap' => array(
+			'columnGap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'tablet_column_gap' => array(
+			'tabletColumnGap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'mobile_column_gap' => array(
+			'mobileColumnGap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'column_gap_unit' => array(
+			'columnGapUnit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'tablet_column_gap_unit' => array(
+			'tabletColumnGapUnit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'mobile_column_gap_unit' => array(
+			'mobileColumnGapUnit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'row_gap' => array(
+			'rowGap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'tablet_row_gap' => array(
+			'tabletRowGap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'mobile_row_gap' => array(
+			'mobileRowGap' => array(
 				'type' => 'number',
 				'default' => 0
 			),
-			'row_gap_unit' => array(
+			'rowGapUnit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'tablet_row_gap_unit' => array(
+			'tabletRowGapUnit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'mobile_row_gap_unit' => array(
+			'mobileRowGapUnit' => array(
 				'type' => 'string',
 				'default' => 'px'
 			),
-			'justify_content' => array(
+			'justifyContent' => array(
 				'type' => 'string',
 				'default' => 'flex-start'
 			),
-			'tablet_justify_content' => array(
+			'tabletJustifyContent' => array(
 				'type' => 'string',
 				'default' => 'flex-start'
 			),
-			'mobile_justify_content' => array(
+			'mobileJustifyContent' => array(
 				'type' => 'string',
 				'default' => 'flex-start'
 			),
-			'align_items' => array(
+			'alignItems' => array(
 				'type' => 'string',
 				'default' => 'flex-start'
 			),
-			'tablet_align_items' => array(
+			'tabletAlignItems' => array(
 				'type' => 'string',
 				'default' => 'flex-start'
 			),
-			'mobile_align_items' => array(
+			'mobileAlignItems' => array(
 				'type' => 'string',
 				'default' => 'flex-start'
 			),
@@ -300,23 +300,23 @@ return array(
 				'type' => 'number',
 				'default' => 100
 			),
-			'tablet_width' => array(
+			'tabletWidth' => array(
 				'type' => 'number',
 				'default' => 100
 			),
-			'mobile_width' => array(
+			'mobileWidth' => array(
 				'type' => 'number',
 				'default' => 100
 			),
-			'width_unit' => array(
+			'widthUnit' => array(
 				'type' => 'string',
 				'default' => '%'
 			),
-			'tablet_width_unit' => array(
+			'tabletWidthUnit' => array(
 				'type' => 'string',
 				'default' => '%'
 			),
-			'mobile_width_unit' => array(
+			'mobileWidthUnit' => array(
 				'type' => 'string',
 				'default' => '%'
 			),
@@ -324,11 +324,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_grow' => array(
+			'tabletGrow' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_grow' => array(
+			'mobileGrow' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
@@ -336,11 +336,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_shrink' => array(
+			'tabletShrink' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_shrink' => array(
+			'mobileShrink' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
@@ -348,11 +348,11 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'tablet_hidden' => array(
+			'tabletHidden' => array(
 				'type' => 'boolean',
 				'default' => false
 			),
-			'mobile_hidden' => array(
+			'mobileHidden' => array(
 				'type' => 'boolean',
 				'default' => false
 			)
