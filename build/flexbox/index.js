@@ -904,7 +904,12 @@ function Edit(props) {
     classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-hidden");
   }
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
-    className: classNames.join(" ")
+    className: classNames.join(" "),
+    style: {
+      width: `${layout == "desktop" ? width > 0 ? `${width}${widthUnit}` : "initial" : layout == "tablet" ? tabletWidth > 0 ? `${tabletWidth}${tabletWidthUnit}` : "initial" : mobileWidth > 0 ? `${mobileWidth}${mobileWidthUnit}` : "initial"}`,
+      columnGap: `${layout == "desktop" ? columnGap > 0 ? `${columnGap}${columnGapUnit}` : "initial" : layout == "tablet" ? tabletColumnGap > 0 ? `${tabletColumnGap}${tabletColumnGapUnit}` : "initial" : mobileColumnGap > 0 ? `${mobileColumnGap}${mobileColumnGapUnit}` : "initial"}`,
+      rowGap: `${layout == "desktop" ? rowGap > 0 ? `${rowGap}${rowGapUnit}` : "initial" : layout == "tablet" ? tabletRowGap > 0 ? `${tabletRowGap}${tabletRowGapUnit}` : "initial" : mobileRowGap > 0 ? `${mobileRowGap}${mobileRowGapUnit}` : "initial"}`
+    }
   });
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useInnerBlocksProps)(blockProps);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
@@ -1814,17 +1819,7 @@ function Edit(props) {
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-      ...blockProps,
-      style: {
-        width: `${layout == "desktop" ? width > 0 ? `${width}${widthUnit}` : "initial" : layout == "tablet" ? tabletWidth > 0 ? `${tabletWidth}${tabletWidthUnit}` : "initial" : mobileWidth > 0 ? `${mobileWidth}${mobileWidthUnit}` : "initial"}`
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-        ...innerBlocksProps,
-        style: {
-          columnGap: `${layout == "desktop" ? columnGap > 0 ? `${columnGap}${columnGapUnit}` : "initial" : layout == "tablet" ? tabletColumnGap > 0 ? `${tabletColumnGap}${tabletColumnGapUnit}` : "initial" : mobileColumnGap > 0 ? `${mobileColumnGap}${mobileColumnGapUnit}` : "initial"}`,
-          rowGap: `${layout == "desktop" ? rowGap > 0 ? `${rowGap}${rowGapUnit}` : "initial" : layout == "tablet" ? tabletRowGap > 0 ? `${tabletRowGap}${tabletRowGapUnit}` : "initial" : mobileRowGap > 0 ? `${mobileRowGap}${mobileRowGapUnit}` : "initial"}`
-        }
-      })
+      ...innerBlocksProps
     })]
   });
 }
