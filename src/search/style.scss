@@ -26,7 +26,7 @@
 	&.has-style {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: stretch;
 		position: relative;
 		background: transparent;
 		border-radius: 56px;
@@ -56,7 +56,6 @@
 			background-color: transparent;
 			background-color: #eee;
 			width: 50%;
-			height: 100%;
 			cursor: pointer;
 		}
 		input[type="search"].search-input {

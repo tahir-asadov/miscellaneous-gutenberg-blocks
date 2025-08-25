@@ -29,7 +29,7 @@
 .wp-block-miscellaneous-gutenberg-blocks-search.has-style {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   background: transparent;
   border-radius: 56px;
@@ -58,7 +58,6 @@
   background-color: transparent;
   background-color: #eee;
   width: 50%;
-  height: 100%;
   cursor: pointer;
 }
 .wp-block-miscellaneous-gutenberg-blocks-search.has-style input[type=search].search-input {

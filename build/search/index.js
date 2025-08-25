@@ -8,7 +8,7 @@
   \*******************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/search","version":"0.1.0","title":"Search","category":"miscellaneous-gutenberg-blocks","icon":"search","description":"Search using post category.","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"disableCSS":{"type":"boolean","default":false},"showCategory":{"type":"boolean","default":false},"showSearchIcon":{"type":"boolean","default":true},"searchPlaceholder":{"type":"string","default":""},"buttonText":{"type":"string","default":""},"categoryText":{"type":"string","default":""},"height":{"type":"number","default":40}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/search","version":"0.1.0","title":"Search","category":"miscellaneous-gutenberg-blocks","icon":"search","description":"Search using post category.","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true}},"attributes":{"disableCSS":{"type":"boolean","default":false},"showCategory":{"type":"boolean","default":false},"showSearchIcon":{"type":"boolean","default":true},"searchPlaceholder":{"type":"string","default":""},"buttonText":{"type":"string","default":""},"categoryText":{"type":"string","default":""},"height":{"type":"number","default":40},"width":{"type":"number","default":300}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php"}');
 
 /***/ }),
 
@@ -45,7 +45,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function Edit({
   attributes,
-  setAttributes
+  setAttributes,
+  toggleSelection
 }) {
   const classNames = [];
   if (!attributes.disableCSS) {
@@ -60,7 +61,8 @@ function Edit({
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     className: classNames.join(" "),
     style: {
-      height: `${attributes.height}px`
+      height: attributes.height > 0 ? `${attributes.height}px` : undefined,
+      width: attributes.width > 0 ? `${attributes.width}px` : undefined
     }
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
@@ -146,31 +148,69 @@ function Edit({
           }),
           min: 0,
           max: 100
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.RangeControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Width", "miscellaneous-gutenberg-blocks"),
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          value: attributes.width,
+          onChange: value => setAttributes({
+            width: value
+          }),
+          min: 0,
+          max: 500
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      ...blockProps,
-      children: [attributes.showCategory && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
-        name: "cat",
-        class: "search-category",
-        children: attributes.categoryText && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-          value: "",
-          children: attributes.categoryText
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-        name: "s",
-        type: "search",
-        class: "search-input",
-        placeholder: attributes.searchPlaceholder
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        type: "submit",
-        class: "search-button",
-        children: attributes.showSearchIcon ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-          dangerouslySetInnerHTML: {
-            __html: "&nbsp;"
-          }
-        }) : attributes.buttonText
-      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ResizableBox, {
+      size: {
+        height: attributes.height > 0 ? attributes.height : undefined,
+        width: attributes.width > 0 ? attributes.width : undefined
+      },
+      minHeight: "50",
+      minWidth: "50",
+      enable: {
+        top: false,
+        right: true,
+        bottom: true,
+        left: true,
+        topRight: false,
+        bottomRight: true,
+        bottomLeft: false,
+        topLeft: false
+      },
+      onResizeStop: (event, direction, elt, delta) => {
+        setAttributes({
+          height: attributes.height + delta.height,
+          width: attributes.width + delta.width
+        });
+        toggleSelection(true);
+      },
+      onResizeStart: () => {
+        toggleSelection(false);
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        ...blockProps,
+        children: [attributes.showCategory && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {
+          name: "cat",
+          class: "search-category",
+          children: attributes.categoryText && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+            value: "",
+            children: attributes.categoryText
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+          name: "s",
+          type: "search",
+          class: "search-input",
+          placeholder: attributes.searchPlaceholder
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          type: "submit",
+          class: "search-button",
+          children: attributes.showSearchIcon ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+            dangerouslySetInnerHTML: {
+              __html: "&nbsp;"
+            }
+          }) : attributes.buttonText
+        })]
+      })
     })]
   });
 }

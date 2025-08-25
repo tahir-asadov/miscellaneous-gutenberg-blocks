@@ -521,6 +521,10 @@ return array(
 			'height' => array(
 				'type' => 'number',
 				'default' => 40
+			),
+			'width' => array(
+				'type' => 'number',
+				'default' => 300
 			)
 		),
 		'textdomain' => 'miscellaneous-gutenberg-blocks',

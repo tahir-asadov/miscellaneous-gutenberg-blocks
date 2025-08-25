@@ -8,6 +8,7 @@ import {
 	PanelBody,
 	TextControl,
 	RangeControl,
+	ResizableBox,
 } from "@wordpress/components";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
@@ -16,7 +17,7 @@ import "./editor.scss";
 /**
  * Block edit function
  */
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, toggleSelection }) {
 	const classNames = [];
 	if (!attributes.disableCSS) {
 		classNames.push("has-style");
@@ -29,7 +30,10 @@ export default function Edit({ attributes, setAttributes }) {
 	}
 	const blockProps = useBlockProps({
 		className: classNames.join(" "),
-		style: { height: `${attributes.height}px` },
+		style: {
+			height: attributes.height > 0 ? `${attributes.height}px` : undefined,
+			width: attributes.width > 0 ? `${attributes.width}px` : undefined,
+		},
 	});
 
 	return (
@@ -118,31 +122,73 @@ export default function Edit({ attributes, setAttributes }) {
 						min={0}
 						max={100}
 					/>
+					<RangeControl
+						label={__("Width", "miscellaneous-gutenberg-blocks")}
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
+						value={attributes.width}
+						onChange={(value) =>
+							setAttributes({
+								width: value,
+							})
+						}
+						min={0}
+						max={500}
+					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...blockProps}>
-				{attributes.showCategory && (
-					<select name="cat" class="search-category">
-						{attributes.categoryText && (
-							<option value="">{attributes.categoryText}</option>
-						)}
-					</select>
-				)}
-
-				<input
-					name="s"
-					type="search"
-					class="search-input"
-					placeholder={attributes.searchPlaceholder}
-				/>
-				<button type="submit" class="search-button">
-					{attributes.showSearchIcon ? (
-						<span dangerouslySetInnerHTML={{ __html: "&nbsp;" }} />
-					) : (
-						attributes.buttonText
+			<ResizableBox
+				size={{
+					height: attributes.height > 0 ? attributes.height : undefined,
+					width: attributes.width > 0 ? attributes.width : undefined,
+				}}
+				minHeight="50"
+				minWidth="50"
+				enable={{
+					top: false,
+					right: true,
+					bottom: true,
+					left: true,
+					topRight: false,
+					bottomRight: true,
+					bottomLeft: false,
+					topLeft: false,
+				}}
+				onResizeStop={(event, direction, elt, delta) => {
+					setAttributes({
+						height: attributes.height + delta.height,
+						width: attributes.width + delta.width,
+					});
+					toggleSelection(true);
+				}}
+				onResizeStart={() => {
+					toggleSelection(false);
+				}}
+			>
+				<div {...blockProps}>
+					{attributes.showCategory && (
+						<select name="cat" class="search-category">
+							{attributes.categoryText && (
+								<option value="">{attributes.categoryText}</option>
+							)}
+						</select>
 					)}
-				</button>
-			</div>
+
+					<input
+						name="s"
+						type="search"
+						class="search-input"
+						placeholder={attributes.searchPlaceholder}
+					/>
+					<button type="submit" class="search-button">
+						{attributes.showSearchIcon ? (
+							<span dangerouslySetInnerHTML={{ __html: "&nbsp;" }} />
+						) : (
+							attributes.buttonText
+						)}
+					</button>
+				</div>
+			</ResizableBox>
 		</>
 	);
 }

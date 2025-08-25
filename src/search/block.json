@@ -56,6 +56,10 @@
 		"height": {
 			"type": "number",
 			"default": 40
+		},
+		"width": {
+			"type": "number",
+			"default": 300
 		}
 	},
 	"textdomain": "miscellaneous-gutenberg-blocks",

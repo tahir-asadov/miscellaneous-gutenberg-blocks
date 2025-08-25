@@ -5,7 +5,8 @@ $disableCSS = !empty($attributes['disableCSS']) && $attributes['disableCSS'] == 
 $searchPlaceholder = !empty($attributes['searchPlaceholder']) ? $attributes['searchPlaceholder'] : '';
 $categoryText = !empty($attributes['categoryText']) ? $attributes['categoryText'] : '';
 $buttonText = !empty($attributes['buttonText']) ? $attributes['buttonText'] : '';
-$height = !empty($attributes['height']) ? $attributes['height'] : '0';
+$height = !empty($attributes['height']) && (int) $attributes['height'] > 0 ? (int) $attributes['height'] : '0';
+$width = !empty($attributes['width']) && (int) $attributes['width'] > 0 ? (int) $attributes['width'] : '0';
 
 $classes = [];
 if (!$disableCSS) {
@@ -25,14 +26,14 @@ $categories = get_categories();
   <form>
     <div <?php echo get_block_wrapper_attributes($additional_attributes); ?>>
       <?php if ($showCategory && !empty($categories)) { ?>
-              <select name="cat" class="search-category">
-                <?php if ($categoryText != '') { ?>
-                        <option value=""><?php echo $categoryText; ?></option>
-                <?php } ?>
-                <?php foreach ($categories as $category) { ?>
-                        <option <?php echo get_query_var('cat') == $category->term_id ? 'selected' : ''; ?> value="<?php echo $category->term_id; ?>"><?php echo $category->name; ?></option>
-                <?php } ?>
-              </select>
+        <select name="cat" class="search-category">
+          <?php if ($categoryText != '') { ?>
+            <option value=""><?php echo $categoryText; ?></option>
+          <?php } ?>
+          <?php foreach ($categories as $category) { ?>
+            <option <?php echo get_query_var('cat') == $category->term_id ? 'selected' : ''; ?> value="<?php echo $category->term_id; ?>"><?php echo $category->name; ?></option>
+          <?php } ?>
+        </select>
       <?php } ?>
       <input name="s" type="search" value="<?php echo get_query_var('s'); ?>" class="search-input" placeholder="<?php echo $searchPlaceholder; ?>" />
       <button type="submit" class="search-button"><?php echo !$showSearchIcon && $buttonText ? $buttonText : '&nbsp;' ?></button>
@@ -41,6 +42,11 @@ $categories = get_categories();
 </div>
 <style>
   #<?php echo $additional_attributes['id']; ?> {
-    <?php echo "height: {$height}px;" ?>
+    <?php if ($height > 0) { ?>
+      <?php echo "height: {$height}px;" ?>
+    <?php } ?>
+    <?php if ($width > 0) { ?>
+      <?php echo "width: {$width}px;" ?>
+    <?php } ?>
   }
 </style>
