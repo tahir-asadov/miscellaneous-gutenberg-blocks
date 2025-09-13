@@ -106,13 +106,9 @@ export default function Edit(props) {
 	});
 
 	const [layout, setLayout] = useState("desktop");
-	let __experimentalSetPreviewDeviceType = (device) => {
-		console.log("__experimentalSetPreviewDeviceType", device);
-	};
+	let __experimentalSetPreviewDeviceType = (device) => {};
 	const siteEditor = useDispatch("core/edit-site");
 	const editor = useDispatch("core/editor");
-	console.log("editor", editor);
-	console.log("siteEditor", siteEditor);
 
 	if (siteEditor) {
 		__experimentalSetPreviewDeviceType =
@@ -120,7 +116,6 @@ export default function Edit(props) {
 	} else if (editor) {
 		__experimentalSetPreviewDeviceType = editor.setDeviceType;
 	}
-	console.log("previousDeviceType", previousDeviceType, "layout", layout);
 	const alignItemsStartIcon = <AlignVerticalJustifyStart width={17} />;
 	const alignItemsEndIcon = <AlignVerticalJustifyEnd width={17} />;
 	const alignItemsCenterIcon = <AlignVerticalJustifyCenter width={17} />;

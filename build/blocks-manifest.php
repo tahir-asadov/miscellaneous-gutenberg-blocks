@@ -59,6 +59,93 @@ return array(
 		'render' => 'file:./render.php',
 		'viewScript' => 'file:./view.js'
 	),
+	'default-featured-image' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'miscellaneous-gutenberg-blocks/default-featured-image',
+		'version' => '0.1.0',
+		'title' => 'Default featured image',
+		'category' => 'miscellaneous-gutenberg-blocks',
+		'icon' => 'search',
+		'description' => 'Default featured image for post query.',
+		'example' => array(
+			
+		),
+		'usesContext' => array(
+			'postId',
+			'postType'
+		),
+		'supports' => array(
+			'html' => false,
+			'color' => array(
+				'background' => true,
+				'text' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'textAlign' => true
+			),
+			'background' => array(
+				'backgroundSize' => true
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true,
+				'blockGap' => true
+			),
+			'multiple' => false,
+			'shadow' => true,
+			'border' => array(
+				'radius' => true,
+				'color' => true,
+				'width' => true,
+				'style' => true
+			)
+		),
+		'attributes' => array(
+			'style' => array(
+				'type' => 'object',
+				'default' => array(
+					
+				)
+			),
+			'imageId' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageName' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imagePosition' => array(
+				'type' => 'string',
+				'default' => 'center'
+			),
+			'showFeaturedImage' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'height' => array(
+				'type' => 'number',
+				'default' => 230
+			),
+			'isLink' => array(
+				'type' => 'boolean',
+				'default' => true
+			)
+		),
+		'textdomain' => 'miscellaneous-gutenberg-blocks',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
 	'flexbox' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,

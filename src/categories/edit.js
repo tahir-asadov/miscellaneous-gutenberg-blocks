@@ -8,12 +8,10 @@ import {
 	TextControl,
 	RangeControl,
 	CheckboxControl,
-	ListView,
 	Button,
 	Popover,
 	Spinner,
 } from "@wordpress/components";
-console.log("ListView", ListView);
 
 import { ReactSortable } from "react-sortablejs";
 import { useSelect } from "@wordpress/data";

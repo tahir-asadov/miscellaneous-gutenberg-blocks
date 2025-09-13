@@ -17,7 +17,12 @@ import "./editor.scss";
 /**
  * Block edit function
  */
-export default function Edit({ attributes, setAttributes, toggleSelection }) {
+export default function Edit({
+	attributes,
+	setAttributes,
+	toggleSelection,
+	isSelected,
+}) {
 	const classNames = [];
 	if (!attributes.disableCSS) {
 		classNames.push("has-style");
@@ -142,13 +147,14 @@ export default function Edit({ attributes, setAttributes, toggleSelection }) {
 					height: attributes.height > 0 ? attributes.height : undefined,
 					width: attributes.width > 0 ? attributes.width : undefined,
 				}}
+				__experimentalShowTooltip={true}
 				minHeight="50"
 				minWidth="50"
 				enable={{
 					top: false,
 					right: true,
 					bottom: true,
-					left: true,
+					left: false,
 					topRight: false,
 					bottomRight: true,
 					bottomLeft: false,
@@ -164,6 +170,7 @@ export default function Edit({ attributes, setAttributes, toggleSelection }) {
 				onResizeStart={() => {
 					toggleSelection(false);
 				}}
+				showHandle={isSelected}
 			>
 				<div {...blockProps}>
 					{attributes.showCategory && (

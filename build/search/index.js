@@ -46,7 +46,8 @@ __webpack_require__.r(__webpack_exports__);
 function Edit({
   attributes,
   setAttributes,
-  toggleSelection
+  toggleSelection,
+  isSelected
 }) {
   const classNames = [];
   if (!attributes.disableCSS) {
@@ -165,13 +166,14 @@ function Edit({
         height: attributes.height > 0 ? attributes.height : undefined,
         width: attributes.width > 0 ? attributes.width : undefined
       },
+      __experimentalShowTooltip: true,
       minHeight: "50",
       minWidth: "50",
       enable: {
         top: false,
         right: true,
         bottom: true,
-        left: true,
+        left: false,
         topRight: false,
         bottomRight: true,
         bottomLeft: false,
@@ -187,6 +189,7 @@ function Edit({
       onResizeStart: () => {
         toggleSelection(false);
       },
+      showHandle: isSelected,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         ...blockProps,
         children: [attributes.showCategory && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("select", {

@@ -798,19 +798,14 @@ function Edit(props) {
     }
   });
   const [layout, setLayout] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)("desktop");
-  let __experimentalSetPreviewDeviceType = device => {
-    console.log("__experimentalSetPreviewDeviceType", device);
-  };
+  let __experimentalSetPreviewDeviceType = device => {};
   const siteEditor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)("core/edit-site");
   const editor = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useDispatch)("core/editor");
-  console.log("editor", editor);
-  console.log("siteEditor", siteEditor);
   if (siteEditor) {
     __experimentalSetPreviewDeviceType = siteEditor.__experimentalSetPreviewDeviceType;
   } else if (editor) {
     __experimentalSetPreviewDeviceType = editor.setDeviceType;
   }
-  console.log("previousDeviceType", previousDeviceType, "layout", layout);
   const alignItemsStartIcon = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(lucide_react__WEBPACK_IMPORTED_MODULE_9__["default"], {
     width: 17
   });
