@@ -417,7 +417,6 @@ function Edit(props) {
 
   // Get the image URL (falls back to full size if no specific size is available)
   const featuredImageUrl = media?.source_url || "";
-  console.log("height", height);
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
     // style: {
     // 	objectPosition: imagePosition,
@@ -434,7 +433,7 @@ function Edit(props) {
     }
     setAttributes({
       imageId: media.id,
-      imageUrl: media.sizes.large.url,
+      imageUrl: media.sizes?.full ? media.sizes.full.url : media.sizes.thumbnail.url,
       imageName: media.title || media.filename // Use title or filename
     });
   };

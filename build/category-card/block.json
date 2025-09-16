@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "miscellaneous-gutenberg-blocks/category-card",
+  "version": "0.1.0",
+  "title": "Category card",
+  "category": "miscellaneous-gutenberg-blocks",
+  "icon": "search",
+  "description": "Category card.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "background": {
+      "backgroundSize": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "blockGap": true
+    },
+    "shadow": true
+  },
+  "attributes": {
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageName": {
+      "type": "string",
+      "default": ""
+    },
+    "categoryId": {
+      "type": "number",
+      "default": 0
+    },
+    "categoryCount": {
+      "type": "number",
+      "default": 0
+    },
+    "categoryUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "categoryName": {
+      "type": "string",
+      "default": ""
+    },
+    "postNameSingular": {
+      "type": "string",
+      "default": ""
+    },
+    "postNamePlural": {
+      "type": "string",
+      "default": ""
+    },
+    "isLink": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "textdomain": "miscellaneous-gutenberg-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

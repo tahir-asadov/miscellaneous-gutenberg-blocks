@@ -2082,6 +2082,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   gapUnits: () => (/* binding */ gapUnits),
 /* harmony export */   generateTemplate: () => (/* binding */ generateTemplate),
+/* harmony export */   getFileExtension: () => (/* binding */ getFileExtension),
 /* harmony export */   numberRange: () => (/* binding */ numberRange)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
@@ -2175,6 +2176,18 @@ const gapUnits = [{
   value: "vh",
   label: "vh"
 }];
+const getFileExtension = filename => {
+  // Use a regular expression to find the last dot and everything after it.
+  const regex = /(?:\.([^.]+))?$/;
+  const match = regex.exec(filename);
+
+  // If a match is found, return the extension, otherwise return null.
+  if (match && match[1]) {
+    return match[1].toLowerCase();
+  } else {
+    return null;
+  }
+};
 
 /***/ }),
 

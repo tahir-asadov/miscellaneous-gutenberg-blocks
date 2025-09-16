@@ -1,0 +1,54 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/category-card/style.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+.wp-block-miscellaneous-gutenberg-blocks-category-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 6px;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper {
+  display: flex;
+  border: solid 1px #ddd;
+  width: 62px;
+  height: 62px;
+  border-radius: 62px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper svg,
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper svg.wp-block-miscellaneous-gutenberg-blocks-category-card--type-svg,
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper img.wp-block-miscellaneous-gutenberg-blocks-category-card--type-svg {
+  width: 32px;
+  height: auto;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--left,
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--right {
+  display: flex;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--left {
+  align-items: center;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--right {
+  flex-direction: column;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--right span {
+  display: flex;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--right span.wp-block-miscellaneous-gutenberg-blocks-category-card--name {
+  color: black;
+  font-weight: bold;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--right span.wp-block-miscellaneous-gutenberg-blocks-category-card--count {
+  color: gray;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

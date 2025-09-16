@@ -1,15 +1,15 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
-	'categories' => array(
+	'category-card' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'miscellaneous-gutenberg-blocks/categories',
+		'name' => 'miscellaneous-gutenberg-blocks/category-card',
 		'version' => '0.1.0',
-		'title' => 'Categories',
+		'title' => 'Category card',
 		'category' => 'miscellaneous-gutenberg-blocks',
 		'icon' => 'search',
-		'description' => 'Categories list.',
+		'description' => 'Category card.',
 		'example' => array(
 			
 		),
@@ -31,25 +31,49 @@ return array(
 				'margin' => true,
 				'padding' => true,
 				'blockGap' => true
-			)
+			),
+			'shadow' => true
 		),
 		'attributes' => array(
-			'categories' => array(
-				'type' => 'array',
-				'default' => array(
-					array(
-						'id' => 1,
-						'name' => 'One'
-					),
-					array(
-						'id' => 2,
-						'name' => 'Two'
-					),
-					array(
-						'id' => 3,
-						'name' => 'Three'
-					)
-				)
+			'imageId' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'imageName' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'categoryId' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'categoryCount' => array(
+				'type' => 'number',
+				'default' => 0
+			),
+			'categoryUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'categoryName' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'postNameSingular' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'postNamePlural' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'isLink' => array(
+				'type' => 'boolean',
+				'default' => true
 			)
 		),
 		'textdomain' => 'miscellaneous-gutenberg-blocks',
