@@ -47,6 +47,10 @@ return array(
 				'type' => 'string',
 				'default' => ''
 			),
+			'imageWidth' => array(
+				'type' => 'number',
+				'default' => 64
+			),
 			'categoryId' => array(
 				'type' => 'number',
 				'default' => 0
@@ -74,6 +78,14 @@ return array(
 			'isLink' => array(
 				'type' => 'boolean',
 				'default' => true
+			),
+			'vertical' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'gap' => array(
+				'type' => 'number',
+				'default' => 20
 			)
 		),
 		'textdomain' => 'miscellaneous-gutenberg-blocks',

@@ -87,20 +87,20 @@ $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-' . $alignItems;
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-tablet-' . $tabletAlignItems;
 $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-mobile-' . $mobileAlignItems;
 
-$columnGapUnit = !empty($attributes['columnGapUnit']) && $attributes['columnGapUnit'] > 0 ? $attributes['columnGapUnit'] : 'px';
-$tabletColumnGapUnit = !empty($attributes['tabletColumnGapUnit']) && $attributes['tabletColumnGapUnit'] > 0 ? $attributes['tabletColumnGapUnit'] : 'px';
-$mobileColumnGapUnit = !empty($attributes['mobileColumnGapUnit']) && $attributes['mobileColumnGapUnit'] > 0 ? $attributes['mobileColumnGapUnit'] : 'px';
+$columnGapUnit = !empty($attributes['columnGapUnit']) ? $attributes['columnGapUnit'] : 'px';
+$tabletColumnGapUnit = !empty($attributes['tabletColumnGapUnit']) ? $attributes['tabletColumnGapUnit'] : 'px';
+$mobileColumnGapUnit = !empty($attributes['mobileColumnGapUnit']) ? $attributes['mobileColumnGapUnit'] : 'px';
 
-$rowGapUnit = !empty($attributes['rowGapUnit']) && $attributes['rowGapUnit'] > 0 ? $attributes['rowGapUnit'] : 'px';
-$tabletRowGapUnit = !empty($attributes['tabletRowGapUnit']) && $attributes['tabletRowGapUnit'] > 0 ? $attributes['tabletRowGapUnit'] : 'px';
-$mobileRowGapUnit = !empty($attributes['mobileRowGapUnit']) && $attributes['mobileRowGapUnit'] > 0 ? $attributes['mobileRowGapUnit'] : 'px';
+$rowGapUnit = !empty($attributes['rowGapUnit']) ? $attributes['rowGapUnit'] : 'px';
+$tabletRowGapUnit = !empty($attributes['tabletRowGapUnit']) ? $attributes['tabletRowGapUnit'] : 'px';
+$mobileRowGapUnit = !empty($attributes['mobileRowGapUnit']) ? $attributes['mobileRowGapUnit'] : 'px';
 
 $columnGap = !empty($attributes['columnGap']) && $attributes['columnGap'] > 0 ? $attributes['columnGap'] . $columnGapUnit : 0;
 $tabletColumnGap = !empty($attributes['tabletColumnGap']) && $attributes['tabletColumnGap'] > 0 ? $attributes['tabletColumnGap'] . $tabletColumnGapUnit : 0;
 $mobileColumnGap = !empty($attributes['mobileColumnGap']) && $attributes['mobileColumnGap'] > 0 ? $attributes['mobileColumnGap'] . $mobileColumnGapUnit : 0;
 
-$rowGap = !empty($attributes['rowGap']) && $attributes['rowGap'] > 0 ? $attributes['rowGap'] . $columnGapUnit : 0;
-$tabletRowGap = !empty($attributes['tabletRowGap']) && $attributes['tabletRowGap'] > 0 ? $attributes['tabletRowGap'] . $tabletColumnGapUnit : 0;
+$rowGap = !empty($attributes['rowGap']) && $attributes['rowGap'] > 0 ? $attributes['rowGap'] . $rowGapUnit : 0;
+$tabletRowGap = !empty($attributes['tabletRowGap']) && $attributes['tabletRowGap'] > 0 ? $attributes['tabletRowGap'] . $tabletRowGapUnit : 0;
 $mobileRowGap = !empty($attributes['mobileRowGap']) && $attributes['mobileRowGap'] > 0 ? $attributes['mobileRowGap'] . $mobileRowGapUnit : 0;
 
 $width = !empty($attributes['width']) && $attributes['width'] > 0 ? $attributes['width'] . $attributes['widthUnit'] : 'initial';
@@ -110,7 +110,6 @@ $mobileWidth = !empty($attributes['mobileWidth']) && $attributes['mobileWidth'] 
 
 $additional_attributes['class'] = join(' ', $classes);
 $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
-
 ?>
 <div <?php echo get_block_wrapper_attributes($additional_attributes); ?>>
   <?php

@@ -17,6 +17,7 @@ import {
 	Popover,
 	Spinner,
 	SelectControl,
+	ResizableBox,
 } from "@wordpress/components";
 
 import { ReactSortable } from "react-sortablejs";
@@ -56,11 +57,25 @@ import { getFileExtension } from "../libs/global";
  * @return {Element} Element to render.
  */
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({
+	attributes,
+	setAttributes,
+	isSelected,
+	toggleSelection,
+}) {
 	const [options, setOptions] = useState([]);
 	const classNames = [];
+	if (attributes.vertical) {
+		classNames.push(
+			"wp-block-miscellaneous-gutenberg-blocks-category-card--vertical",
+		);
+	}
+
 	const blockProps = useBlockProps({
 		className: classNames.join(" "),
+		style: {
+			gap: attributes.gap ? `${attributes.gap}px` : 0,
+		},
 	});
 
 	// 1. Fetch all categories using the core data store.
@@ -158,6 +173,28 @@ export default function Edit({ attributes, setAttributes }) {
 							setAttributes({ isLink: value });
 						}}
 					/>
+					<ToggleControl
+						style={{ marginBottom: "15px" }}
+						label={__("Is vertical", "miscellaneous-gutenberg-blocks")}
+						__next40pxDefaultSize
+						checked={attributes.vertical}
+						onChange={(value) => {
+							setAttributes({ vertical: value });
+						}}
+					/>
+					<RangeControl
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
+						value={attributes.gap}
+						label={null}
+						onChange={(value) =>
+							setAttributes({
+								gap: value,
+							})
+						}
+						min={0}
+						max={100}
+					/>
 
 					<MediaUploadCheck>
 						<MediaUpload
@@ -205,16 +242,49 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div {...blockProps}>
 				<div className="wp-block-miscellaneous-gutenberg-blocks-category-card--left">
-					<span className="wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper">
-						{attributes.imageId ? (
-							<img
-								src={attributes.imageUrl}
-								className={`wp-block-miscellaneous-gutenberg-blocks-category-card--type-${getFileExtension(
-									attributes.imageUrl,
-								)}`}
-							/>
-						) : null}
-					</span>
+					<ResizableBox
+						size={{
+							width:
+								attributes.imageWidth > 0 ? attributes.imageWidth : undefined,
+							height:
+								attributes.imageWidth > 0 ? attributes.imageWidth : undefined,
+						}}
+						__experimentalShowTooltip={true}
+						minHeight="50"
+						enable={{
+							top: false,
+							right: true,
+							bottom: false,
+							left: false,
+							topRight: false,
+							bottomRight: false,
+							bottomLeft: false,
+							topLeft: false,
+						}}
+						onResizeStop={(event, direction, elt, delta) => {
+							setAttributes({
+								imageWidth: attributes.imageWidth + delta.width,
+							});
+							toggleSelection(true);
+						}}
+						onResizeStart={() => {
+							toggleSelection(false);
+						}}
+						showHandle={isSelected}
+					>
+						<span
+							style={{
+								width: attributes.imageWidth,
+								height: attributes.imageWidth,
+								borderRadius: attributes.imageWidth,
+							}}
+							className={`wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper wp-block-miscellaneous-gutenberg-blocks-category-card--type-${getFileExtension(
+								attributes.imageUrl,
+							)}`}
+						>
+							{attributes.imageId ? <img src={attributes.imageUrl} /> : null}
+						</span>
+					</ResizableBox>
 				</div>
 				<div className="wp-block-miscellaneous-gutenberg-blocks-category-card--right">
 					<span className="wp-block-miscellaneous-gutenberg-blocks-category-card--name">

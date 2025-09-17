@@ -2,18 +2,20 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/category-card/style.scss ***!
   \*****************************************************************************************************************************************************************************************************************************************************/
 .wp-block-miscellaneous-gutenberg-blocks-category-card {
+  box-sizing: border-box;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 20px;
+  height: 100%;
   border-radius: 6px;
+  text-decoration: none;
 }
 .wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper {
   display: flex;
   border: solid 1px #ddd;
-  width: 62px;
-  height: 62px;
-  border-radius: 62px;
+  width: 64px;
+  height: 64px;
+  border-radius: 64px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -25,10 +27,11 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
-.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper svg.wp-block-miscellaneous-gutenberg-blocks-category-card--type-svg,
-.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper img.wp-block-miscellaneous-gutenberg-blocks-category-card--type-svg {
+.wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper.wp-block-miscellaneous-gutenberg-blocks-category-card--type-svg img {
   width: 32px;
-  height: auto;
+  aspect-ratio: 1;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--left,
 .wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--right {
@@ -49,4 +52,7 @@
 }
 .wp-block-miscellaneous-gutenberg-blocks-category-card .wp-block-miscellaneous-gutenberg-blocks-category-card--right span.wp-block-miscellaneous-gutenberg-blocks-category-card--count {
   color: gray;
+}
+.wp-block-miscellaneous-gutenberg-blocks-category-card.wp-block-miscellaneous-gutenberg-blocks-category-card--vertical {
+  flex-direction: column;
 }

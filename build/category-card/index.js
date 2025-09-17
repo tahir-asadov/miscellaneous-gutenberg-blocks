@@ -3937,7 +3937,7 @@ function invariant(condition, message) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/category-card","version":"0.1.0","title":"Category card","category":"miscellaneous-gutenberg-blocks","icon":"search","description":"Category card.","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true},"shadow":true},"attributes":{"imageId":{"type":"number","default":0},"imageUrl":{"type":"string","default":""},"imageName":{"type":"string","default":""},"categoryId":{"type":"number","default":0},"categoryCount":{"type":"number","default":0},"categoryUrl":{"type":"string","default":""},"categoryName":{"type":"string","default":""},"postNameSingular":{"type":"string","default":""},"postNamePlural":{"type":"string","default":""},"isLink":{"type":"boolean","default":true}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"miscellaneous-gutenberg-blocks/category-card","version":"0.1.0","title":"Category card","category":"miscellaneous-gutenberg-blocks","icon":"search","description":"Category card.","example":{},"supports":{"html":false,"color":{"background":true,"text":true},"typography":{"fontSize":true,"lineHeight":true,"textAlign":true},"background":{"backgroundSize":true},"spacing":{"margin":true,"padding":true,"blockGap":true},"shadow":true},"attributes":{"imageId":{"type":"number","default":0},"imageUrl":{"type":"string","default":""},"imageName":{"type":"string","default":""},"imageWidth":{"type":"number","default":64},"categoryId":{"type":"number","default":0},"categoryCount":{"type":"number","default":0},"categoryUrl":{"type":"string","default":""},"categoryName":{"type":"string","default":""},"postNameSingular":{"type":"string","default":""},"postNamePlural":{"type":"string","default":""},"isLink":{"type":"boolean","default":true},"vertical":{"type":"boolean","default":false},"gap":{"type":"number","default":20}},"textdomain":"miscellaneous-gutenberg-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -4008,12 +4008,20 @@ __webpack_require__.r(__webpack_exports__);
 
 function Edit({
   attributes,
-  setAttributes
+  setAttributes,
+  isSelected,
+  toggleSelection
 }) {
   const [options, setOptions] = (0,react__WEBPACK_IMPORTED_MODULE_6__.useState)([]);
   const classNames = [];
+  if (attributes.vertical) {
+    classNames.push("wp-block-miscellaneous-gutenberg-blocks-category-card--vertical");
+  }
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
-    className: classNames.join(" ")
+    className: classNames.join(" "),
+    style: {
+      gap: attributes.gap ? `${attributes.gap}px` : 0
+    }
   });
 
   // 1. Fetch all categories using the core data store.
@@ -4116,6 +4124,28 @@ function Edit({
               isLink: value
             });
           }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+          style: {
+            marginBottom: "15px"
+          },
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Is vertical", "miscellaneous-gutenberg-blocks"),
+          __next40pxDefaultSize: true,
+          checked: attributes.vertical,
+          onChange: value => {
+            setAttributes({
+              vertical: value
+            });
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          value: attributes.gap,
+          label: null,
+          onChange: value => setAttributes({
+            gap: value
+          }),
+          min: 0,
+          max: 100
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.MediaUploadCheck, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.MediaUpload, {
             allowedTypes: ["image"],
@@ -4155,12 +4185,44 @@ function Edit({
       ...blockProps,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "wp-block-miscellaneous-gutenberg-blocks-category-card--left",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-          className: "wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper",
-          children: attributes.imageId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
-            src: attributes.imageUrl,
-            className: `wp-block-miscellaneous-gutenberg-blocks-category-card--type-${(0,_libs_global__WEBPACK_IMPORTED_MODULE_7__.getFileExtension)(attributes.imageUrl)}`
-          }) : null
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ResizableBox, {
+          size: {
+            width: attributes.imageWidth > 0 ? attributes.imageWidth : undefined,
+            height: attributes.imageWidth > 0 ? attributes.imageWidth : undefined
+          },
+          __experimentalShowTooltip: true,
+          minHeight: "50",
+          enable: {
+            top: false,
+            right: true,
+            bottom: false,
+            left: false,
+            topRight: false,
+            bottomRight: false,
+            bottomLeft: false,
+            topLeft: false
+          },
+          onResizeStop: (event, direction, elt, delta) => {
+            setAttributes({
+              imageWidth: attributes.imageWidth + delta.width
+            });
+            toggleSelection(true);
+          },
+          onResizeStart: () => {
+            toggleSelection(false);
+          },
+          showHandle: isSelected,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
+            style: {
+              width: attributes.imageWidth,
+              height: attributes.imageWidth,
+              borderRadius: attributes.imageWidth
+            },
+            className: `wp-block-miscellaneous-gutenberg-blocks-category-card--image-wrapper wp-block-miscellaneous-gutenberg-blocks-category-card--type-${(0,_libs_global__WEBPACK_IMPORTED_MODULE_7__.getFileExtension)(attributes.imageUrl)}`,
+            children: attributes.imageId ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+              src: attributes.imageUrl
+            }) : null
+          })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "wp-block-miscellaneous-gutenberg-blocks-category-card--right",

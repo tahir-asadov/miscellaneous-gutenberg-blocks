@@ -42,6 +42,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"imageWidth": {
+			"type": "number",
+			"default": 64
+		},
 		"categoryId": {
 			"type": "number",
 			"default": 0
@@ -69,6 +73,14 @@
 		"isLink": {
 			"type": "boolean",
 			"default": true
+		},
+		"vertical": {
+			"type": "boolean",
+			"default": false
+		},
+		"gap": {
+			"type": "number",
+			"default": 20
 		}
 	},
 	"textdomain": "miscellaneous-gutenberg-blocks",
