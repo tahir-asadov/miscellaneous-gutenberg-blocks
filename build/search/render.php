@@ -22,7 +22,7 @@ $additional_attributes['class'] = join(' ', $classes);
 $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
 $categories = get_categories();
 ?>
-<div>
+<div class="miscellaneous-gutenberg-blocks-search-container">
   <form>
     <div <?php echo get_block_wrapper_attributes($additional_attributes); ?>>
       <?php if ($showCategory && !empty($categories)) { ?>
