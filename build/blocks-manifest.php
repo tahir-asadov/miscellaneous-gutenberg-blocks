@@ -217,41 +217,41 @@ return array(
 			)
 		),
 		'attributes' => array(
-			'wrap' => array(
-				'type' => 'boolean',
-				'default' => false
+			'widthType' => array(
+				'type' => 'string',
+				'default' => 'full'
 			),
-			'tabletWrap' => array(
-				'type' => 'boolean',
-				'default' => false
+			'tabletWidthType' => array(
+				'type' => 'string',
+				'default' => 'full'
 			),
-			'mobileWrap' => array(
-				'type' => 'boolean',
-				'default' => false
+			'mobileWidthType' => array(
+				'type' => 'string',
+				'default' => 'full'
 			),
-			'horizontal' => array(
-				'type' => 'boolean',
-				'default' => true
+			'width' => array(
+				'type' => 'number',
+				'default' => 100
 			),
-			'tabletHorizontal' => array(
-				'type' => 'boolean',
-				'default' => true
+			'tabletWidth' => array(
+				'type' => 'number',
+				'default' => 100
 			),
-			'mobileHorizontal' => array(
-				'type' => 'boolean',
-				'default' => true
+			'mobileWidth' => array(
+				'type' => 'number',
+				'default' => 100
 			),
-			'reverse' => array(
-				'type' => 'boolean',
-				'default' => false
+			'widthUnit' => array(
+				'type' => 'string',
+				'default' => '%'
 			),
-			'tabletReverse' => array(
-				'type' => 'boolean',
-				'default' => false
+			'tabletWidthUnit' => array(
+				'type' => 'string',
+				'default' => '%'
 			),
-			'mobileReverse' => array(
-				'type' => 'boolean',
-				'default' => false
+			'mobileWidthUnit' => array(
+				'type' => 'string',
+				'default' => '%'
 			),
 			'columnGap' => array(
 				'type' => 'number',
@@ -301,17 +301,53 @@ return array(
 				'type' => 'string',
 				'default' => 'px'
 			),
+			'wrap' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'tabletWrap' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'mobileWrap' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'direction' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'tabletDirection' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'mobileDirection' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'reverse' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'tabletReverse' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
+			'mobileReverse' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
 			'justifyContent' => array(
 				'type' => 'string',
-				'default' => 'flex-start'
+				'default' => ''
 			),
 			'tabletJustifyContent' => array(
 				'type' => 'string',
-				'default' => 'flex-start'
+				'default' => ''
 			),
 			'mobileJustifyContent' => array(
 				'type' => 'string',
-				'default' => 'flex-start'
+				'default' => ''
 			),
 			'alignItems' => array(
 				'type' => 'string',
@@ -325,65 +361,41 @@ return array(
 				'type' => 'string',
 				'default' => 'flex-start'
 			),
-			'width' => array(
-				'type' => 'number',
-				'default' => 100
-			),
-			'tabletWidth' => array(
-				'type' => 'number',
-				'default' => 100
-			),
-			'mobileWidth' => array(
-				'type' => 'number',
-				'default' => 100
-			),
-			'widthUnit' => array(
-				'type' => 'string',
-				'default' => '%'
-			),
-			'tabletWidthUnit' => array(
-				'type' => 'string',
-				'default' => '%'
-			),
-			'mobileWidthUnit' => array(
-				'type' => 'string',
-				'default' => '%'
-			),
 			'grow' => array(
-				'type' => 'boolean',
-				'default' => false
+				'type' => 'string',
+				'default' => ''
 			),
 			'tabletGrow' => array(
-				'type' => 'boolean',
-				'default' => false
+				'type' => 'string',
+				'default' => ''
 			),
 			'mobileGrow' => array(
-				'type' => 'boolean',
-				'default' => false
+				'type' => 'string',
+				'default' => ''
 			),
 			'shrink' => array(
-				'type' => 'boolean',
-				'default' => false
+				'type' => 'string',
+				'default' => ''
 			),
 			'tabletShrink' => array(
-				'type' => 'boolean',
-				'default' => false
+				'type' => 'string',
+				'default' => ''
 			),
 			'mobileShrink' => array(
-				'type' => 'boolean',
-				'default' => false
+				'type' => 'string',
+				'default' => ''
 			),
-			'hidden' => array(
-				'type' => 'boolean',
-				'default' => false
+			'display' => array(
+				'type' => 'string',
+				'default' => ''
 			),
-			'tabletHidden' => array(
-				'type' => 'boolean',
-				'default' => false
+			'tabletDisplay' => array(
+				'type' => 'string',
+				'default' => ''
 			),
-			'mobileHidden' => array(
-				'type' => 'boolean',
-				'default' => false
+			'mobileDisplay' => array(
+				'type' => 'string',
+				'default' => ''
 			)
 		),
 		'textdomain' => 'miscellaneous-gutenberg-blocks',

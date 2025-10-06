@@ -12,68 +12,96 @@
   width: 100%;
   box-sizing: border-box;
 }
-@media only screen and (min-width: 993px) {
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--wrap {
-    flex-wrap: wrap;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--horizontal {
-    flex-direction: row;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--horizontal.miscellaneous-gutenberg-blocks-flexbox--reverse {
-    flex-direction: row-reverse;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--vertical {
-    flex-direction: column;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--vertical.miscellaneous-gutenberg-blocks-flexbox--reverse {
-    flex-direction: column-reverse;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-flex-start {
-    justify-content: flex-start;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-flex-end {
-    justify-content: flex-end;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-center {
-    justify-content: center;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-space-between {
-    justify-content: space-between;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-space-around {
-    justify-content: space-around;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-flex-start {
-    align-items: flex-start;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-flex-end {
-    align-items: flex-end;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-baseline {
-    align-items: baseline;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-center {
-    align-items: center;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-stretch {
-    align-items: stretch;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-none {
-    align-items: initial;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--grow {
-    flex-grow: 1;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--shrink {
-    flex-shrink: 1;
-  }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--hidden {
-    display: none;
-  }
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--wrap {
+  flex-wrap: wrap;
 }
-@media only screen and (min-width: 601px) and (max-width: 992px) {
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--no-wrap {
+  flex-wrap: nowrap;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--reverse {
+  flex-direction: row-reverse;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--horizontal {
+  flex-direction: row;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--horizontal.miscellaneous-gutenberg-blocks-flexbox--reverse {
+  flex-direction: row-reverse;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--vertical {
+  flex-direction: column;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--vertical.miscellaneous-gutenberg-blocks-flexbox--reverse {
+  flex-direction: column-reverse;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-flex-start {
+  justify-content: flex-start;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-flex-end {
+  justify-content: flex-end;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-center {
+  justify-content: center;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-space-between {
+  justify-content: space-between;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--justify-space-around {
+  justify-content: space-around;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-flex-start {
+  align-items: flex-start;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-flex-end {
+  align-items: flex-end;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-baseline {
+  align-items: baseline;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-center {
+  align-items: center;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-stretch {
+  align-items: stretch;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--align-none {
+  align-items: initial;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--grow {
+  flex-grow: 1;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--no-grow {
+  flex-grow: 0;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--shrink {
+  flex-shrink: 1;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--no-shrink {
+  flex-shrink: 0;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--flex {
+  display: flex;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--inline-flex {
+  display: inline-flex;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--none {
+  display: none;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--width-auto {
+  width: auto;
+}
+.wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--width-initial {
+  width: initial;
+}
+@media only screen and (max-width: 992px) {
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-wrap {
     flex-wrap: wrap;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-no-wrap {
+    flex-wrap: nowrap;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-reverse {
+    flex-direction: row-reverse;
   }
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-horizontal {
     flex-direction: row;
@@ -123,16 +151,40 @@
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-grow {
     flex-grow: 1;
   }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-no-grow {
+    flex-grow: 0;
+  }
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-shrink {
     flex-shrink: 1;
   }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-hidden {
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-no-shrink {
+    flex-shrink: 0;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-flex {
+    display: flex;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-inline-flex {
+    display: inline-flex;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--tablet-none {
     display: none;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--width-tablet-auto {
+    width: auto;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--width-tablet-initial {
+    width: initial;
   }
 }
 @media only screen and (max-width: 600px) {
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-wrap {
     flex-wrap: wrap;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-no-wrap {
+    flex-wrap: nowrap;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-reverse {
+    flex-direction: row-reverse;
   }
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-horizontal {
     flex-direction: row;
@@ -182,10 +234,28 @@
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-grow {
     flex-grow: 1;
   }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-no-grow {
+    flex-grow: 0;
+  }
   .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-shrink {
     flex-shrink: 1;
   }
-  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-hidden {
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-no-shrink {
+    flex-shrink: 0;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-flex {
+    display: flex;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-inline-flex {
+    display: inline-flex;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--mobile-none {
     display: none;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--width-mobile-auto {
+    width: auto;
+  }
+  .wp-block-miscellaneous-gutenberg-blocks-flexbox.miscellaneous-gutenberg-blocks-flexbox--width-mobile-initial {
+    width: initial;
   }
 }

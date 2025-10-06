@@ -1,44 +1,93 @@
 <?php
 
 $classes = [];
-$wrap = !empty($attributes['wrap']) && $attributes['wrap'] == 1;
-$tabletWrap = !empty($attributes['tabletWrap']) && $attributes['tabletWrap'] == 1;
-$mobileWrap = !empty($attributes['mobileWrap']) && $attributes['mobileWrap'] == 1;
-$horizontal = !empty($attributes['horizontal']) && $attributes['horizontal'] == 1;
-$tabletHorizontal = !empty($attributes['tabletHorizontal']) && $attributes['tabletHorizontal'] == 1;
-$mobileHorizontal = !empty($attributes['mobileHorizontal']) && $attributes['mobileHorizontal'] == 1;
+
+$widthType = !empty($attributes['widthType']) ? $attributes['widthType'] : 'full';
+$tabletWidthType = !empty($attributes['tabletWidthType']) ? $attributes['tabletWidthType'] : 'full';
+$mobileWidthType = !empty($attributes['mobileWidthType']) ? $attributes['mobileWidthType'] : 'full';
+
+$width = !empty($attributes['width']) && $attributes['width'] > 0 ? $attributes['width'] . $attributes['widthUnit'] : '';
+$tabletWidth = !empty($attributes['tabletWidth']) && $attributes['tabletWidth'] > 0 ? $attributes['tabletWidth'] . $attributes['tabletWidthUnit'] : '';
+$mobileWidth = !empty($attributes['mobileWidth']) && $attributes['mobileWidth'] > 0 ? $attributes['mobileWidth'] . $attributes['mobileWidthUnit'] : '';
+
+$wrap = !empty($attributes['wrap']) ? $attributes['wrap'] : '';
+$tabletWrap = !empty($attributes['tabletWrap']) ? $attributes['tabletWrap'] : '';
+$mobileWrap = !empty($attributes['mobileWrap']) ? $attributes['mobileWrap'] : '';
+
+$direction = !empty($attributes['direction']) ? $attributes['direction'] : '';
+$tabletDirection = !empty($attributes['tabletDirection']) ? $attributes['tabletDirection'] : '';
+$mobileDirection = !empty($attributes['mobileDirection']) ? $attributes['mobileDirection'] : '';
+
 $reverse = !empty($attributes['reverse']) && $attributes['reverse'] == 1;
 $tabletReverse = !empty($attributes['tabletReverse']) && $attributes['tabletReverse'] == 1;
 $mobileReverse = !empty($attributes['mobileReverse']) && $attributes['mobileReverse'] == 1;
+
 $justifyContent = !empty($attributes['justifyContent']) ? $attributes['justifyContent'] : '';
 $tabletJustifyContent = !empty($attributes['tabletJustifyContent']) ? $attributes['tabletJustifyContent'] : '';
 $mobileJustifyContent = !empty($attributes['mobileJustifyContent']) ? $attributes['mobileJustifyContent'] : '';
+
 $alignItems = !empty($attributes['alignItems']) ? $attributes['alignItems'] : '';
 $tabletAlignItems = !empty($attributes['tabletAlignItems']) ? $attributes['tabletAlignItems'] : '';
 $mobileAlignItems = !empty($attributes['mobileAlignItems']) ? $attributes['mobileAlignItems'] : '';
 
-if ($wrap) {
+$grow = !empty($attributes['grow']) ? $attributes['grow'] : '';
+$tabletGrow = !empty($attributes['tabletGrow']) ? $attributes['tabletGrow'] : '';
+$mobileGrow = !empty($attributes['mobileGrow']) ? $attributes['mobileGrow'] : '';
+
+$shrink = !empty($attributes['shrink']) ? $attributes['shrink'] : '';
+$tabletShrink = !empty($attributes['tabletShrink']) ? $attributes['tabletShrink'] : '';
+$mobileShrink = !empty($attributes['mobileShrink']) ? $attributes['mobileShrink'] : '';
+
+$display = !empty($attributes['display']) ? $attributes['display'] : '';
+$tabletDisplay = !empty($attributes['tabletDisplay']) ? $attributes['tabletDisplay'] : '';
+$mobileDisplay = !empty($attributes['mobileDisplay']) ? $attributes['mobileDisplay'] : '';
+
+if ($widthType == 'auto') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--width-auto';
+} else if ($widthType == 'initial') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--width-initial';
+}
+if ($tabletWidthType == 'auto') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--width-tablet-auto';
+} else if ($tabletWidthType == 'initial') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--width-tablet-initial';
+}
+if ($mobileWidthType == 'auto') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--width-mobile-auto';
+} else if ($mobileWidthType == 'initial') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--width-mobile-initial';
+}
+
+if ($wrap == 'wrap') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--wrap';
+} else if ($wrap == 'no-wrap') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--no-wrap';
 }
-if ($tabletWrap) {
+if ($tabletWrap == 'wrap') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-wrap';
-}
-if ($mobileWrap) {
+} else if ($mobileWrap == 'wrap') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-wrap';
 }
-if ($horizontal) {
+if ($tabletWrap == 'no-wrap') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-no-wrap';
+} else if ($mobileWrap == 'no-wrap') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-no-wrap';
+}
+
+if ($direction == 'horizontal') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--horizontal';
-} else {
+} else if ($direction == 'vertical') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--vertical';
 }
-if ($tabletHorizontal) {
+if ($tabletDirection == 'horizontal') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-horizontal';
-} else {
+}
+if ($tabletDirection == 'vertical') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-vertical';
 }
-if ($mobileHorizontal) {
+if ($mobileDirection == 'horizontal') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-horizontal';
-} else {
+} else if ($mobileDirection == 'vertical') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-vertical';
 }
 
@@ -51,41 +100,83 @@ if ($tabletReverse) {
 if ($mobileReverse) {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-reverse';
 }
-if (!empty($attributes['grow']) && $attributes['grow'] == 1) {
+
+if ($grow == 'grow') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--grow';
+} else if ($grow == 'no-grow') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--no-grow';
 }
-if (!empty($attributes['tabletGrow']) && $attributes['tabletGrow'] == 1) {
+if ($tabletGrow == 'grow') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-grow';
+} else if ($tabletGrow == 'no-grow') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-no-grow';
 }
-if (!empty($attributes['mobileGrow']) && $attributes['mobileGrow'] == 1) {
+if ($mobileGrow == 'grow') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-grow';
+} else if ($mobileGrow == 'no-grow') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-no-grow';
 }
-if (!empty($attributes['shrink']) && $attributes['shrink'] == 1) {
+
+if ($shrink == 'shrink') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--shrink';
+} else if ($shrink == 'no-shrink') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--no-shrink';
 }
-if (!empty($attributes['tabletShrink']) && $attributes['tabletShrink'] == 1) {
+if ($tabletShrink == 'shrink') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-shrink';
+} else if ($tabletShrink == 'no-shrink') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-no-shrink';
 }
-if (!empty($attributes['mobileShrink']) && $attributes['mobileShrink'] == 1) {
+if ($mobileShrink == 'shrink') {
   $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-shrink';
-}
-if (!empty($attributes['shrink']) && $attributes['hidden'] == 1) {
-  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--hidden';
-}
-if (!empty($attributes['tabletHidden']) && $attributes['tabletHidden'] == 1) {
-  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-hidden';
-}
-if (!empty($attributes['mobileHidden']) && $attributes['mobileHidden'] == 1) {
-  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-hidden';
+} else if ($mobileShrink == 'no-shrink') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-no-shrink';
 }
 
-$classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-' . $justifyContent;
-$classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-tablet-' . $tabletJustifyContent;
-$classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-mobile-' . $mobileJustifyContent;
 
-$classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-' . $alignItems;
-$classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-tablet-' . $tabletAlignItems;
-$classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-mobile-' . $mobileAlignItems;
+if ($display == 'flex') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--flex';
+} else if ($display == 'inline-flex') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--inline-flex';
+} else if ($display == 'none') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--none';
+}
+
+if ($tabletDisplay == 'flex') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-flex';
+} else if ($tabletDisplay == 'inline-flex') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-inline-flex';
+} else if ($tabletDisplay == 'none') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--tablet-none';
+}
+
+if ($mobileDisplay == 'flex') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-flex';
+} else if ($mobileDisplay == 'inline-flex') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-inline-flex';
+} else if ($mobileDisplay == 'none') {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--mobile-none';
+}
+
+if ($justifyContent) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-' . $justifyContent;
+}
+if ($tabletJustifyContent) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-tablet-' . $tabletJustifyContent;
+}
+if ($mobileJustifyContent) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--justify-mobile-' . $mobileJustifyContent;
+}
+
+if ($alignItems) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-' . $alignItems;
+}
+if ($tabletAlignItems) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-tablet-' . $tabletAlignItems;
+}
+if ($mobileAlignItems) {
+  $classes[] = 'miscellaneous-gutenberg-blocks-flexbox--align-mobile-' . $mobileAlignItems;
+}
 
 $columnGapUnit = !empty($attributes['columnGapUnit']) ? $attributes['columnGapUnit'] : 'px';
 $tabletColumnGapUnit = !empty($attributes['tabletColumnGapUnit']) ? $attributes['tabletColumnGapUnit'] : 'px';
@@ -103,13 +194,13 @@ $rowGap = !empty($attributes['rowGap']) && $attributes['rowGap'] > 0 ? $attribut
 $tabletRowGap = !empty($attributes['tabletRowGap']) && $attributes['tabletRowGap'] > 0 ? $attributes['tabletRowGap'] . $tabletRowGapUnit : 0;
 $mobileRowGap = !empty($attributes['mobileRowGap']) && $attributes['mobileRowGap'] > 0 ? $attributes['mobileRowGap'] . $mobileRowGapUnit : 0;
 
-$width = !empty($attributes['width']) && $attributes['width'] > 0 ? $attributes['width'] . $attributes['widthUnit'] : 'initial';
-$tabletWidth = !empty($attributes['tabletWidth']) && $attributes['tabletWidth'] > 0 ? $attributes['tabletWidth'] . $attributes['tabletWidthUnit'] : 'initial';
-$mobileWidth = !empty($attributes['mobileWidth']) && $attributes['mobileWidth'] > 0 ? $attributes['mobileWidth'] . $attributes['mobileWidthUnit'] : 'initial';
-
-
 $additional_attributes['class'] = join(' ', $classes);
 $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
+
+$MobileStyles = ($widthType == 'custom' && $width != '') || $columnGap || $rowGap;
+$hasMobileStyles = ($tabletWidthType == 'custom' && $tabletWidth != '') || $tabletColumnGap || $tabletRowGap;
+$hasTabletStyles = ($mobileWidthType == 'custom' && $mobileWidth != '') || $mobileColumnGap || $mobileRowGap;
+
 ?>
 <div <?php echo get_block_wrapper_attributes($additional_attributes); ?>>
   <?php
@@ -122,54 +213,34 @@ $additional_attributes['id'] = 'miscellaneous-gutenberg-blocks-' . uniqid();
 
   ?>
 </div>
-<style>
-  @media only screen and (min-width:
-    <?php echo MISC_GB_BLOCKS_MIN_DESKTOP_BREAKING_POINT; ?>
-  ) {
-    #<?php echo $additional_attributes['id']; ?> {
-      width:
-        <?php echo $width; ?>
-      ;
-      column-gap:
-        <?php echo $columnGap; ?>
-      ;
-      row-gap:
-        <?php echo $rowGap; ?>
-      ;
+<?php if ($MobileStyles || $hasMobileStyles || $hasTabletStyles): ?>
+  <style>
+    @media only screen {
+      #<?php echo $additional_attributes['id']; ?> {
+        <?php echo $widthType == 'custom' && $width != '' ? "width: {$width};" : ''; ?>
+        <?php echo $columnGap ? "column-gap: $columnGap;" : ''; ?>
+        <?php echo $rowGap ? "row-gap: $rowGap;" : ''; ?>
+      }
     }
-  }
 
-  @media only screen and (min-width:
-    <?php echo MISC_GB_BLOCKS_MIN_TABLET_BREAKING_POINT; ?>
-  ) and (max-width:
-    <?php echo MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT; ?>
-  ) {
-    #<?php echo $additional_attributes['id']; ?> {
-      width:
-        <?php echo $tabletWidth; ?>
-      ;
-      column-gap:
-        <?php echo $tabletColumnGap; ?>
-      ;
-      row-gap:
-        <?php echo $tabletRowGap; ?>
-      ;
+    @media only screen and (max-width:
+      <?php echo MISC_GB_BLOCKS_MAX_TABLET_BREAKING_POINT; ?>
+    ) {
+      #<?php echo $additional_attributes['id']; ?> {
+        <?php echo $tabletWidthType == 'custom' && $tabletWidth != '' ? "width: {$tabletWidth};" : ''; ?>
+        <?php echo $tabletColumnGap ? "column-gap: $tabletColumnGap;" : ''; ?>
+        <?php echo $tabletRowGap ? "row-gap: $tabletRowGap;" : ''; ?>
+      }
     }
-  }
 
-  @media only screen and (max-width:
-    <?php echo MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT; ?>
-  ) {
-    #<?php echo $additional_attributes['id']; ?> {
-      width:
-        <?php echo $mobileWidth; ?>
-      ;
-      column-gap:
-        <?php echo $mobileColumnGap; ?>
-      ;
-      row-gap:
-        <?php echo $mobileRowGap; ?>
-      ;
+    @media only screen and (max-width:
+      <?php echo MISC_GB_BLOCKS_MAX_MOBILE_BREAKING_POINT; ?>
+    ) {
+      #<?php echo $additional_attributes['id']; ?> {
+        <?php echo $mobileWidthType == 'custom' && $mobileWidth != '' ? "width: {$mobileWidth};" : ''; ?>
+        <?php echo $mobileColumnGap ? "column-gap: $mobileColumnGap;" : ''; ?>
+        <?php echo $mobileRowGap ? "row-gap: $mobileRowGap;" : ''; ?>
+      }
     }
-  }
-</style>
+  </style>
+<?php endif; ?>

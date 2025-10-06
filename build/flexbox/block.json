@@ -31,41 +31,41 @@
     }
   },
   "attributes": {
-    "wrap": {
-      "type": "boolean",
-      "default": false
+    "widthType": {
+      "type": "string",
+      "default": "full"
     },
-    "tabletWrap": {
-      "type": "boolean",
-      "default": false
+    "tabletWidthType": {
+      "type": "string",
+      "default": "full"
     },
-    "mobileWrap": {
-      "type": "boolean",
-      "default": false
+    "mobileWidthType": {
+      "type": "string",
+      "default": "full"
     },
-    "horizontal": {
-      "type": "boolean",
-      "default": true
+    "width": {
+      "type": "number",
+      "default": 100
     },
-    "tabletHorizontal": {
-      "type": "boolean",
-      "default": true
+    "tabletWidth": {
+      "type": "number",
+      "default": 100
     },
-    "mobileHorizontal": {
-      "type": "boolean",
-      "default": true
+    "mobileWidth": {
+      "type": "number",
+      "default": 100
     },
-    "reverse": {
-      "type": "boolean",
-      "default": false
+    "widthUnit": {
+      "type": "string",
+      "default": "%"
     },
-    "tabletReverse": {
-      "type": "boolean",
-      "default": false
+    "tabletWidthUnit": {
+      "type": "string",
+      "default": "%"
     },
-    "mobileReverse": {
-      "type": "boolean",
-      "default": false
+    "mobileWidthUnit": {
+      "type": "string",
+      "default": "%"
     },
     "columnGap": {
       "type": "number",
@@ -115,17 +115,53 @@
       "type": "string",
       "default": "px"
     },
+    "wrap": {
+      "type": "string",
+      "default": ""
+    },
+    "tabletWrap": {
+      "type": "string",
+      "default": ""
+    },
+    "mobileWrap": {
+      "type": "string",
+      "default": ""
+    },
+    "direction": {
+      "type": "string",
+      "default": ""
+    },
+    "tabletDirection": {
+      "type": "string",
+      "default": ""
+    },
+    "mobileDirection": {
+      "type": "string",
+      "default": ""
+    },
+    "reverse": {
+      "type": "boolean",
+      "default": false
+    },
+    "tabletReverse": {
+      "type": "boolean",
+      "default": false
+    },
+    "mobileReverse": {
+      "type": "boolean",
+      "default": false
+    },
     "justifyContent": {
       "type": "string",
-      "default": "flex-start"
+      "default": ""
     },
     "tabletJustifyContent": {
       "type": "string",
-      "default": "flex-start"
+      "default": ""
     },
     "mobileJustifyContent": {
       "type": "string",
-      "default": "flex-start"
+      "default": ""
     },
     "alignItems": {
       "type": "string",
@@ -139,65 +175,41 @@
       "type": "string",
       "default": "flex-start"
     },
-    "width": {
-      "type": "number",
-      "default": 100
-    },
-    "tabletWidth": {
-      "type": "number",
-      "default": 100
-    },
-    "mobileWidth": {
-      "type": "number",
-      "default": 100
-    },
-    "widthUnit": {
-      "type": "string",
-      "default": "%"
-    },
-    "tabletWidthUnit": {
-      "type": "string",
-      "default": "%"
-    },
-    "mobileWidthUnit": {
-      "type": "string",
-      "default": "%"
-    },
     "grow": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "tabletGrow": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "mobileGrow": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "shrink": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "tabletShrink": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
     "mobileShrink": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": ""
     },
-    "hidden": {
-      "type": "boolean",
-      "default": false
+    "display": {
+      "type": "string",
+      "default": ""
     },
-    "tabletHidden": {
-      "type": "boolean",
-      "default": false
+    "tabletDisplay": {
+      "type": "string",
+      "default": ""
     },
-    "mobileHidden": {
-      "type": "boolean",
-      "default": false
+    "mobileDisplay": {
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "miscellaneous-gutenberg-blocks",

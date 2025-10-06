@@ -50,15 +50,15 @@ import { gapUnits } from "../libs/global";
 export default function Edit(props) {
 	const {
 		attributes: {
-			wrap,
-			tabletWrap,
-			mobileWrap,
-			horizontal,
-			tabletHorizontal,
-			mobileHorizontal,
-			reverse,
-			tabletReverse,
-			mobileReverse,
+			widthType,
+			tabletWidthType,
+			mobileWidthType,
+			width,
+			tabletWidth,
+			mobileWidth,
+			widthUnit,
+			tabletWidthUnit,
+			mobileWidthUnit,
 			columnGap,
 			tabletColumnGap,
 			mobileColumnGap,
@@ -71,27 +71,30 @@ export default function Edit(props) {
 			rowGapUnit,
 			tabletRowGapUnit,
 			mobileRowGapUnit,
+			wrap,
+			tabletWrap,
+			mobileWrap,
+			direction,
+			tabletDirection,
+			mobileDirection,
+			reverse,
+			tabletReverse,
+			mobileReverse,
 			justifyContent,
 			tabletJustifyContent,
 			mobileJustifyContent,
 			alignItems,
 			tabletAlignItems,
 			mobileAlignItems,
-			width,
-			tabletWidth,
-			mobileWidth,
-			widthUnit,
-			tabletWidthUnit,
-			mobileWidthUnit,
 			grow,
 			tabletGrow,
 			mobileGrow,
 			shrink,
 			tabletShrink,
 			mobileShrink,
-			hidden,
-			tabletHidden,
-			mobileHidden,
+			display,
+			tabletDisplay,
+			mobileDisplay,
 		},
 		setAttributes,
 	} = props;
@@ -136,37 +139,43 @@ export default function Edit(props) {
 
 	const classNames = [];
 
-	if (wrap) {
+	if (wrap == "wrap") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--wrap");
+	} else if (wrap == "no-wrap") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--no-wrap");
 	}
 
-	if (tabletWrap) {
+	if (tabletWrap == "wrap") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-wrap");
+	} else if (tabletWrap == "no-wrap") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-no-wrap");
 	}
 
-	if (mobileWrap) {
+	if (mobileWrap == "wrap") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-wrap");
+	} else if (mobileWrap == "no-wrap") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-no-wrap");
 	}
 
-	if (horizontal) {
+	if (direction == "horizontal") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--horizontal");
-	} else {
+	} else if (direction == "vertical") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--vertical");
 	}
 
-	if (tabletHorizontal) {
+	if (tabletDirection == "horizontal") {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-flexbox--tablet-horizontal",
 		);
-	} else {
+	} else if (tabletDirection == "vertical") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-vertical");
 	}
 
-	if (mobileHorizontal) {
+	if (mobileDirection == "horizontal") {
 		classNames.push(
 			"miscellaneous-gutenberg-blocks-flexbox--mobile-horizontal",
 		);
-	} else {
+	} else if (mobileDirection == "vertical") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-vertical");
 	}
 
@@ -179,65 +188,135 @@ export default function Edit(props) {
 	if (mobileReverse) {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-reverse");
 	}
-	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--justify-${justifyContent}`,
-	);
-	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--justify-tablet-${tabletJustifyContent}`,
-	);
-	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--justify-mobile-${mobileJustifyContent}`,
-	);
-	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--align-${alignItems}`,
-	);
-	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--align-tablet-${tabletAlignItems}`,
-	);
-	classNames.push(
-		`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobileAlignItems}`,
-	);
 
-	if (grow) {
+	if (justifyContent) {
+		classNames.push(
+			`miscellaneous-gutenberg-blocks-flexbox--justify-${justifyContent}`,
+		);
+	}
+	if (tabletJustifyContent) {
+		classNames.push(
+			`miscellaneous-gutenberg-blocks-flexbox--justify-tablet-${tabletJustifyContent}`,
+		);
+	}
+	if (mobileJustifyContent) {
+		classNames.push(
+			`miscellaneous-gutenberg-blocks-flexbox--justify-mobile-${mobileJustifyContent}`,
+		);
+	}
+	if (alignItems) {
+		classNames.push(
+			`miscellaneous-gutenberg-blocks-flexbox--align-${alignItems}`,
+		);
+	}
+	if (tabletAlignItems) {
+		classNames.push(
+			`miscellaneous-gutenberg-blocks-flexbox--align-tablet-${tabletAlignItems}`,
+		);
+	}
+	if (mobileAlignItems) {
+		classNames.push(
+			`miscellaneous-gutenberg-blocks-flexbox--align-mobile-${mobileAlignItems}`,
+		);
+	}
+
+	if (grow == "grow") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--grow");
+	} else if (grow == "no-grow") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--grow");
 	}
-	if (tabletGrow) {
+	if (tabletGrow == "grow") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-grow");
+	} else if (tabletGrow == "no-grow") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-grow");
 	}
-	if (mobileGrow) {
+	if (mobileGrow == "grow") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-grow");
+	} else if (mobileGrow == "no-grow") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-grow");
 	}
-	if (shrink) {
+
+	if (shrink == "shrink") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--shrink");
+	} else if (shrink == "no-shrink") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--no-shrink");
 	}
-	if (tabletShrink) {
+	if (tabletShrink == "shrink") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-shrink");
+	} else if (tabletShrink == "no-shrink") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-no-shrink");
 	}
-	if (mobileShrink) {
+	if (mobileShrink == "shrink") {
 		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-shrink");
+	} else if (mobileShrink == "no-shrink") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-no-shrink");
 	}
-	if (hidden) {
-		classNames.push("miscellaneous-gutenberg-blocks-flexbox--hidden");
+
+	if (display == "flex") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--flex");
+	} else if (display == "inline-flex") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--inline-flex");
+	} else if (display == "none") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--none");
 	}
-	if (tabletHidden) {
-		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-hidden");
+
+	if (tabletDisplay == "flex") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-flex");
+	} else if (tabletDisplay == "inline-flex") {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--tablet-inline-flex",
+		);
+	} else if (tabletDisplay == "none") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--tablet-none");
 	}
-	if (mobileHidden) {
-		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-hidden");
+
+	if (mobileDisplay == "flex") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-flex");
+	} else if (mobileDisplay == "inline-flex") {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--mobile-inline-flex",
+		);
+	} else if (mobileDisplay == "none") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--mobile-none");
 	}
+
+	if (widthType == "auto") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--width-auto");
+	} else if (widthType == "initial") {
+		classNames.push("miscellaneous-gutenberg-blocks-flexbox--width-initial");
+	}
+	if (tabletWidthType == "auto") {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--width-tablet-auto",
+		);
+	} else if (tabletWidthType == "initial") {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--width-tablet-initial",
+		);
+	}
+	if (mobileWidthType == "auto") {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--width-mobile-auto",
+		);
+	} else if (mobileWidthType == "initial") {
+		classNames.push(
+			"miscellaneous-gutenberg-blocks-flexbox--width-mobile-initial",
+		);
+	}
+
 	const blockProps = useBlockProps({
 		className: classNames.join(" "),
 		style: {
 			width: `${
 				layout == "desktop"
-					? width > 0
+					? widthType == "custom" && width > 0
 						? `${width}${widthUnit}`
 						: "initial"
 					: layout == "tablet"
-					? tabletWidth > 0
+					? tabletWidthType == "custom" && tabletWidth > 0
 						? `${tabletWidth}${tabletWidthUnit}`
 						: "initial"
-					: mobileWidth > 0
+					: mobileWidthType == "custom" && mobileWidth > 0
 					? `${mobileWidth}${mobileWidthUnit}`
 					: "initial"
 			}`,
@@ -289,341 +368,223 @@ export default function Edit(props) {
 							);
 						}}
 					/>
+					{/* Width */}
 					{layout == "desktop" ? (
-						<div
-							style={{
-								display: "flex",
-								width: "100%",
-								alignItems: "center",
-								marginTop: "5px",
-								marginBottom: "10px",
-								gap: "5px",
-							}}
-						>
-							<div style={{ width: "70%" }}>
-								<RangeControl
-									__nextHasNoMarginBottom
-									__next40pxDefaultSize
-									value={width}
-									label={null}
-									onChange={(value) =>
-										setAttributes({
-											width: value,
-										})
-									}
-									min={0}
-									max={500}
-								/>
-							</div>
-							<SelectControl
-								label=""
-								value={widthUnit}
-								options={gapUnits}
+						<>
+							<ToggleGroupControl
+								value={widthType}
+								isBlock={true}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
-								onChange={(value) => {
-									setAttributes({
-										widthUnit: value,
-									});
-								}}
-							/>
-						</div>
-					) : layout == "tablet" ? (
-						<div
-							style={{
-								display: "flex",
-								width: "100%",
-								alignItems: "center",
-								marginTop: "5px",
-								marginBottom: "10px",
-								gap: "5px",
-							}}
-						>
-							<div style={{ width: "70%" }}>
-								<RangeControl
-									__nextHasNoMarginBottom
-									__next40pxDefaultSize
-									value={tabletWidth}
-									label={null}
-									onChange={(value) =>
-										setAttributes({
-											tabletWidth: value,
-										})
-									}
-									min={0}
+								onChange={(value) => setAttributes({ widthType: value })}
+							>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"full"}
+									label={__("Full", "miscellaneous-gutenberg-blocks")}
 								/>
-							</div>
-							<SelectControl
-								label=""
-								value={tabletWidthUnit}
-								options={gapUnits}
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"auto"}
+									label={__("Auto", "miscellaneous-gutenberg-blocks")}
+								/>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"initial"}
+									label={__("Initial", "miscellaneous-gutenberg-blocks")}
+								/>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"custom"}
+									label={__("Custom", "miscellaneous-gutenberg-blocks")}
+								/>
+							</ToggleGroupControl>
+							{widthType == "custom" ? (
+								<div
+									style={{
+										display: "flex",
+										width: "100%",
+										alignItems: "center",
+										marginTop: "5px",
+										marginBottom: "10px",
+										gap: "5px",
+									}}
+								>
+									<div style={{ width: "70%" }}>
+										<RangeControl
+											__nextHasNoMarginBottom
+											__next40pxDefaultSize
+											value={width}
+											label={null}
+											onChange={(value) =>
+												setAttributes({
+													width: value,
+												})
+											}
+											min={0}
+											max={500}
+										/>
+									</div>
+									<SelectControl
+										label=""
+										value={widthUnit}
+										options={gapUnits}
+										__nextHasNoMarginBottom
+										__next40pxDefaultSize
+										onChange={(value) => {
+											setAttributes({
+												widthUnit: value,
+											});
+										}}
+									/>
+								</div>
+							) : null}
+						</>
+					) : layout == "tablet" ? (
+						<>
+							<ToggleGroupControl
+								value={tabletWidthType}
+								isBlock={true}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
-								onChange={(value) => {
-									setAttributes({
-										tabletWidthUnit: value,
-									});
-								}}
-							/>
-						</div>
-					) : (
-						<div
-							style={{
-								display: "flex",
-								width: "100%",
-								alignItems: "center",
-								marginTop: "5px",
-								marginBottom: "10px",
-								gap: "5px",
-							}}
-						>
-							<div style={{ width: "70%" }}>
-								<RangeControl
-									__nextHasNoMarginBottom
-									__next40pxDefaultSize
-									value={mobileWidth}
-									label={null}
-									onChange={(value) =>
-										setAttributes({
-											mobileWidth: value,
-										})
-									}
-									min={0}
+								onChange={(value) => setAttributes({ tabletWidthType: value })}
+							>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"full"}
+									label={__("Full", "miscellaneous-gutenberg-blocks")}
 								/>
-							</div>
-							<SelectControl
-								label=""
-								value={mobileWidthUnit}
-								options={gapUnits}
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"auto"}
+									label={__("Auto", "miscellaneous-gutenberg-blocks")}
+								/>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"initial"}
+									label={__("Initial", "miscellaneous-gutenberg-blocks")}
+								/>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"custom"}
+									label={__("Custom", "miscellaneous-gutenberg-blocks")}
+								/>
+							</ToggleGroupControl>
+							{tabletWidthType == "custom" ? (
+								<div
+									style={{
+										display: "flex",
+										width: "100%",
+										alignItems: "center",
+										marginTop: "5px",
+										marginBottom: "10px",
+										gap: "5px",
+									}}
+								>
+									<div style={{ width: "70%" }}>
+										<RangeControl
+											__nextHasNoMarginBottom
+											__next40pxDefaultSize
+											value={tabletWidth}
+											label={null}
+											onChange={(value) =>
+												setAttributes({
+													tabletWidth: value,
+												})
+											}
+											min={0}
+										/>
+									</div>
+									<SelectControl
+										label=""
+										value={tabletWidthUnit}
+										options={gapUnits}
+										__nextHasNoMarginBottom
+										__next40pxDefaultSize
+										onChange={(value) => {
+											setAttributes({
+												tabletWidthUnit: value,
+											});
+										}}
+									/>
+								</div>
+							) : null}
+						</>
+					) : (
+						<>
+							<ToggleGroupControl
+								value={mobileWidthType}
+								isBlock={true}
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
-								onChange={(value) => {
-									setAttributes({
-										mobileWidthUnit: value,
-									});
-								}}
-							/>
-						</div>
+								onChange={(value) => setAttributes({ mobileWidthType: value })}
+							>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"full"}
+									label={__("Full", "miscellaneous-gutenberg-blocks")}
+								/>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"auto"}
+									label={__("Auto", "miscellaneous-gutenberg-blocks")}
+								/>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"initial"}
+									label={__("Initial", "miscellaneous-gutenberg-blocks")}
+								/>
+								<ToggleGroupControlOption
+									isAdaptiveWidth={true}
+									value={"custom"}
+									label={__("Custom", "miscellaneous-gutenberg-blocks")}
+								/>
+							</ToggleGroupControl>
+							{mobileWidthType == "custom" ? (
+								<div
+									style={{
+										display: "flex",
+										width: "100%",
+										alignItems: "center",
+										marginTop: "5px",
+										marginBottom: "10px",
+										gap: "5px",
+									}}
+								>
+									<div style={{ width: "70%" }}>
+										<RangeControl
+											__nextHasNoMarginBottom
+											__next40pxDefaultSize
+											value={mobileWidth}
+											label={null}
+											onChange={(value) =>
+												setAttributes({
+													mobileWidth: value,
+												})
+											}
+											min={0}
+										/>
+									</div>
+									<SelectControl
+										label=""
+										value={mobileWidthUnit}
+										options={gapUnits}
+										__nextHasNoMarginBottom
+										__next40pxDefaultSize
+										onChange={(value) => {
+											setAttributes({
+												mobileWidthUnit: value,
+											});
+										}}
+									/>
+								</div>
+							) : null}
+						</>
 					)}
-					<InspectorLabel
-						title={__("Wrap", "miscellaneous-gutenberg-blocks")}
-						defaultValue={layout}
-						onChange={(value) => {
-							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
-						}}
-					/>
-					{layout == "desktop" ? (
-						<ToggleGroupControl
-							value={wrap}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ wrap: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("No Wrap", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					) : layout == "tablet" ? (
-						<ToggleGroupControl
-							value={tabletWrap}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tabletWrap: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("No Wrap", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					) : (
-						<ToggleGroupControl
-							value={mobileWrap}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobileWrap: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("No Wrap", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					)}
-					<InspectorLabel
-						title={__("Direction", "miscellaneous-gutenberg-blocks")}
-						defaultValue={layout}
-						onChange={(value) => {
-							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
-						}}
-					/>
-					{layout == "desktop" ? (
-						<ToggleGroupControl
-							value={horizontal}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ horizontal: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					) : layout == "tablet" ? (
-						<ToggleGroupControl
-							value={tabletHorizontal}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tabletHorizontal: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					) : (
-						<ToggleGroupControl
-							value={mobileHorizontal}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobileHorizontal: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					)}
-					<InspectorLabel
-						title={__("Reverse", "miscellaneous-gutenberg-blocks")}
-						defaultValue={layout}
-						onChange={(value) => {
-							setLayout(value);
-							__experimentalSetPreviewDeviceType(
-								value == "desktop"
-									? "Desktop"
-									: value == "tablet"
-									? "Tablet"
-									: "Mobile",
-							);
-						}}
-					/>
-					{layout == "desktop" ? (
-						<ToggleGroupControl
-							value={reverse}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ reverse: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					) : layout == "tablet" ? (
-						<ToggleGroupControl
-							value={tabletReverse}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tabletReverse: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					) : (
-						<ToggleGroupControl
-							value={mobileReverse}
-							isBlock={true}
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobileReverse: value })}
-						>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={true}
-								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOption
-								isAdaptiveWidth={true}
-								value={false}
-								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
-							/>
-						</ToggleGroupControl>
-					)}
+					{/* Column gap */}
 
 					<InspectorLabel
-						title={__("Column Gap", "miscellaneous-gutenberg-blocks")}
+						title={__("Column gap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -755,8 +716,9 @@ export default function Edit(props) {
 							/>
 						</div>
 					)}
+					{/* Row gap */}
 					<InspectorLabel
-						title={__("Row Gap", "miscellaneous-gutenberg-blocks")}
+						title={__("Row gap", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -887,6 +849,253 @@ export default function Edit(props) {
 							/>
 						</div>
 					)}
+					{/* Wrap */}
+					<InspectorLabel
+						title={__("Wrap", "miscellaneous-gutenberg-blocks")}
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={wrap}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ wrap: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"wrap"}
+								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"no-wrap"}
+								label={__("No wrap", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tabletWrap}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tabletWrap: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"wrap"}
+								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"no-wrap"}
+								label={__("No wrap", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobileWrap}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobileWrap: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"wrap"}
+								label={__("Wrap", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"no-wrap"}
+								label={__("No wrap", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					)}
+					<InspectorLabel
+						title={__("Direction", "miscellaneous-gutenberg-blocks")}
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={direction}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ direction: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"horizontal"}
+								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"vertical"}
+								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tabletDirection}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tabletDirection: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"horizontal"}
+								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"vertical"}
+								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobileDirection}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobileDirection: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"horizontal"}
+								label={__("Horizontal", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"vertical"}
+								label={__("Vertical", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					)}
+					<InspectorLabel
+						title={__("Reverse", "miscellaneous-gutenberg-blocks")}
+						defaultValue={layout}
+						onChange={(value) => {
+							setLayout(value);
+							__experimentalSetPreviewDeviceType(
+								value == "desktop"
+									? "Desktop"
+									: value == "tablet"
+									? "Tablet"
+									: "Mobile",
+							);
+						}}
+					/>
+					{layout == "desktop" ? (
+						<ToggleGroupControl
+							value={reverse}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ reverse: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					) : layout == "tablet" ? (
+						<ToggleGroupControl
+							value={tabletReverse}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ tabletReverse: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					) : (
+						<ToggleGroupControl
+							value={mobileReverse}
+							isBlock={true}
+							__nextHasNoMarginBottom
+							__next40pxDefaultSize
+							onChange={(value) => setAttributes({ mobileReverse: value })}
+						>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={false}
+								label={__("Disabled", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={true}
+								label={__("Enabled", "miscellaneous-gutenberg-blocks")}
+							/>
+						</ToggleGroupControl>
+					)}
 					<InspectorLabel
 						title={__("Justify Content", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
@@ -909,6 +1118,11 @@ export default function Edit(props) {
 							__next40pxDefaultSize
 							onChange={(value) => setAttributes({ justifyContent: value })}
 						>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value=""
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignStartVerticalIcon}
 								value="flex-start"
@@ -946,6 +1160,11 @@ export default function Edit(props) {
 							}
 						>
 							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value=""
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOptionIcon
 								icon={AlignStartVerticalIcon}
 								value="flex-start"
 								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
@@ -981,6 +1200,11 @@ export default function Edit(props) {
 								setAttributes({ mobileJustifyContent: value })
 							}
 						>
+							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value=""
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
 							<ToggleGroupControlOptionIcon
 								icon={AlignStartVerticalIcon}
 								value="flex-start"
@@ -1032,6 +1256,11 @@ export default function Edit(props) {
 							onChange={(value) => setAttributes({ alignItems: value })}
 						>
 							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value=""
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
 								value="flex-start"
 								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
@@ -1055,11 +1284,6 @@ export default function Edit(props) {
 								icon={alignItemsStretchIcon}
 								value="stretch"
 								label={__("Stretch", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOptionIcon
-								icon={alignItemsNoneIcon}
-								value="none"
-								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
@@ -1071,6 +1295,11 @@ export default function Edit(props) {
 							onChange={(value) => setAttributes({ tabletAlignItems: value })}
 						>
 							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value=""
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
 								value="flex-start"
 								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
@@ -1094,11 +1323,6 @@ export default function Edit(props) {
 								icon={alignItemsStretchIcon}
 								value="stretch"
 								label={__("Stretch", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOptionIcon
-								icon={alignItemsNoneIcon}
-								value="none"
-								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
@@ -1110,6 +1334,11 @@ export default function Edit(props) {
 							onChange={(value) => setAttributes({ mobileAlignItems: value })}
 						>
 							<ToggleGroupControlOptionIcon
+								icon={alignItemsNoneIcon}
+								value=""
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOptionIcon
 								icon={alignItemsStartIcon}
 								value="flex-start"
 								label={__("Flex start", "miscellaneous-gutenberg-blocks")}
@@ -1133,11 +1362,6 @@ export default function Edit(props) {
 								icon={alignItemsStretchIcon}
 								value="stretch"
 								label={__("Stretch", "miscellaneous-gutenberg-blocks")}
-							/>
-							<ToggleGroupControlOptionIcon
-								icon={alignItemsNoneIcon}
-								value="none"
-								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
@@ -1165,12 +1389,17 @@ export default function Edit(props) {
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"grow"}
 								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
+								value={"no-grow"}
 								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
@@ -1184,12 +1413,17 @@ export default function Edit(props) {
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"grow"}
 								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
+								value={"no-grow"}
 								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
@@ -1203,12 +1437,17 @@ export default function Edit(props) {
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"grow"}
 								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
+								value={"no-grow"}
 								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
@@ -1238,12 +1477,17 @@ export default function Edit(props) {
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"shrink"}
 								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
+								value={"no-shrink"}
 								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
@@ -1257,12 +1501,17 @@ export default function Edit(props) {
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"shrink"}
 								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
+								value={"no-shrink"}
 								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
@@ -1276,19 +1525,24 @@ export default function Edit(props) {
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"shrink"}
 								label={__("On", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
+								value={"no-shrink"}
 								label={__("Off", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}
 
 					<InspectorLabel
-						title={__("Hidden", "miscellaneous-gutenberg-blocks")}
+						title={__("Display", "miscellaneous-gutenberg-blocks")}
 						defaultValue={layout}
 						onChange={(value) => {
 							setLayout(value);
@@ -1303,59 +1557,89 @@ export default function Edit(props) {
 					/>
 					{layout == "desktop" ? (
 						<ToggleGroupControl
-							value={hidden}
+							value={display}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ hidden: value })}
+							onChange={(value) => setAttributes({ display: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
-								label={__("Yes", "miscellaneous-gutenberg-blocks")}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
-								label={__("No", "miscellaneous-gutenberg-blocks")}
+								value={"flex"}
+								label={__("Flex", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"inline-flex"}
+								label={__("Inline flex", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"none"}
+								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : layout == "tablet" ? (
 						<ToggleGroupControl
-							value={tabletHidden}
+							value={tabletDisplay}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ tabletHidden: value })}
+							onChange={(value) => setAttributes({ tabletDisplay: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
-								label={__("Yes", "miscellaneous-gutenberg-blocks")}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
-								label={__("No", "miscellaneous-gutenberg-blocks")}
+								value={"flex"}
+								label={__("Flex", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"inline-flex"}
+								label={__("Inline flex", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"none"}
+								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					) : (
 						<ToggleGroupControl
-							value={mobileHidden}
+							value={mobileDisplay}
 							isBlock={true}
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
-							onChange={(value) => setAttributes({ mobileHidden: value })}
+							onChange={(value) => setAttributes({ mobileDisplay: value })}
 						>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={true}
-								label={__("Yes", "miscellaneous-gutenberg-blocks")}
+								value={""}
+								label={__("Not set", "miscellaneous-gutenberg-blocks")}
 							/>
 							<ToggleGroupControlOption
 								isAdaptiveWidth={true}
-								value={false}
-								label={__("No", "miscellaneous-gutenberg-blocks")}
+								value={"flex"}
+								label={__("Flex", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"inline-flex"}
+								label={__("Inline flex", "miscellaneous-gutenberg-blocks")}
+							/>
+							<ToggleGroupControlOption
+								isAdaptiveWidth={true}
+								value={"none"}
+								label={__("None", "miscellaneous-gutenberg-blocks")}
 							/>
 						</ToggleGroupControl>
 					)}

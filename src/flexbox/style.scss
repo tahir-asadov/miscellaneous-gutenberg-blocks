@@ -9,80 +9,111 @@
 	display: flex;
 	width: 100%;
 	box-sizing: border-box;
-	@media only screen and (min-width: 993px) {
-		&.miscellaneous-gutenberg-blocks-flexbox--wrap {
-			flex-wrap: wrap;
-		}
+	// @media only screen and (min-width: 993px) {
+	&.miscellaneous-gutenberg-blocks-flexbox--wrap {
+		flex-wrap: wrap;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--no-wrap {
+		flex-wrap: nowrap;
+	}
 
-		&.miscellaneous-gutenberg-blocks-flexbox--horizontal {
-			flex-direction: row;
-			&.miscellaneous-gutenberg-blocks-flexbox--reverse {
-				flex-direction: row-reverse;
-			}
-		}
-		&.miscellaneous-gutenberg-blocks-flexbox--vertical {
-			flex-direction: column;
-			&.miscellaneous-gutenberg-blocks-flexbox--reverse {
-				flex-direction: column-reverse;
-			}
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--justify-flex-start {
-			justify-content: flex-start;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--justify-flex-end {
-			justify-content: flex-end;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--justify-center {
-			justify-content: center;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--justify-space-between {
-			justify-content: space-between;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--justify-space-around {
-			justify-content: space-around;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--align-flex-start {
-			align-items: flex-start;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--align-flex-end {
-			align-items: flex-end;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--align-baseline {
-			align-items: baseline;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--align-center {
-			align-items: center;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--align-stretch {
-			align-items: stretch;
-		}
-
-		&.miscellaneous-gutenberg-blocks-flexbox--align-none {
-			align-items: initial;
-		}
-		&.miscellaneous-gutenberg-blocks-flexbox--grow {
-			flex-grow: 1;
-		}
-		&.miscellaneous-gutenberg-blocks-flexbox--shrink {
-			flex-shrink: 1;
-		}
-		&.miscellaneous-gutenberg-blocks-flexbox--hidden {
-			display: none;
+	&.miscellaneous-gutenberg-blocks-flexbox--reverse {
+		flex-direction: row-reverse;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--horizontal {
+		flex-direction: row;
+		&.miscellaneous-gutenberg-blocks-flexbox--reverse {
+			flex-direction: row-reverse;
 		}
 	}
-	@media only screen and (min-width: 601px) and (max-width: 992px) {
+	&.miscellaneous-gutenberg-blocks-flexbox--vertical {
+		flex-direction: column;
+		&.miscellaneous-gutenberg-blocks-flexbox--reverse {
+			flex-direction: column-reverse;
+		}
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--justify-flex-start {
+		justify-content: flex-start;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--justify-flex-end {
+		justify-content: flex-end;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--justify-center {
+		justify-content: center;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--justify-space-between {
+		justify-content: space-between;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--justify-space-around {
+		justify-content: space-around;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--align-flex-start {
+		align-items: flex-start;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--align-flex-end {
+		align-items: flex-end;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--align-baseline {
+		align-items: baseline;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--align-center {
+		align-items: center;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--align-stretch {
+		align-items: stretch;
+	}
+
+	&.miscellaneous-gutenberg-blocks-flexbox--align-none {
+		align-items: initial;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--grow {
+		flex-grow: 1;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--no-grow {
+		flex-grow: 0;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--shrink {
+		flex-shrink: 1;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--no-shrink {
+		flex-shrink: 0;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--flex {
+		display: flex;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--inline-flex {
+		display: inline-flex;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--none {
+		display: none;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--width-auto {
+		width: auto;
+	}
+	&.miscellaneous-gutenberg-blocks-flexbox--width-initial {
+		width: initial;
+	}
+	// }
+	@media only screen and (max-width: 992px) {
 		&.miscellaneous-gutenberg-blocks-flexbox--tablet-wrap {
 			flex-wrap: wrap;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--tablet-no-wrap {
+			flex-wrap: nowrap;
+		}
+
+		&.miscellaneous-gutenberg-blocks-flexbox--tablet-reverse {
+			flex-direction: row-reverse;
 		}
 		&.miscellaneous-gutenberg-blocks-flexbox--tablet-horizontal {
 			flex-direction: row;
@@ -143,16 +174,41 @@
 		&.miscellaneous-gutenberg-blocks-flexbox--tablet-grow {
 			flex-grow: 1;
 		}
+		&.miscellaneous-gutenberg-blocks-flexbox--tablet-no-grow {
+			flex-grow: 0;
+		}
 		&.miscellaneous-gutenberg-blocks-flexbox--tablet-shrink {
 			flex-shrink: 1;
 		}
-		&.miscellaneous-gutenberg-blocks-flexbox--tablet-hidden {
+		&.miscellaneous-gutenberg-blocks-flexbox--tablet-no-shrink {
+			flex-shrink: 0;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--tablet-flex {
+			display: flex;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--tablet-inline-flex {
+			display: inline-flex;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--tablet-none {
 			display: none;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--width-tablet-auto {
+			width: auto;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--width-tablet-initial {
+			width: initial;
 		}
 	}
 	@media only screen and (max-width: 600px) {
 		&.miscellaneous-gutenberg-blocks-flexbox--mobile-wrap {
 			flex-wrap: wrap;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--mobile-no-wrap {
+			flex-wrap: nowrap;
+		}
+
+		&.miscellaneous-gutenberg-blocks-flexbox--mobile-reverse {
+			flex-direction: row-reverse;
 		}
 		&.miscellaneous-gutenberg-blocks-flexbox--mobile-horizontal {
 			flex-direction: row;
@@ -213,11 +269,29 @@
 		&.miscellaneous-gutenberg-blocks-flexbox--mobile-grow {
 			flex-grow: 1;
 		}
+		&.miscellaneous-gutenberg-blocks-flexbox--mobile-no-grow {
+			flex-grow: 0;
+		}
 		&.miscellaneous-gutenberg-blocks-flexbox--mobile-shrink {
 			flex-shrink: 1;
 		}
-		&.miscellaneous-gutenberg-blocks-flexbox--mobile-hidden {
+		&.miscellaneous-gutenberg-blocks-flexbox--mobile-no-shrink {
+			flex-shrink: 0;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--mobile-flex {
+			display: flex;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--mobile-inline-flex {
+			display: inline-flex;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--mobile-none {
 			display: none;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--width-mobile-auto {
+			width: auto;
+		}
+		&.miscellaneous-gutenberg-blocks-flexbox--width-mobile-initial {
+			width: initial;
 		}
 	}
 }
